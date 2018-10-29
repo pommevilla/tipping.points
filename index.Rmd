@@ -2,35 +2,15 @@
 title: "Tipping Points of AMR"
 ---
 
-Network analysis based on data collected in the paper [*Dispersal enhances beta diversity in nectar microbes*][vannette_paper] by Rachel L. Vannette and Tadashi Fukami. 
-
-Work presented here conducted in collaboration between [Paul Villanueva][paul_github] and [Schuyler Smith][schuyler_github].
+All code and analysis presented here by [Paul Villanueva][paul_github].
 
 ## About
 
 *Under construction*
 
-The purpose of this website is to display and demonstrate our ideas and workflows for analyzing this data. If you have any advice, we'd love to have it. If you like anything we did, feel free to reuse it!
-
-## Bac Co-Occur Prep
-
-In this section we show the workflow in R to create a phyloseq object with the data for the bacterial OTUs and then format it for use with the Co-Occurrence program [FastCoOccur][fastco].
-
-## Bacteria Analysis
-
-## Yeast Analysis
-
-## Curate and Combine Bacteria and Yeast
-
-This workflow show the process, in R, to combine the two datasets for preparation for co-occurrence analysis.
-
-## Combined Bacteria and Yeast Analysis
 
 ## Contact
 
-Send questions, comments, and feedback to pev at iastate dot edu.
+Send questions, comments, and hate mail to pev at iastate dot edu.
 
-[vannette_paper]: https://doi.org/10.1111/ele.12787
-[schuyler_github]: https://github.com/sdsmith1390
 [paul_github]: https://github.com/pommevilla
-[fastco]: https://github.com/germs-lab/FastCoOccur

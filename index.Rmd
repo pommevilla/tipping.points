@@ -1,0 +1,16 @@
+---
+title: "Tipping Points of AMR"
+---
+
+All code and analysis presented here by [Paul Villanueva][paul_github].
+
+## About
+
+*Under construction*
+
+
+## Contact
+
+Send questions, comments, and hate mail to pev at iastate dot edu.
+
+[paul_github]: https://github.com/pommevilla

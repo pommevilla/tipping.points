@@ -1,0 +1,24 @@
+name: JRBP Community Analysis
+output_dir: docs
+navbar:
+  title: ''
+  left:
+  - text: Project Overview
+    href: index.html
+  - text: Bacteria Analysis
+    href: bacteria_community_analysis.html
+  - text: Bacteria Differential Abundance
+    href: bacteria_differential_abundance_analysis.html
+    
+output:
+  html_document:
+    theme: cerulean
+    include:
+      after_body: misc/footer.html
+    toc: yes
+    toc_float:
+      smooth_scroll: yes
+      collapsed: no
+    lib_dir: site_libs
+    self_contained: no
+

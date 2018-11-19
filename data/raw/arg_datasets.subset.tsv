@@ -1,0 +1,205 @@
+4440026.3	Human Lung Healthy vs Cystic Fibrosis Metagenome	CFLungPat001Rep1SDVir20060505	4090704	50909	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-associated	WGS	Adult cystic fibrosis Clinic at the University of California San Diego Medical Center	80.353	public	
+4440054.3	Mosquito Metagenome	Mosq2SDVir2060606	84803776	810891	animal-associated habitat	animal-associated habitat	animal-associated habitat	unknown	WGS	unknown	104.581	public	
+4440055.3	Aquacultured Fish (Kent State)	FishHealGutKentSTMic20060504	5076977	51498	Small lake biome	animal-associated habitat	bodily fluid	host-associated	WGS	San Diego University, San Diego, California	98.586	public	
+4440061.3	Microbialites	HBCStromBahamasMic20050111	26691593	257573	marine habitat	marine habitat	marine habitat	unknown	WGS	Highborne Cay Island	103.627	public	
+4440102.3	Tampa Bay Viral Metagenome	TBPhageInduction20051213	29107293	280019	marine habitat	marine habitat	marine habitat	water	WGS	Tampa Bay, CA	103.948	public	
+4440279.3	Northern Line Islands 	FannLIMic20050811	30909241	290844	marine habitat	marine habitat	marine habitat	water	WGS	Fanning (Tabuaeran) Atoll	106.274	public	
+4440282.3	Soudan Mine Metagenome	BlackSoudMineMic20050331	38502057	388627	mine drainage	mine drainage	mine drainage	sediment	WGS	Soudan Underground Mine, on the south shore of Lake Vermilion, MN	99.072	public	
+4440285.3	Chicken Cecum Microbiome	Chicken Cecum A Contigs	3382776	27476	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Urbana, IL	123.117	public	
+4440286.3	Chicken Cecum Microbiome	Chicken Cecum B Contigs	2487532	22821	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Urbana, IL	109.002	public	
+4440306.3	Marine Phages	ArcticVir2002	68276453	688590	marine habitat	marine habitat	marine habitat	water	WGS	the Arctic Ocean, the Strait of Georgia,	99.154	public	
+4440321.3	Microbialites	RMStromCCMexVir20050722	34251849	328656	marine habitat	marine habitat	marine habitat	unknown	WGS	Rio Mesquites	104.218	public	
+4440328.3	Salton Sea 	SaltonSea2Vir20060823	2973124	29970	extreme habitat ; hypersaline	extreme habitat ; hypersaline	extreme habitat ; hypersaline	unknown	WGS	Salton Sea, California	99.203	public	
+4440362.3	Sapelo Island Bacterioplankton Vanillate/DSMP Study	DMSP11SeawaterMic200511	4202321	44246	marine habitat	marine habitat	marine habitat	water	WGS	Sapelo Island, GA	94.976	public	
+4440375.3	Stressed Coral Holobionts	TempPorCompHawVir200602	4425894	39036	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Hawaii Institute of Marine Biology	113.380	public	
+4440377.3	Stressed Coral Holobionts	NutPorCompHawVir200602	3690641	34433	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Hawaii Institute of Marine Biology	107.183	public	
+4440412.3	Freshwater Fish from Aquaculture Facility Metagenomes - Viral an	TilPondKentSTVir20060504	6096272	60319	freshwater	freshwater	freshwater	water	WGS	Tilapia Channel (FW1) at Kent SeaTech, Salton Sea, CA	101.067	public	
+4440414.3	Freshwater Fish from Aquaculture Facility Metagenomes - Viral an	PrePondKentSTVir20060504	7017317	67988	freshwater	freshwater	freshwater	water	WGS	prebead pond at Kent SeaTech, Salton Sea, CA	103.214	public	
+4440417.3	Chula Vista, CA Solar Saltern Study	MedSalternSDbayVir20051122	5634444	55903	marine biome	saline evaporation pond	saline water	water	WGS	Chula Vista, CA	100.790	public	
+4440424.3	Freshwater Fish from Aquaculture Facility Metagenomes - Viral an	TilPondKentSTVir200608	5773797	57134	freshwater	freshwater	freshwater	water	WGS	Tilapia Channel (FW1) at Kent SeaTech, Salton Sea, CA	101.057	public	
+4440431.3	Chula Vista, CA Solar Saltern Study	MedSalternSDbayVir20051110	4013169	39578	marine biome	saline evaporation pond	saline water	water	WGS	Chula Vista, CA	101.399	public	
+4440440.3	Freshwater Fish from Aquaculture Facility Metagenomes - Viral an	TilPondKentSTMic200511	38804235	381076	freshwater	freshwater	freshwater	water	WGS	Tilapia Channel (FW1) at Kent SeaTech, Salton Sea, CA	101.828	public	
+4440611.3	Twin Gut Microflora Study	TS20	103097122	526727	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	WGS	St. Louis, MO	195.732	public	
+4440613.3	Twin Gut Microflora Study	TS28	102979597	312665	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	WGS	St. Louis, MO	329.361	public	
+4440948.3	Human Faeces - Kurokawa	human In-D	46397089	37296	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	WGS	unknown	1244.023	public	
+4440951.3	Human Faeces - Kurokawa	human In-R	43473860	34797	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	WGS	unknown	1249.357	public	
+4440963.3	Guerrero Negro Metagenomes	Guerrero Negro 1-2mm	7469572	11574	microbial mat	microbial mat	microbial mat	unknown	WGS	Exportadora de Sal saltworks, Guerrero Negro, Baja California Sur, Mexico	645.375	public	
+4440967.3	Guerrero Negro Metagenomes	Guerrero Negro 4-5mm	9803980	15663	microbial mat	microbial mat	microbial mat	unknown	WGS	Exportadora de Sal saltworks, Guerrero Negro, Baja California Sur, Mexico	625.932	public	
+4440970.3	Guerrero Negro Metagenomes	Guerrero Negro 6-10mm	9864533	15060	microbial mat	microbial mat	microbial mat	unknown	WGS	Exportadora de Sal saltworks, Guerrero Negro, Baja California Sur, Mexico	655.015	public	
+4441021.3	Jeffries et al PLoS One	Australian Coorong medium high salinity 132psu M3	29952599	128907	estuarine biome	marine benthic feature	sandy sediment	sediment	WGS	Coorong Lagoon	232.358	public	
+4441022.3	Jeffries et al PLoS One	Australian Coorong high salinity 136psu M4	28906111	124220	estuarine biome	marine benthic feature	sandy sediment	sediment	WGS	Coorong Lagoon	232.701	public	
+4441026.3	unknown	Chesapeake Bay Virioplankton	3920016	5641	unknown	unknown	unknown	unknown	WGS	unknown	694.915	public	
+4441055.3	Microbial Community Genomics at the HOT/ALOHA	HOT/ALOHA - Base of Chlorophyll Maximum 130m	6091740	6797	marine habitat	marine habitat	marine habitat	water	WGS	HOT station ALOHA	896.240	public	
+4441091.3	Waseca County Farm Soil Metagenome	Waseca Farm Soil	154475569	138347	soil	soil	soil	soil	WGS	Farm in Waseca County, Minnesota.	1116.581	public	
+4441096.3	Viral Metagenome from Terrestrial Hot Springs	Terrestrial Hot Springs - Octopus	22557192	22272	hot spring	hot spring	hot spring	water	WGS	Yellowstone Natl Park	1012.805	public	
+4441124.3	Global Ocean Sampling Expedition	GS038 Shotgun - Open Ocean - Tropical South Pacific - Tropical South Pacific - International	787340	741	marine habitat	marine habitat	marine habitat	water	WGS	Tropical South Pacific	1062.537	public	
+4441139.4	Global Ocean Sampling Expedition	GS122b Shotgun - Open Ocean - Indian Ocean - International waters between Madagascar and South Africa - International	52667848	50096	marine habitat	marine habitat	marine habitat	water	WGS	Indian Ocean - International waters between Madagascar and South Africa	1051.338	public	
+4441146.3	Global Ocean Sampling Expedition	GS047 Shotgun - Open Ocean - Tropical South Pacific - 201 miles from F. Polynesia - French Polynesia	68340256	66023	marine habitat	marine habitat	marine habitat	water	WGS	Tropical South Pacific - 201 miles from F. Polynesia	1035.098	public	
+4441148.3	Global Ocean Sampling Expedition	GS117b Shotgun - Coastal sample - Indian Ocean - St. Anne Island, Seychelles - Seychelles	54752102	50609	marine habitat	marine habitat	marine habitat	water	WGS	Indian Ocean - St. Anne Island, Seychelles	1081.865	public	
+4441150.3	Global Ocean Sampling Expedition	GS115 Shotgun - Open Ocean - Indian Ocean - Indian Ocean - International	64230062	61020	marine habitat	marine habitat	marine habitat	water	WGS	Indian Ocean	1052.607	public	
+4441151.3	Global Ocean Sampling Expedition	GS119 Shotgun - Open Ocean - Indian Ocean - International Water Outside of Reunion Island - International	65055874	60987	marine habitat	marine habitat	marine habitat	water	WGS	Indian Ocean - International Water Outside of Reunion Island	1066.717	public	
+4441153.3	Global Ocean Sampling Expedition	GS007 Shotgun - Coastal - North American East Coast - Northern Gulf of Maine - Canada	55430960	50980	marine habitat	marine habitat	marine habitat	water	WGS	Northern Gulf of Maine	1087.308	public	
+4441185.3	Metagenomic Profiling of a Microbial Assemblage Associated with the California Mussel: A Node in Networks of Carbon and Nitrogen Cycling	Pool Mussels	32521684	166828	marine biome	marine habitat	biosolids	host-associated	WGS	Main Beach site of Tatoosh Island,located in the eastern Pacific 0.7 km off the northwestern tip of Washington State	194.941	public	
+4441215.3	Project for: 308_1	308_2	52852345	275397	marine bathyal zone biome	abyssal plain	marine sediment	sediment	WGS	Gulf of Mexico	191.913	public	
+4441558.3	unknown	S89	9411696	42534	unknown	unknown	unknown	unknown	WGS	unknown	221.275	public	
+4441576.3	Global Ocean Sampling Expedition	GS001a Shotgun - Open Ocean - Sargasso Sea - Hydrostation S - Bermuda	143316448	142352	marine habitat	marine habitat	marine habitat	water	WGS	Sargasso Sea	1006.775	public	
+4441592.3	Global Ocean Sampling Expedition	GS022 Shotgun - Open Ocean - Eastern Tropical Pacific - 250 miles from Panama City - Panama	131079270	121662	marine habitat	marine habitat	marine habitat	water	WGS	Eastern Tropical Pacific, 250 miles from Panama City	1077.405	public	
+4441593.3	Global Ocean Sampling Expedition	GS025 Shotgun - Fringing Reef - Eastern Tropical Pacific - Dirty Rock, Cocos Island - Costa Rica	129781299	120671	marine habitat	marine habitat	marine habitat	water	WGS	Eastern Tropical Pacific, Dirty Rock, Cocos Island	1075.497	public	
+4441602.3	Global Ocean Sampling Expedition	GS036 Shotgun - Coastal - Galapagos Islands - Cabo Marshall, Isabella Island - Ecuador	85757477	77538	marine habitat	marine habitat	marine habitat	water	WGS	Cabo Marshall, Isabella Island	1106.006	public	
+4441603.3	Global Ocean Sampling Expedition	GS048a Shotgun - Coral Reef - Polynesia Archipelagos - Moorea, Cooks Bay - Fr. Polynesia	92813604	90515	marine habitat	marine habitat	marine habitat	water	WGS	Polynesia Archipelagos - Moorea, Cooks Bay	1025.395	public	
+4441606.3	Global Ocean Sampling Expedition	GS108a Shotgun - Lagoon Reef - Indian Ocean - Coccos Keeling, Inside Lagoon - Australia	50889437	51787	marine habitat	marine habitat	marine habitat	water	WGS	Indian Ocean - Coccos Keeling, Inside Lagoon	982.668	public	
+4441611.3	Global Ocean Sampling Expedition	GS114 Shotgun - Open Ocean - Indian Ocean - 500 Miles west of the Seychelles in the Indian Ocean - International	345285679	348823	marine habitat	marine habitat	marine habitat	water	WGS	Indian Ocean - 500 Miles west of the Seychelles in the Indian Ocean	989.859	public	
+4441648.3	unknown	LColon	38196115	162844	unknown	unknown	unknown	unknown	WGS	unknown	234.556	public	
+4441661.3	Global Ocean Sampling Expedition	GS023 Shotgun - Open Ocean - Eastern Tropical Pacific - 30 miles from Cocos Island - Costa Rica	143626589	133051	marine habitat	marine habitat	marine habitat	water	WGS	Eastern Tropical Pacific, 30 miles from Cocos Island	1079.485	public	
+4441662.3	Global Ocean Sampling Expedition	GS030 Shotgun - Warm Seep - Galapagos Islands - Warm seep, Roca Redonda - Ecuador	391694924	359152	marine habitat	marine habitat	marine habitat	water	WGS	Galapagos Islands - Warm seep, Roca Redonda	1090.610	public	
+4441663.3	Alvinella Pompejana Epibiont Metagenome	Alvinella Pompejana Epibiont	290371756	293065	hydrothermal vent	hydrothermal vent	hydrothermal vent	water	WGS	Black smoker chimneys on East Pacific Rise	990.810	public	
+4441696.3	Aquacultured Fish (Kent State)	Fish -- Morbid gut bacteria	5956666	60311	Small lake biome	animal-associated habitat	bodily fluid	host-associated	WGS	San Diego University, San Diego, California	98.766	public	
+4441834.3	Subsurface Rifle	15_Rifle	58033228	241258	freshwater biome	sediment	sediment	sediment	WGS	RIFRC site, Rifle, CO	240.544	public	
+4442086.3	Subsurface Rifle	17_Rifle_expAQDS	70244682	284444	freshwater biome	sediment	sediment	sediment	WGS	RIFRC site, Rifle, CO	246.954	public	
+4442315.3	unknown	Cattle fecal pool (subset)	16922162	51231	unknown	unknown	unknown	unknown	WGS	unknown	330.311	public	
+4442415.3	NIH Protist cDNA Survey	Bodoxxx	993746	1801	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Amherst, Massachusetts	551.775	public	
+4442450.3	Chesapeake Bay Virioplankton	Chesapeake Bay Virioplankton - Station 834	3920016	5641	marine habitat	marine habitat	marine habitat	unknown	WGS	Chesapeake Bay	694.915	public	
+4442467.3	Comparative metagenomics of two microbial mats at Cuatro Cienegas basin	Red Mat Cuatro Cienegas Coahuila, Mexico (contigs)	7892291	23779	Tropical/Subtropical Desert Division (320)	alkaline salt lake	surface water	microbial mat|biofilm	WGS	Cuatro Cienegas	331.902	public	
+4442475.3	NIH Protist cDNA Survey	Chilomo	311122	506	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Amherst, Massachusetts	614.866	public	
+4442583.3	Viral Metagenome from Terrestrial Hot Springs	OCTOPUS Shotgun	22557192	22272	hot spring	hot spring	hot spring	water	WGS	Yellowstone Natl Park	1012.805	public	
+4442606.3	unknown	Sample 40	53607277	49597	unknown	unknown	unknown	unknown	WGS	unknown	1080.857	public	
+4442985.3	NIH Protist cDNA Survey	Nannoch	1884967	3679	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Amherst, Massachusetts	512.359	public	
+4442987.3	NIH Protist cDNA Survey	Pelagom	613729	1185	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Amherst, Massachusetts	517.915	public	
+4442988.3	NIH Protist cDNA Survey	Pinguic	2611212	4086	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Amherst, Massachusetts	639.063	public	
+4442989.3	NIH Protist cDNA Survey	Rhizamo	2472652	3917	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	WGS	Amherst, Massachusetts	631.262	public	
+4443364.3	Western English Channel Time Series	155-Apr_Day repeats removed	37567984	212695	unknown	unknown	unknown	unknown	WGS	unknown	176.628	public	
+4443687.3	Antarctica Aquatic Microbial Metagenome	AntarcticaAquatic_9	95664001	95521	marine habitat	marine habitat	marine habitat	water	WGS	Antarctic Territory Claimed by Australia	1001.497	public	
+4443693.3	Botany Bay Metagenomes	BBAY15	177136646	182393	marine habitat	marine habitat	marine habitat	host-associated	WGS	Botany Bay near Bare Island, Sydney, Australia	971.181	public	
+4443697.3	Marine Bacterioplankton Metagenomes	S_35155	68141892	292907	marine habitat	marine habitat	marine habitat	water	WGS	Pacific Equatorial Divergence Province	232.640	public	
+4443700.3	Marine Bacterioplankton Metagenomes	S_35171	14294162	60834	marine habitat	marine habitat	marine habitat	water	WGS	Pacific North Equatorial Countercurrent	234.970	public	
+4443702.3	Marine Metagenome from Coastal Waters project at Plymouth Marine	SRS000294	47289202	209073	marine habitat	marine habitat	marine habitat	water	WGS	coastal waters of a fjord close to Bergen, Norway	226.185	public	
+4443706.3	Marine Metagenome from Coastal Waters project at Plymouth Marine	SRS000299	38021523	162871	marine habitat	marine habitat	marine habitat	water	WGS	coastal waters of a fjord close to Bergen, Norway	233.446	public	
+4443709.3	Marine Metagenome from Coastal Waters project at Plymouth Marine	SRS000301	26982195	116192	marine habitat	marine habitat	marine habitat	water	WGS	coastal waters of a fjord close to Bergen, Norway	232.221	public	
+4443716.3	Monterey Bay Microbial Study	mb2001jd135_1	52960995	223337	marine habitat	marine habitat	marine habitat	unknown	WGS	unknown	237.135	public	
+4443721.3	Sapelo Island Bacterioplankton Metagenome	SRS000242	1431852	15542	marine habitat	marine habitat	marine habitat	water	WGS	Sapelo Island, GA	92.128	public	
+4443747.3	Yellowstone National Park Octopus/Mushroom Hot Springs Metagenom	MushroomSpringsMatCoreD	325932	320	hot spring ; microbial mat	hot spring ; microbial mat	hot spring ; microbial mat	unknown	WGS	Yellowstone Natl Park Hot Springs, Moran, WY	1018.538	public	
+4443750.3	Yellowstone National Park Octopus/Mushroom Hot Springs Metagenom	OctopusSpringsMatCoreR	1328730	1266	hot spring ; microbial mat	hot spring ; microbial mat	hot spring ; microbial mat	unknown	WGS	Yellowstone Natl Park Hot Springs, Moran, WY	1049.550	public	
+4443754.3	Project for: MID2_EF_assembly	MID2_EF_assembly	24210189	54344	waste water	waste water	waste water	unknown	WGS	unknown	445.499	public	
+4443755.3	Project for: MID3_EF_assembly	MID3_EF_assembly	30035399	57827	waste water	waste water	waste water	unknown	WGS	unknown	519.401	public	
+4443756.3	Project for: MID4_AD_assembly	MID4_AD_assembly	29292896	61672	waste water	waste water	waste water	unknown	WGS	unknown	474.979	public	
+4445066.3	Western English Channel Time Series	Aug_4am_pf	177858435	500116	unknown	unknown	unknown	unknown	WGS	unknown	355.634	public	
+4445067.3	Western English Channel Time Series	Apr_Night_pf	167291151	493002	unknown	unknown	unknown	unknown	WGS	unknown	339.332	public	
+4445068.3	Western English Channel Time Series	Aug_4pm_pf	214326429	620757	unknown	unknown	unknown	unknown	WGS	unknown	345.266	public	
+4445069.3	Western English Channel Time Series	Jan_Day	261325761	826289	unknown	unknown	unknown	unknown	WGS	unknown	316.264	public	
+4445990.3	hot_springs-microbial_mat.WGS	NTS_creosote.ele.1	219117356	583724	soil	soil	soil	soil	WGS	Mercury, Navada	375.378	public	
+4445996.3	hot_springs-microbial_mat.WGS	NTS_creosote.amb.1	116821792	312444	soil	soil	soil	soil	WGS	Mercury, Navada	373.897	public	
+4446124.3	Project for: 6-1	6-1	29451590	73639	human-associated habitat	human-associated habitat	human-associated habitat	human-associated	WGS	California	399.946	public	
+4446126.3	Project for: 6-13	6-13	44465738	111935	human-associated habitat	human-associated habitat	human-associated habitat	human-associated	WGS	California	397.246	public	
+4446153.3	Rain Forest Soil Microbial Communities	Luquillo Experimental Forest Soil, Puerto Rico	322213082	782404	soil	soil	soil	soil	WGS	subtropical lower montane wet forest in the Luquillo Experimental Forest	411.824	public	
+4446341.3	Jeffries et al PLoS One	Point Turton	19571471	58251	estuarine biome	marine benthic feature	sandy sediment	sediment	WGS	Point Turton	335.985	public	
+4446342.3	Jeffries et al PLoS One	Port Flinders	24113075	72654	estuarine biome	marine benthic feature	sandy sediment	sediment	WGS	Port Flinders	331.889	public	
+4446411.3	Jeffries et al PLoS One	S2gnew	14909004	47910	estuarine biome	marine pelagic feature	saline water	water	WGS	Coorong Lagoon	311.188	public	
+4446437.3	Irish_Sea_Metagenome	Irish_Sea_metagenome	6814484	26859	sea	marine habitat	water	water	WGS	Eastern Irish Sea	253.713	public	
+4446507.3	Baculovirus	Biogas plant digestate	286933566	1162782	unknown	unknown	unknown	unknown	WGS	unknown	246.765	public	
+4446969.3	Baltic Sea microbial communities	75 m assembled	4460912	6844	marine chemocline	brackish water habitat	water	water	WGS	Landsort Deep, Baltic Sea	651.799	public	
+4447016.3	unknown	2,4combine	8761859	24044	unknown	unknown	unknown	unknown	WGS	unknown	364.409	public	
+4447102.3	The oral metagenome in health and disease	NOCA_03P	100125112	244881	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	WGS	Valencia	408.873	public	
+4447457.3	TLR5KO_454_Metagenome	TLR5KO4	11485402	27581	Temperate grasslands	animal-associated habitat	feces	host-associated	WGS	Ithaca, NY	416.424	public	
+4447483.3	Abrolhos reef Bank	California	74889416	167513	coral reef	coral reef	water	water	WGS	Abrolhos Reefs	447.066	public	
+4447811.3	phyllosphere microbiota	Clover phyllosphere	240816880	1028814	terrestrial biome	plant-associated habitat	organic material	plant-associated	WGS	Reckenholz	234.072	public	
+4447838.3	North Railroad Avenue Plume EPA Superfund Site	EW3Post2	714494880	7938832	freshwater biome	Superfund site	ground water	water	WGS	Española, New Mexico	90.000	public	
+4447951.3	Weebubbie Cave Slime Curtain Metagenome	All contigs	12683687	20233	aquatic biome	cave	water	microbial mat|biofilm	WGS	south australia	626.881	public	
+4449125.3	Meta data	Composite	125002617	364725	soil	soil	soil	soil	WGS	Alert	342.731	public	
+4449249.3	 Comparative metagenomic, phylogenetic, and physiological analyses of soil microbial communities across nitrogen gradients	1_8_RL1	23664198	59998	grassland biome	meadow soil	bulk soil	soil	WGS	Cedar Creek Ecosystem Science Reserve, Bethel, MN, USA	394.416	public	
+4449252.3	 Comparative metagenomic, phylogenetic, and physiological analyses of soil microbial communities across nitrogen gradients	1_17_RL2	36665161	92615	grassland biome	meadow soil	bulk soil	soil	WGS	Cedar Creek Ecosystem Science Reserve, Bethel, MN, USA	395.888	public	
+4449258.3	 Comparative metagenomic, phylogenetic, and physiological analyses of soil microbial communities across nitrogen gradients	1_38_RL5	26412606	66029	grassland biome	meadow soil	bulk soil	soil	WGS	Cedar Creek Ecosystem Science Reserve, Bethel, MN, USA	400.015	public	
+4449284.3	 Comparative metagenomic, phylogenetic, and physiological analyses of soil microbial communities across nitrogen gradients	1_52_RL8	30913425	77306	grassland biome	meadow soil	bulk soil	soil	WGS	Cedar Creek Ecosystem Science Reserve, Bethel, MN, USA	399.884	public	
+4449364.3	 Comparative metagenomic, phylogenetic, and physiological analyses of soil microbial communities across nitrogen gradients	2_404_RL8	22988021	65582	grassland biome	meadow soil	bulk soil	soil	WGS	Kellog Biological Station, Hickory Corners, MI, USA	350.523	public	
+4449590.3	aquatic	Stromatolite T3S10 uniqueSeq	23967314	67885	aquatic habitat	aquatic habitat	aquatic habitat	unknown	WGS	Highborne Cay	353.058	public	
+4449956.3	phyllosphere microbiota	Rice rhizosphere	395652345	1026982	terrestrial biome	plant-associated habitat	organic material	plant-associated	WGS	Los Banos	385.257	public	
+4450124.3	Organic carbon transformations in high-Arctic peat soils: key functions and microorganisms	S2a_metagenome	36339223	89359	Tundra biome	peat soil	peat soil	soil	WGS	Ny Ålesund, Svalbard	406.666	public	
+4450126.3	Organic carbon transformations in high-Arctic peat soils: key functions and microorganisms	K1b_metagenome	41420719	101781	Tundra biome	peat soil	peat soil	soil	WGS	Ny Ålesund, Svalbard	406.959	public	
+4450131.3	Rhizosphere	CtrlF_shotgun	276871390	665714	terrestrial biome	landfill	contaminated soil	soil	WGS	South Bohemia	415.901	public	
+4450171.3	Rhizosphere	Hor_shotgun	286480433	712104	terrestrial biome	landfill	contaminated soil	soil	WGS	South Bohemia	402.301	public	
+4450212.3	Metagenomic Analysis of Kimchi	Sample J7	13090858	30202	food	food	food	miscellaneous	WGS	Seoul	433.443	public	
+4450216.3	Metagenomic Analysis of Kimchi	Sample J25	86509803	197709	food	food	food	miscellaneous	WGS	Seoul	437.561	public	
+4450218.3	Metagenomic Analysis of Kimchi	Sample J29	21345546	48813	food	food	food	miscellaneous	WGS	Seoul	437.292	public	
+4450219.3	Baculovirus	MID2-IF-dereplicated-consensus	70775098	175700	unknown	unknown	unknown	unknown	WGS	unknown	402.818	public	
+4450224.3	Baculovirus	MID4-AD-dereplicated-consensus	119334582	300841	unknown	unknown	unknown	unknown	WGS	unknown	396.670	public	
+4450328.3	phyllosphere microbiota	Rice phyllosphere	831769586	2213945	terrestrial biome	plant-associated habitat	organic material	plant-associated	WGS	Los Banos	375.696	public	
+4450653.3	Subsurface Rifle	Subsurface Rifle, s_1_1_sequence	629242532	8279507	freshwater biome	sediment	sediment	sediment	WGS	RIFRC site, Rifle, CO	76.000	public	
+4450729.3	Meta data	Biopile 2005	35399724	108203	soil	soil	soil	soil	WGS	Alert	327.160	public	
+4450750.3	Project for: NTS004-ele-crust	NTS004-ele-crust	87160647	239933	soil	soil	soil	unknown	WGS	Nevada	363.271	public	
+4451033.3	Mangroves	BRMgv-1Clean	58801025	249993	Mangrove biome	intertidal zone	estuarine mud	soil	WGS	Bertioga	235.211	public	
+4451076.3	arctic spring snow	svn40	8038481	23702	Cold-winter (continental) deserts and semideserts	cold temperature habitat	water	miscellaneous	WGS	Ny-Alesund	339.148	public	
+4451102.3	Monitoring Mediterranean Sea	PriS1	269776446	671765	sea	coastal water	water	water	WGS	Monte Cristo	401.593	public	
+4451259.3	Project for: DONNA2_raw reads	DONNA2_raw reads	930446714	1957059	cultured habitat	cultured habitat	cultured habitat	unknown	WGS	Ithaca, NY	475.431	public	
+4451655.3	Project for: ANAS_raw_reads	ANAS_raw_reads	330964688	606488	cultured habitat	cultured habitat	cultured habitat	unknown	WGS	Berkeley, CA	545.707	public	
+4451761.3	OUTO_deepbiosphere	OUTO_II_2300	130544350	323576	temperate coniferous forest biome	Cave	Water	water	WGS	Outokumpu	403.443	public	
+4453007.3	unknown	RNApp6.denoised	71727	797	unknown	unknown	unknown	unknown	WGS	unknown	89.996	public	
+4453083.3	Project for: A5	A5	158829229	409743	freshwater habitat	freshwater habitat	freshwater habitat	unknown	WGS	South Australia	387.631	public	
+4453261.3	Soil microbial community from Rothamsted, Park Grass (METASOIL project)	METASOIL J1 Rothamsted 2009 July 0-21cm Direct MPBIO1O1	465558160	1130719	Temperate grasslands	prairie	soil	soil	WGS	Rothamsted	411.736	public	
+4453372.3	Abrolhos reef Bank	Sebastiao Gomes 2010	11785037	39792	coral reef	coral reef	water	water	WGS	Abrolhos Reefs	296.166	public	
+4454504.3	Guanabara Bay Metagenome	GammaproteobacteriaPt1	9689649	21868	ocean biome	ocean	coastal water	water	WGS	Rio de Janeiro	443.097	public	
+4454689.3	Guanabara Bay Metagenome	FirmicutesPt1	1599598	3565	ocean biome	ocean	coastal water	water	WGS	Rio de Janeiro	448.695	public	
+4454692.3	Guanabara Bay Metagenome	FirmicutesPt34	161316	369	estuarine biome	ocean	coastal water	water	WGS	Rio de Janeiro	437.171	public	
+4454693.3	Guanabara Bay Metagenome	BacteroidetesChlorobiPt1	6515528	14483	ocean biome	ocean	coastal water	water	WGS	Rio de Janeiro	449.874	public	
+4454697.3	Guanabara Bay Metagenome	CyanoPt34	91318	207	estuarine biome	ocean	coastal water	water	WGS	Rio de Janeiro	441.150	public	
+4454700.3	Guanabara Bay Metagenome	BetaprotPt7	1220287	2742	estuarine biome	ocean	coastal water	water	WGS	Rio de Janeiro	445.035	public	
+4455112.3	Beaufort Sea sediments	ArcticSedimentLowMethane_PC12-244-90cm_postre	609474266	1791196	aquatic biome	marine feature	sediment	sediment	WGS	Beaufort Sea	340.261	public	
+4459941.3	Peru Margin Subseafloor Biosphere	1229_50mbsf_AMPLIFIED	9344707	84122	sediment	sediment	sediment	unknown	WGS	Ocean Drilling Program leg 201, site 1229	111.085	public	
+4460190.3	Puget Sound	WWTP effluent	46708989	128160	freshwater biome	anthropogenic habitat	water	wastewater|sludge	WGS	Puget Sound, WA	364.458	public	
+4460642.3	NEC	GN_040808	3580635764	19429521	terrestrial biome	mammalia-associated habitat	feces	human-gut	WGS	Chicago, IL	184.288	public	
+4461013.3	Project for: 70mgHCHsoil	70mgHCHsoil	382387984	1124891	soil	soil	soil	soil	WGS	Lucknow	339.933	public	
+4461120.3	Human gut microbiome viewed across age and geography (WGS)	Amz10baby	47908243	120014	unknown	unknown	unknown	unknown	WGS	unknown	399.189	public	
+4461124.3	Human gut microbiome viewed across age and geography (WGS)	Amz2infF	38525923	94521	feces	feces	feces	plant-associated	WGS	unknown	407.591	public	
+4461129.3	Human gut microbiome viewed across age and geography (WGS)	Amz5teenF	46534815	123930	feces	feces	feces	plant-associated	WGS	unknown	375.493	public	
+4461135.3	Human gut microbiome viewed across age and geography (WGS)	AmzC1babyF2	47712278	136378	feces	feces	feces	plant-associated	WGS	unknown	349.853	public	
+4461146.3	Human gut microbiome viewed across age and geography (WGS)	h10B.2	86030856	210101	feces	feces	feces	plant-associated	WGS	unknown	409.474	public	
+4461149.3	Human gut microbiome viewed across age and geography (WGS)	h121B.1	57788553	152687	feces	feces	feces	plant-associated	WGS	unknown	378.477	public	
+4461154.3	Human gut microbiome viewed across age and geography (WGS)	h257M.2	53256026	180417	feces	feces	feces	plant-associated	WGS	unknown	295.183	public	
+4461155.3	Human gut microbiome viewed across age and geography (WGS)	h259A.2	37226823	88301	feces	feces	feces	plant-associated	WGS	unknown	421.590	public	
+4461168.3	Human gut microbiome viewed across age and geography (WGS)	371	43068627	165559	feces	feces	feces	plant-associated	WGS	unknown	260.141	public	
+4461174.3	Human gut microbiome viewed across age and geography (WGS)	USchp18Child	75864310	196958	feces	feces	feces	plant-associated	WGS	unknown	385.180	public	
+4461186.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw11.2	33229224	93813	feces	feces	feces	plant-associated	WGS	unknown	354.207	public	
+4461199.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw19.1	75407780	224659	feces	feces	feces	plant-associated	WGS	unknown	335.654	public	
+4461206.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw21.2	55673218	176845	feces	feces	feces	plant-associated	WGS	unknown	314.814	public	
+4461207.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw3.1	60124207	174966	feces	feces	feces	plant-associated	WGS	unknown	343.634	public	
+4461210.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw4.2	58508186	169453	feces	feces	feces	plant-associated	WGS	unknown	345.277	public	
+4461212.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw5.2	55910089	166583	feces	feces	feces	plant-associated	WGS	unknown	335.629	public	
+4461214.3	Human gut microbiome viewed across age and geography (WGS)	USinfTw6.2	58929755	171733	feces	feces	feces	plant-associated	WGS	unknown	343.148	public	
+4461228.3	Human gut microbiome viewed across age and geography (WGS)	TS7	113692757	438719	feces	feces	feces	plant-associated	WGS	unknown	259.147	public	
+4461285.3	muegge_mammals_paper_human_samples_MG	CRBM.03.MG	20411881	92140	feces	feces	feces	human-vaginal	WGS	unknown	221.531	public	
+4461289.3	muegge_mammals_paper_human_samples_MG	CRBM.07.MG	8538283	37360	feces	feces	feces	human-vaginal	WGS	unknown	228.541	public	
+4461290.3	muegge_mammals_paper_human_samples_MG	CRBM.08.MG	11583757	50597	feces	feces	feces	human-vaginal	WGS	unknown	228.942	public	
+4461293.3	muegge_mammals_paper_human_samples_MG	CRBM.11.MG	10547659	46573	feces	feces	feces	human-vaginal	WGS	unknown	226.476	public	
+4461294.3	muegge_mammals_paper_human_samples_MG	CRBM.12.MG	9302957	40883	feces	feces	feces	human-vaginal	WGS	unknown	227.551	public	
+4461299.3	muegge_mammals_paper_human_samples_MG	CRBM.19.MG	11075284	50444	feces	feces	feces	human-vaginal	WGS	unknown	219.556	public	
+4461301.3	muegge_mammals_paper_human_samples_MG	CRBM.21.MG	10024336	43107	feces	feces	feces	human-vaginal	WGS	unknown	232.545	public	
+4461343.3	muegge_mammals_paper_mammal_samples_MG	BaboonSTL.MG	11728291	52293	feces	feces	feces	host-associated	WGS	St Louis Zoo	224.280	public	
+4461346.3	muegge_mammals_paper_mammal_samples_MG	BigHornW3.MG	21136032	51875	feces	feces	feces	host-associated	WGS	Colorado	407.442	public	
+4461351.3	muegge_mammals_paper_mammal_samples_MG	Callimicos.MG	11178574	51502	feces	feces	feces	host-associated	WGS	St Louis Zoo	217.051	public	
+4461353.3	muegge_mammals_paper_mammal_samples_MG	Chimp1.MG	14653863	65969	feces	feces	feces	host-associated	WGS	St Louis Zoo	222.133	public	
+4461357.3	muegge_mammals_paper_mammal_samples_MG	Gazelle3.MG	15084615	68262	feces	feces	feces	host-associated	WGS	St Louis Zoo	220.981	public	
+4461370.3	muegge_mammals_paper_mammal_samples_MG	Orang1.MG	5941103	29219	feces	feces	feces	host-associated	WGS	St Louis Zoo	203.330	public	
+4461380.3	muegge_mammals_paper_mammal_samples_MG	VWPig.MG	23193334	59174	feces	feces	feces	host-associated	WGS	San Diego Zoo	391.951	public	
+4461422.3	aquatic	MBv200m	389598	881	aquatic habitat	aquatic habitat	aquatic habitat	unknown	WGS	Monterey Bay, CA	442.222	public	
+4461451.3	Arenosclera_brasiliensis_metagenome	Sponge_Ab6	18680790	71969	marine sponge reef biome	organism-associated habitat	organic material	host-associated	WGS	João fernandinho beach, búzios peninsula, Rio de Janeiro state	259.567	public	
+4461453.3	Arenosclera_brasiliensis_metagenome	Sponge_Ab4	36647286	133157	marine sponge reef biome	organism-associated habitat	organic material	host-associated	WGS	João fernandinho beach, búzios peninsula, Rio de Janeiro state	275.219	public	
+4461593.3	The influence of global climatic changes over the vitality of corals from St Peter and St Paul Archipelago	AnaPaula_PE22-1	11706993	32043	oceanic epipelagic zone biome	archipelago	sea water	water	WGS	St Peter and  St Paul Archipelago	365.353	public	
+4461619.3	Serpentinite	WHC2B dereplicated large Geneious contigs	5810690	1993	extreme habitat	extreme habitat	extreme habitat	unknown	WGS	Gros Morne National Park, Newfoundland	2915.549	public	
+4463676.3	Subsurface Rifle	Non-sulfurcurvium contigs from Rifle, this time with less sulfurcurvium	3086280	4488	freshwater biome	sediment	sediment	sediment	WGS	RIFRC site, Rifle, CO	687.674	public	
+4463926.3	The influence of global climatic changes over the vitality of corals from St Peter and St Paul Archipelago	AnaPaula_PE22-2	8431312	21413	oceanic epipelagic zone biome	archipelago	sea water	water	WGS	St Peter and  St Paul Archipelago	393.747	public	
+4463927.3	The influence of global climatic changes over the vitality of corals from St Peter and St Paul Archipelago	AnaPaula_PE18-1	4965476	13491	oceanic epipelagic zone biome	archipelago	sea water	water	WGS	St Peter and  St Paul Archipelago	368.058	public	
+4463930.3	The influence of global climatic changes over the vitality of corals from St Peter and St Paul Archipelago	AnaPaula_PE15-1	3006537	8413	oceanic epipelagic zone biome	archipelago	sea water	water	WGS	St Peter and  St Paul Archipelago	357.368	public	
+4463933.3	The influence of global climatic changes over the vitality of corals from St Peter and St Paul Archipelago	AnaPaula_PE14-3	4089192	10564	oceanic epipelagic zone biome	archipelago	sea water	water	WGS	St Peter and  St Paul Archipelago	387.087	public	
+4463936.3	Danish wastewater treatment plants	WWTP_EBPR_Aalborg_East	145725513	269385	waste water	waste water	waste water	unknown	WGS	Aalborg	540.956	public	
+4465947.3	GLBRC bioenergy soil metagenomes 	Miscanthus Bulk MetaG	457810820	617602	terrestrial biome	terrestrial habitat	soil	soil	WGS	KBS, Michigan	741.272	public	
+4466163.3	Host Remodeling of the Gut Microbiome and Metabolic Changes during Pregnancy	1195	10334623700	103346237	terrestrial biome	human-associated habitat	feces	human-gut	WGS	Turku	100.000	public	
+4466582.3	Pacific Reef Microbiomes	CoralCaroline12Mic20090419_NP	9628211	26895	coral reef	coral reef	water	water	WGS	Pacific Ocean	357.993	public	
+4466736.3	Pacific Reef Microbiomes	CoralJarvis4RampMic20100404_NPFinal	68728486	171749	coral reef	coral reef	water	water	WGS	Pacific Ocean	400.168	public	
+4466740.3	Global Microbialization On Reefs	CoralKingman2005BMic20050821_NP	47163281	114418	coral reef	coral reef	water	water	WGS	Pacific Ocean	412.202	public	
+4466813.3	Global Microbialization On Reefs	CoralPalmyra2005Mic20050818_NP	44341298	113340	coral reef	coral reef	water	water	WGS	Pacific Ocean	391.224	public	
+4466814.3	Pacific Reef Microbiomes	CoralStarbuck13BMic20090405_NP	11784537	29347	coral reef	coral reef	water	water	WGS	Pacific Ocean	401.558	public	
+4466820.3	Pacific Reef Microbiomes	CoralStarbuck7Mic20090406_NP	35851554	83014	coral reef	coral reef	water	water	WGS	Pacific Ocean	431.874	public	
+4466825.3	Pacific Reef Microbiomes	CoralTabuaeran10Mic20101104_NP	41528129	104845	coral reef	coral reef	water	water	WGS	Pacific Ocean	396.091	public	
+4467109.3	Host Remodeling of the Gut Microbiome and Metabolic Changes during Pregnancy	1342	8565365200	85653652	terrestrial biome	human-associated habitat	feces	human-gut	WGS	Turku	100.000	public	
+4469858.3	Host Remodeling of the Gut Microbiome and Metabolic Changes during Pregnancy	2264_new	6138616600	61386167	terrestrial biome	human-associated habitat	feces	human-gut	WGS	Turku	100.000	public	
+4470905.3	Hydrocarbon Metagenomics Project	Trident-1560D 454 QC Reads	163282324	439440	terrestrial biome	coal mine	carbon dioxide-reducing sediment	miscellaneous	WGS	Upper Mannville Formation	371.569	public	
+4470906.3	Hydrocarbon Metagenomics Project	Tar-D 454 QC Reads	124377828	378465	Small lake biome	asphalt lake	contaminated water	miscellaneous	WGS	Tar lake microbial communities from La Brea, Trinidad and Tobago	328.638	public	
+4470910.3	Hydrocarbon Metagenomics Project	Pond6_2008_2010 454 QC Reads	360570684	862499	freshwater biome	mine tailing	waste water	wastewater|sludge	WGS	Alberta	418.053	public	

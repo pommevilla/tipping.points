@@ -27,7 +27,7 @@ summary(cars)
 ```
 
 ```{r load_cooccurrence_data.1}
-cooccurrence_data <- read.table("data/raw/temp", 
+cooccurrence_data <- read.table("data/raw/arg_cooccurrence.tsv", 
                                 col.names = c("OTU_1", "OTU_2", "rho", "p"))
 ```
 

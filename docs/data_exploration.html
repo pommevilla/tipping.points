@@ -319,15 +319,21 @@ library(igraph, warn.conflicts = FALSE)</code></pre>
 <h2>Cooccurrence Data</h2>
 <p><code>arg_cooccurrence.tsv</code> contains the cooccurrence data (ie, <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman’ correlation</a>) for all the ARGs found in <code>arg_datasets.subset.tsv</code>.</p>
 <pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/cooccurrence/arg_cooccurrence.trimmed.tsv&quot;, 
-                                col.names = c(&quot;OTU_1&quot;, &quot;OTU_2&quot;, &quot;rho&quot;, &quot;p&quot;))
+                                col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
 head(arg_cooccurrence_table)</code></pre>
-<pre><code>##   OTU_1   OTU_2      rho           p
+<pre><code>##   ARG_1   ARG_2      rho           p
 ## 1 vanRG    patA 0.148240 4.01688e-02
 ## 2 vanRG    mdtP 0.151218 3.62856e-02
 ## 3 vanRG    mepA 0.708955 1.24377e-30
 ## 4 vanRG    lmrC 0.500000 1.53924e-13
 ## 5 vanRG tetB(P) 0.708955 1.24377e-30
 ## 6 vanRG  aad(6) 0.310353 1.18155e-05</code></pre>
+</div>
+<div id="graph-analysis" class="section level2">
+<h2>Graph Analysis</h2>
+<pre class="r"><code>gr_arg_cooccurrence &lt;- graph.data.frame(arg_cooccurrence_table, directed = FALSE)
+plot(gr_arg_cooccurrence, vertex.size = 3, vertex.label = NA)</code></pre>
+<p><img src="data_exploration_files/figure-html/graph_analysis.1-1.png" width="672" /></p>
 </div>
 <div id="including-plots" class="section level2">
 <h2>Including Plots</h2>

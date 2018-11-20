@@ -307,18 +307,27 @@ div.tocify {
 </div>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<pre class="r"><code>library(data.table, warn.conflicts = FALSE)
+library(igraph, warn.conflicts = FALSE)</code></pre>
+<div id="whole-data-set" class="section level2">
+<h2>Whole data set</h2>
+</div>
+<div id="subset" class="section level2">
+<h2>Subset</h2>
+</div>
+<div id="cooccurrence-data" class="section level2">
+<h2>Cooccurrence Data</h2>
+<p><code>arg_cooccurrence.tsv</code> contains the cooccurrence data (ie, <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman’ correlation</a>) for all the ARGs found in <code>arg_datasets.subset.tsv</code>.</p>
+<pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/cooccurrence/arg_cooccurrence.trimmed.tsv&quot;, 
+                                col.names = c(&quot;OTU_1&quot;, &quot;OTU_2&quot;, &quot;rho&quot;, &quot;p&quot;))
+head(arg_cooccurrence_table)</code></pre>
+<pre><code>##   OTU_1   OTU_2      rho           p
+## 1 vanRG    patA 0.148240 4.01688e-02
+## 2 vanRG    mdtP 0.151218 3.62856e-02
+## 3 vanRG    mepA 0.708955 1.24377e-30
+## 4 vanRG    lmrC 0.500000 1.53924e-13
+## 5 vanRG tetB(P) 0.708955 1.24377e-30
+## 6 vanRG  aad(6) 0.310353 1.18155e-05</code></pre>
 </div>
 <div id="including-plots" class="section level2">
 <h2>Including Plots</h2>

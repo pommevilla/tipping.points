@@ -14,7 +14,6 @@ library(igraph, warn.conflicts = FALSE)
 ## Whole data set
 
 ```{r load_complete_metag_data.1}
-<- 
 
 ```
 
@@ -22,13 +21,12 @@ library(igraph, warn.conflicts = FALSE)
 
 ## Cooccurrence Data
 
-```{r cars}
-summary(cars)
-```
+`arg_cooccurrence.tsv` contains the cooccurrence data (ie, [Spearman' correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)) for all the ARGs found in `arg_datasets.subset.tsv`.
 
 ```{r load_cooccurrence_data.1}
-cooccurrence_data <- read.table("data/raw/arg_cooccurrence.tsv", 
+arg_cooccurrence_table <- read.table("data/cooccurrence/arg_cooccurrence.trimmed.tsv", 
                                 col.names = c("OTU_1", "OTU_2", "rho", "p"))
+head(arg_cooccurrence_table)
 ```
 
 ## Including Plots

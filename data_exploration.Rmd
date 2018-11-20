@@ -2,18 +2,33 @@
 title: "Data Exploration"
 ---
 
-```{r setup, include=FALSE}
+```{r setup.1, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r setup.2}
+library(data.table, warn.conflicts = FALSE)
+library(igraph, warn.conflicts = FALSE)
+```
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Whole data set
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r load_complete_metag_data.1}
+<- 
+
+```
+
+## Subset
+
+## Cooccurrence Data
 
 ```{r cars}
 summary(cars)
+```
+
+```{r load_cooccurrence_data.1}
+cooccurrence_data <- read.table("data/raw/temp", 
+                                col.names = c("OTU_1", "OTU_2", "rho", "p"))
 ```
 
 ## Including Plots

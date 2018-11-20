@@ -191,15 +191,3 @@
 4463936.3	Danish wastewater treatment plants	WWTP_EBPR_Aalborg_East	145725513	269385	waste water	waste water	waste water	unknown	WGS	Aalborg	540.956	public	
 4465947.3	GLBRC bioenergy soil metagenomes 	Miscanthus Bulk MetaG	457810820	617602	terrestrial biome	terrestrial habitat	soil	soil	WGS	KBS, Michigan	741.272	public	
 4466163.3	Host Remodeling of the Gut Microbiome and Metabolic Changes during Pregnancy	1195	10334623700	103346237	terrestrial biome	human-associated habitat	feces	human-gut	WGS	Turku	100.000	public	
-4466582.3	Pacific Reef Microbiomes	CoralCaroline12Mic20090419_NP	9628211	26895	coral reef	coral reef	water	water	WGS	Pacific Ocean	357.993	public	
-4466736.3	Pacific Reef Microbiomes	CoralJarvis4RampMic20100404_NPFinal	68728486	171749	coral reef	coral reef	water	water	WGS	Pacific Ocean	400.168	public	
-4466740.3	Global Microbialization On Reefs	CoralKingman2005BMic20050821_NP	47163281	114418	coral reef	coral reef	water	water	WGS	Pacific Ocean	412.202	public	
-4466813.3	Global Microbialization On Reefs	CoralPalmyra2005Mic20050818_NP	44341298	113340	coral reef	coral reef	water	water	WGS	Pacific Ocean	391.224	public	
-4466814.3	Pacific Reef Microbiomes	CoralStarbuck13BMic20090405_NP	11784537	29347	coral reef	coral reef	water	water	WGS	Pacific Ocean	401.558	public	
-4466820.3	Pacific Reef Microbiomes	CoralStarbuck7Mic20090406_NP	35851554	83014	coral reef	coral reef	water	water	WGS	Pacific Ocean	431.874	public	
-4466825.3	Pacific Reef Microbiomes	CoralTabuaeran10Mic20101104_NP	41528129	104845	coral reef	coral reef	water	water	WGS	Pacific Ocean	396.091	public	
-4467109.3	Host Remodeling of the Gut Microbiome and Metabolic Changes during Pregnancy	1342	8565365200	85653652	terrestrial biome	human-associated habitat	feces	human-gut	WGS	Turku	100.000	public	
-4469858.3	Host Remodeling of the Gut Microbiome and Metabolic Changes during Pregnancy	2264_new	6138616600	61386167	terrestrial biome	human-associated habitat	feces	human-gut	WGS	Turku	100.000	public	
-4470905.3	Hydrocarbon Metagenomics Project	Trident-1560D 454 QC Reads	163282324	439440	terrestrial biome	coal mine	carbon dioxide-reducing sediment	miscellaneous	WGS	Upper Mannville Formation	371.569	public	
-4470906.3	Hydrocarbon Metagenomics Project	Tar-D 454 QC Reads	124377828	378465	Small lake biome	asphalt lake	contaminated water	miscellaneous	WGS	Tar lake microbial communities from La Brea, Trinidad and Tobago	328.638	public	
-4470910.3	Hydrocarbon Metagenomics Project	Pond6_2008_2010 454 QC Reads	360570684	862499	freshwater biome	mine tailing	waste water	wastewater|sludge	WGS	Alberta	418.053	public	

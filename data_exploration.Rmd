@@ -25,8 +25,14 @@ library(igraph, warn.conflicts = FALSE)
 
 ```{r load_cooccurrence_data.1}
 arg_cooccurrence_table <- read.table("data/cooccurrence/arg_cooccurrence.trimmed.tsv", 
-                                col.names = c("OTU_1", "OTU_2", "rho", "p"))
+                                col.names = c("ARG_1", "ARG_2", "rho", "p"))
 head(arg_cooccurrence_table)
+```
+## Graph Analysis
+
+```{r graph_analysis.1}
+gr_arg_cooccurrence <- graph.data.frame(arg_cooccurrence_table, directed = FALSE)
+plot(gr_arg_cooccurrence, vertex.size = 3, vertex.label = NA)
 ```
 
 ## Including Plots

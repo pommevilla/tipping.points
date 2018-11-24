@@ -24,23 +24,60 @@ library(igraph, warn.conflicts = FALSE)
 `arg_cooccurrence.tsv` contains the cooccurrence data (ie, [Spearman' correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)) for all the ARGs found in `arg_datasets.subset.tsv`.
 
 ```{r load_cooccurrence_data.1}
-arg_cooccurrence_table <- read.table("data/cooccurrence/arg_cooccurrence.trimmed.tsv", 
+arg_cooccurrence_table <- read.table("data/raw/arg_cooccurrence.tsv", 
                                 col.names = c("ARG_1", "ARG_2", "rho", "p"))
 head(arg_cooccurrence_table)
 ```
+Since all the cooccurrence values we have here are significant - that is, with $p < 0.05$ - we will remove the $p$ value column from `arg-cooccurrence_table`:
+
+```{r load_cooccurrence_data.2}
+arg_cooccurrence_table <- arg_cooccurrence_table[, -4]
+head(arg_cooccurrence_table)
+```
+
 ## Graph Analysis
 
+We begin our network analysis of the ARG cooccurrence by:
+1. Separating `arg_cooccurrence_table` into positive and negative values, t
+2. 
+
 ```{r graph_analysis.1}
-gr_arg_cooccurrence <- graph.data.frame(arg_cooccurrence_table, directed = FALSE)
-plot(gr_arg_cooccurrence, vertex.size = 3, vertex.label = NA)
+positive_arg_cooccurrence <- arg_cooccurrence_table[arg_cooccurrence_table[['rho']] > 0, ]
+negative_arg_cooccurrence <- arg_cooccurrence_table[arg_cooccurrence_table[['rho']] < 0, ]
 ```
 
-## Including Plots
+We'll now 
 
-You can also embed plots, for example:
+```{r graph_analysis.2}
+gr_pos_cooccurrence <- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
+plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Finding communities.  Beginning with greedy optimization to get big picture.
+
+```{r graph_analysis.3}
+  
+  communities_object <- cluster_fast_greedy(gr_pos_cooccurrence, weights = E(gr_pos_cooccurrence)$rho)
+  hot_otus <- vector
+  for (community in communities(communities_object)){
+    sub_graph <- induced.subgraph(graph = gr_pos_cooccurrence, 
+                                    v = community, impl = "auto")
+    highest_degree_otu <- V(sub_graph)[which.max(degree(sub_graph))]$name
+    hot_otus <- c(hot_otus, highest_degree_otu)
+    print(paste("Highest degree OTU was", highest_degree_otu, "(degree =",  
+              degree(sub_graph, highest_degree_otu), "):"))
+  }
+  plot(communities_object, gr_pos_cooccurrence, 
+     layout = layout.fruchterman.reingold(gr_pos_cooccurrence),
+     rescaled = TRUE,
+     vertex.size = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, 5, 1), 
+     vertex.label = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, V(gr_pos_cooccurrence)$id, NA),
+     vertex.label.cex = 2
+     )
+```
+
+```{r graph_analysis.4}
+modularity(gr_pos_cooccurrence, membership(communities_object))
+```
+

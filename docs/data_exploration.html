@@ -318,28 +318,74 @@ library(igraph, warn.conflicts = FALSE)</code></pre>
 <div id="cooccurrence-data" class="section level2">
 <h2>Cooccurrence Data</h2>
 <p><code>arg_cooccurrence.tsv</code> contains the cooccurrence data (ie, <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman’ correlation</a>) for all the ARGs found in <code>arg_datasets.subset.tsv</code>.</p>
-<pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/cooccurrence/arg_cooccurrence.trimmed.tsv&quot;, 
+<pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/raw/arg_cooccurrence.tsv&quot;, 
                                 col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
 head(arg_cooccurrence_table)</code></pre>
-<pre><code>##   ARG_1   ARG_2      rho           p
-## 1 vanRG    patA 0.148240 4.01688e-02
-## 2 vanRG    mdtP 0.151218 3.62856e-02
-## 3 vanRG    mepA 0.708955 1.24377e-30
-## 4 vanRG    lmrC 0.500000 1.53924e-13
-## 5 vanRG tetB(P) 0.708955 1.24377e-30
-## 6 vanRG  aad(6) 0.310353 1.18155e-05</code></pre>
+<pre><code>##                                       ARG_1
+## 1 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 2 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 3 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 4 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 5 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 6 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+##                                               ARG_2      rho           p
+## 1 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.148240 4.01688e-02
+## 2  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.151218 3.62856e-02
+## 3         gb.AY661734.1.+.839-2195.ARO:3000026.mepA 0.708955 1.24377e-30
+## 4             gb.DQ516954.+.0-1716.ARO:3002881.lmrC 0.500000 1.53924e-13
+## 5         gb.L20800.+.2308-4267.ARO:3000195.tetB(P) 0.708955 1.24377e-30
+## 6            gb.AY712687.+.0-831.ARO:3002628.aad(6) 0.310353 1.18155e-05</code></pre>
+<p>Since all the cooccurrence values we have here are significant - that is, with <span class="math inline">\(p &lt; 0.05\)</span> - we will remove the <span class="math inline">\(p\)</span> value column from <code>arg-cooccurrence_table</code>:</p>
+<pre class="r"><code>arg_cooccurrence_table &lt;- arg_cooccurrence_table[, -4]
+head(arg_cooccurrence_table)</code></pre>
+<pre><code>##                                       ARG_1
+## 1 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 2 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 3 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 4 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 5 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 6 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+##                                               ARG_2      rho
+## 1 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.148240
+## 2  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.151218
+## 3         gb.AY661734.1.+.839-2195.ARO:3000026.mepA 0.708955
+## 4             gb.DQ516954.+.0-1716.ARO:3002881.lmrC 0.500000
+## 5         gb.L20800.+.2308-4267.ARO:3000195.tetB(P) 0.708955
+## 6            gb.AY712687.+.0-831.ARO:3002628.aad(6) 0.310353</code></pre>
 </div>
 <div id="graph-analysis" class="section level2">
 <h2>Graph Analysis</h2>
-<pre class="r"><code>gr_arg_cooccurrence &lt;- graph.data.frame(arg_cooccurrence_table, directed = FALSE)
-plot(gr_arg_cooccurrence, vertex.size = 3, vertex.label = NA)</code></pre>
-<p><img src="data_exploration_files/figure-html/graph_analysis.1-1.png" width="672" /></p>
-</div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="data_exploration_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<p>We begin our network analysis of the ARG cooccurrence by: 1. Separating <code>arg_cooccurrence_table</code> into positive and negative values, t 2.</p>
+<pre class="r"><code>positive_arg_cooccurrence &lt;- arg_cooccurrence_table[arg_cooccurrence_table[[&#39;rho&#39;]] &gt; 0, ]
+negative_arg_cooccurrence &lt;- arg_cooccurrence_table[arg_cooccurrence_table[[&#39;rho&#39;]] &lt; 0, ]</code></pre>
+<p>We’ll now</p>
+<pre class="r"><code>gr_pos_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
+plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)</code></pre>
+<p><img src="data_exploration_files/figure-html/graph_analysis.2-1.png" width="672" /></p>
+<p>Finding communities. Beginning with greedy optimization to get big picture.</p>
+<pre class="r"><code>  communities_object &lt;- cluster_fast_greedy(gr_pos_cooccurrence, weights = E(gr_pos_cooccurrence)$rho)
+  hot_otus &lt;- vector
+  for (community in communities(communities_object)){
+    sub_graph &lt;- induced.subgraph(graph = gr_pos_cooccurrence, 
+                                    v = community, impl = &quot;auto&quot;)
+    highest_degree_otu &lt;- V(sub_graph)[which.max(degree(sub_graph))]$name
+    hot_otus &lt;- c(hot_otus, highest_degree_otu)
+    print(paste(&quot;Highest degree OTU was&quot;, highest_degree_otu, &quot;(degree =&quot;,  
+              degree(sub_graph, highest_degree_otu), &quot;):&quot;))
+  }</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.U57969.+.1485-4617.ARO:3000801.MexD (degree = 117 ):&quot;
+## [1] &quot;Highest degree OTU was gb.AM183304.+.208-1069.ARO:3001017.TEM-150 (degree = 62 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NC_014638.1.-.1610636-1613960.ARO:3003730.Bifidobacteria (degree = 142 ):&quot;</code></pre>
+<pre class="r"><code>  plot(communities_object, gr_pos_cooccurrence, 
+     layout = layout.fruchterman.reingold(gr_pos_cooccurrence),
+     rescaled = TRUE,
+     vertex.size = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, 5, 1), 
+     vertex.label = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, V(gr_pos_cooccurrence)$id, NA),
+     vertex.label.cex = 2
+     )</code></pre>
+<p><img src="data_exploration_files/figure-html/graph_analysis.3-1.png" width="672" /></p>
+<pre class="r"><code>modularity(gr_pos_cooccurrence, membership(communities_object))</code></pre>
+<pre><code>## [1] 0.3436171</code></pre>
 </div>
 
 <p><br>

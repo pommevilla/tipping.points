@@ -37,47 +37,47 @@ head(arg_cooccurrence_table)
 
 ## Graph Analysis
 
-We begin our network analysis of the ARG cooccurrence by:
-1. Separating `arg_cooccurrence_table` into positive and negative values, t
-2. 
+We begin our network analysis of the ARG cooccurrence by separating `arg_cooccurrence_table` by positive and negative values and then:
+
+1. Finding the optimal community structure of each observed network 
+2. Generating mock community structure of each network and recording the modularity of each mock community structure, as well as which ARGs are the most central
+3. Comparing the modularity of the observed network against the distribution of the mock communities to determine statistical significance
 
 ```{r graph_analysis.1}
 positive_arg_cooccurrence <- arg_cooccurrence_table[arg_cooccurrence_table[['rho']] > 0, ]
+gr_pos_cooccurrence <- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
 negative_arg_cooccurrence <- arg_cooccurrence_table[arg_cooccurrence_table[['rho']] < 0, ]
+gr_neg_cooccurrence <- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
 ```
 
 We'll now 
 
 ```{r graph_analysis.2}
-gr_pos_cooccurrence <- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
 plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)
-
 ```
 
 Finding communities.  Beginning with greedy optimization to get big picture.
 
 ```{r graph_analysis.3}
-  
-  communities_object <- cluster_fast_greedy(gr_pos_cooccurrence, weights = E(gr_pos_cooccurrence)$rho)
+graph_hot_otus <- function(graph_object){
+  communities_object <- cluster_fast_greedy(graph_object, weights = E(graph_object)$rho)
   hot_otus <- vector
   for (community in communities(communities_object)){
-    sub_graph <- induced.subgraph(graph = gr_pos_cooccurrence, 
+    sub_graph <- induced.subgraph(graph = graph_object, 
                                     v = community, impl = "auto")
     highest_degree_otu <- V(sub_graph)[which.max(degree(sub_graph))]$name
     hot_otus <- c(hot_otus, highest_degree_otu)
     print(paste("Highest degree OTU was", highest_degree_otu, "(degree =",  
               degree(sub_graph, highest_degree_otu), "):"))
   }
-  plot(communities_object, gr_pos_cooccurrence, 
-     layout = layout.fruchterman.reingold(gr_pos_cooccurrence),
+  plot(communities_object, graph_object, 
+     layout = layout.lgl,
      rescaled = TRUE,
-     vertex.size = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, 5, 1), 
-     vertex.label = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, V(gr_pos_cooccurrence)$id, NA),
+     vertex.size = ifelse(V(graph_object) %in% hot_otus, 5, 1), 
+     vertex.label = ifelse(V(graph_object) %in% hot_otus, V(graph_object)$id, NA),
      vertex.label.cex = 2
      )
-```
-
-```{r graph_analysis.4}
-modularity(gr_pos_cooccurrence, membership(communities_object))
+  return(paste("Graph  modularity: ", modularity(graph_object, membership(communities_object)), ".", sep=""))
+}
 ```
 

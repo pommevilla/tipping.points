@@ -355,37 +355,40 @@ head(arg_cooccurrence_table)</code></pre>
 </div>
 <div id="graph-analysis" class="section level2">
 <h2>Graph Analysis</h2>
-<p>We begin our network analysis of the ARG cooccurrence by: 1. Separating <code>arg_cooccurrence_table</code> into positive and negative values, t 2.</p>
+<p>We begin our network analysis of the ARG cooccurrence by separating <code>arg_cooccurrence_table</code> by positive and negative values and then:</p>
+<ol style="list-style-type: decimal">
+<li>Finding the optimal community structure of each observed network</li>
+<li>Generating mock community structure of each network and recording the modularity of each mock community structure, as well as which ARGs are the most central</li>
+<li>Comparing the modularity of the observed network against the distribution of the mock communities to determine statistical significance</li>
+</ol>
 <pre class="r"><code>positive_arg_cooccurrence &lt;- arg_cooccurrence_table[arg_cooccurrence_table[[&#39;rho&#39;]] &gt; 0, ]
-negative_arg_cooccurrence &lt;- arg_cooccurrence_table[arg_cooccurrence_table[[&#39;rho&#39;]] &lt; 0, ]</code></pre>
+gr_pos_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
+negative_arg_cooccurrence &lt;- arg_cooccurrence_table[arg_cooccurrence_table[[&#39;rho&#39;]] &lt; 0, ]
+gr_neg_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)</code></pre>
 <p>We’ll now</p>
-<pre class="r"><code>gr_pos_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)
-plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)</code></pre>
+<pre class="r"><code>plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)</code></pre>
 <p><img src="data_exploration_files/figure-html/graph_analysis.2-1.png" width="672" /></p>
 <p>Finding communities. Beginning with greedy optimization to get big picture.</p>
-<pre class="r"><code>  communities_object &lt;- cluster_fast_greedy(gr_pos_cooccurrence, weights = E(gr_pos_cooccurrence)$rho)
+<pre class="r"><code>graph_hot_otus &lt;- function(graph_object){
+  communities_object &lt;- cluster_fast_greedy(graph_object, weights = E(graph_object)$rho)
   hot_otus &lt;- vector
   for (community in communities(communities_object)){
-    sub_graph &lt;- induced.subgraph(graph = gr_pos_cooccurrence, 
+    sub_graph &lt;- induced.subgraph(graph = graph_object, 
                                     v = community, impl = &quot;auto&quot;)
     highest_degree_otu &lt;- V(sub_graph)[which.max(degree(sub_graph))]$name
     hot_otus &lt;- c(hot_otus, highest_degree_otu)
     print(paste(&quot;Highest degree OTU was&quot;, highest_degree_otu, &quot;(degree =&quot;,  
               degree(sub_graph, highest_degree_otu), &quot;):&quot;))
-  }</code></pre>
-<pre><code>## [1] &quot;Highest degree OTU was gb.U57969.+.1485-4617.ARO:3000801.MexD (degree = 117 ):&quot;
-## [1] &quot;Highest degree OTU was gb.AM183304.+.208-1069.ARO:3001017.TEM-150 (degree = 62 ):&quot;
-## [1] &quot;Highest degree OTU was gb.NC_014638.1.-.1610636-1613960.ARO:3003730.Bifidobacteria (degree = 142 ):&quot;</code></pre>
-<pre class="r"><code>  plot(communities_object, gr_pos_cooccurrence, 
-     layout = layout.fruchterman.reingold(gr_pos_cooccurrence),
+  }
+  plot(communities_object, graph_object, 
+     layout = layout.lgl,
      rescaled = TRUE,
-     vertex.size = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, 5, 1), 
-     vertex.label = ifelse(V(gr_pos_cooccurrence) %in% hot_otus, V(gr_pos_cooccurrence)$id, NA),
+     vertex.size = ifelse(V(graph_object) %in% hot_otus, 5, 1), 
+     vertex.label = ifelse(V(graph_object) %in% hot_otus, V(graph_object)$id, NA),
      vertex.label.cex = 2
-     )</code></pre>
-<p><img src="data_exploration_files/figure-html/graph_analysis.3-1.png" width="672" /></p>
-<pre class="r"><code>modularity(gr_pos_cooccurrence, membership(communities_object))</code></pre>
-<pre><code>## [1] 0.3436171</code></pre>
+     )
+  return(paste(&quot;Graph  modularity: &quot;, modularity(graph_object, membership(communities_object)), &quot;.&quot;, sep=&quot;&quot;))
+}</code></pre>
 </div>
 
 <p><br>

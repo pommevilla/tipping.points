@@ -314,6 +314,36 @@ library(igraph, warn.conflicts = FALSE)</code></pre>
 </div>
 <div id="subset" class="section level2">
 <h2>Subset</h2>
+<pre class="r"><code>arg_subset_info &lt;- read.table(&quot;data/raw/arg_datasets.subset.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
+head(arg_subset_info)</code></pre>
+<pre><code>##        id                     biome                   feature
+## 1 4440026 animal-associated habitat animal-associated habitat
+## 2 4440036            marine habitat            marine habitat
+## 3 4440037            marine habitat            marine habitat
+## 4 4440038            marine habitat            marine habitat
+## 5 4440039            marine habitat            marine habitat
+## 6 4440040            marine habitat            marine habitat
+##                    material environment_package
+## 1 animal-associated habitat    human-associated
+## 2            marine habitat               water
+## 3            marine habitat               water
+## 4            marine habitat               water
+## 5            marine habitat               water
+## 6            marine habitat               water
+##                                                                                location
+## 1 Adult cystic fibrosis Clinic at the University of California San Diego Medical Center
+## 2                                                                         Kingman Atoll
+## 3                                                                         Kingman Atoll
+## 4                                                          Christmas (Kiritimati) Atoll
+## 5                                                                         Palmyra Atoll
+## 6                                                                         Palmyra Atoll
+##   seq_counts rel_seq_count
+## 1      81716             4
+## 2     159006             0
+## 3     287954             0
+## 4     485680             0
+## 5     718757             1
+## 6     878021             8</code></pre>
 </div>
 <div id="cooccurrence-data" class="section level2">
 <h2>Cooccurrence Data</h2>
@@ -328,13 +358,13 @@ head(arg_cooccurrence_table)</code></pre>
 ## 4 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
 ## 5 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
 ## 6 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
-##                                               ARG_2      rho           p
-## 1 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.148240 4.01688e-02
-## 2  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.151218 3.62856e-02
-## 3         gb.AY661734.1.+.839-2195.ARO:3000026.mepA 0.708955 1.24377e-30
-## 4             gb.DQ516954.+.0-1716.ARO:3002881.lmrC 0.500000 1.53924e-13
-## 5         gb.L20800.+.2308-4267.ARO:3000195.tetB(P) 0.708955 1.24377e-30
-## 6            gb.AY712687.+.0-831.ARO:3002628.aad(6) 0.310353 1.18155e-05</code></pre>
+##                                               ARG_2       rho           p
+## 1          gb.EU999036.+.688-1390.ARO:3002934.vanSD 0.2387160 1.48040e-13
+## 2      gb.KU302801.+.102199-102430.ARO:3002831.vgaC 0.1696780 1.85089e-07
+## 3            gb.L36601.+.1420-3130.ARO:3003036.oleB 0.1151190 4.26178e-04
+## 4       gb.NC_009632.+.49744-50476.ARO:3000347.ErmA 0.0900387 5.92078e-03
+## 5 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.1387860 2.09839e-05
+## 6  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.1432250 1.12507e-05</code></pre>
 <p>Since all the cooccurrence values we have here are significant - that is, with <span class="math inline">\(p &lt; 0.05\)</span> - we will remove the <span class="math inline">\(p\)</span> value column from <code>arg-cooccurrence_table</code>:</p>
 <pre class="r"><code>arg_cooccurrence_table &lt;- arg_cooccurrence_table[, -4]
 head(arg_cooccurrence_table)</code></pre>
@@ -345,13 +375,13 @@ head(arg_cooccurrence_table)</code></pre>
 ## 4 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
 ## 5 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
 ## 6 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
-##                                               ARG_2      rho
-## 1 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.148240
-## 2  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.151218
-## 3         gb.AY661734.1.+.839-2195.ARO:3000026.mepA 0.708955
-## 4             gb.DQ516954.+.0-1716.ARO:3002881.lmrC 0.500000
-## 5         gb.L20800.+.2308-4267.ARO:3000195.tetB(P) 0.708955
-## 6            gb.AY712687.+.0-831.ARO:3002628.aad(6) 0.310353</code></pre>
+##                                               ARG_2       rho
+## 1          gb.EU999036.+.688-1390.ARO:3002934.vanSD 0.2387160
+## 2      gb.KU302801.+.102199-102430.ARO:3002831.vgaC 0.1696780
+## 3            gb.L36601.+.1420-3130.ARO:3003036.oleB 0.1151190
+## 4       gb.NC_009632.+.49744-50476.ARO:3000347.ErmA 0.0900387
+## 5 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.1387860
+## 6  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.1432250</code></pre>
 </div>
 <div id="graph-analysis" class="section level2">
 <h2>Graph Analysis</h2>

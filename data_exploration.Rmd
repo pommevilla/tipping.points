@@ -3,12 +3,13 @@ title: "Data Exploration"
 ---
 
 ```{r setup.1, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "images/")
 ```
 
 ```{r setup.2}
 library(data.table, warn.conflicts = FALSE)
 library(igraph, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
 ```
 
 ## Whole data set
@@ -20,26 +21,30 @@ library(igraph, warn.conflicts = FALSE)
 ## Subset
 
 ```{r read_subset_info.1}
-arg_subset_info <- read.table("data/raw/arg_datasets.subset.tsv", sep = "\t", header = TRUE)
+arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.tsv", sep = "\t", header = TRUE)
 head(arg_subset_info)
 ```
 
-We'll add in a new column containing the ARG percentage, calculated as `rel_seq_count/seq_counts`.
-
-```{r add_arg_ratio_column.1}
-arg_subset_info$arg_percent <- arg_subset_info$rel_seq_count / arg_subset_info$seq_counts
-head(arg_subset_info)
+```{r add_arg_ratio_column.3}
+proportion = 0.1
+cutoff = quantile((sort(arg_subset_info$arg_percent)), 1 - proportion)
 ```
 
+```{r add_arg_ratio_column.2}
+ggplot(data.frame(val = arg_subset_info$arg_percent), aes(val)) + geom_histogram(binwidth = 0.001) +
+  labs(x = "ARG Percentage", y = "Count") +
+  geom_vline(xintercept = cutoff, colour = "#BB0000", linetype = "dashed") 
+```
 ## Cooccurrence Data
 
 `arg_cooccurrence.tsv` contains the cooccurrence data (ie, [Spearman' correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)) for all the ARGs found in `arg_datasets.subset.tsv`.
 
 ```{r load_cooccurrence_data.1}
-arg_cooccurrence_table <- read.table("data/raw/arg_cooccurrence.tsv", 
+arg_cooccurrence_table <- read.table("data/raw/cooccurrences/arg_cooccurrence.tsv", 
                                 col.names = c("ARG_1", "ARG_2", "rho", "p"))
 head(arg_cooccurrence_table)
 ```
+
 Since all the cooccurrence values we have here are significant - that is, with $p < 0.05$ - we will remove the $p$ value column from `arg-cooccurrence_table`:
 
 ```{r load_cooccurrence_data.2}
@@ -71,7 +76,7 @@ plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)
 Finding communities.  Beginning with greedy optimization to get big picture.
 
 ```{r graph_analysis.3}
-graph_hot_otus <- function(graph_object){
+show_community_info <- function(graph_object){
   communities_object <- cluster_fast_greedy(graph_object, weights = E(graph_object)$rho)
   hot_otus <- vector
   for (community in communities(communities_object)){
@@ -89,7 +94,198 @@ graph_hot_otus <- function(graph_object){
      vertex.label = ifelse(V(graph_object) %in% hot_otus, V(graph_object)$id, NA),
      vertex.label.cex = 2
      )
-  return(paste("Graph  modularity: ", modularity(graph_object, membership(communities_object)), ".", sep=""))
+  modularity(graph_object, membership(communities_object))
 }
+```
+
+### Low ARG percentage
+
+```{r low.cooc}
+low.arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.low.tsv", sep = "\t", header = TRUE)
+```
+
+```{r low.1}
+arg_cooccurrence.low <- read.table("data/raw/cooccurrences/arg_cooccurrence.low.tsv", 
+                                col.names = c("ARG_1", "ARG_2", "rho", "p"))
+arg_cooccurrence.low <- arg_cooccurrence.low[, -4]
+head(arg_cooccurrence.low)
+```
+
+```{r low.2}
+low.pos_cooccurrence <- arg_cooccurrence.low[arg_cooccurrence.low[['rho']] > 0, ]
+low.positive_graph <- graph.data.frame(low.pos_cooccurrence, directed = FALSE)
+low.neg_cooccurrence <- arg_cooccurrence.low[arg_cooccurrence.low[['rho']] <= 0, ]
+low.neg_cooccurrence[[3]] <- abs(low.neg_cooccurrence[[3]])
+low.negative_graph <- graph.data.frame(low.neg_cooccurrence, directed = FALSE)
+```
+
+```{r low.3}
+low.mod_pos <- show_community_info(low.positive_graph)
+```
+
+```{r low.4}
+low.mod_neg <- show_community_info(low.negative_graph)
+```
+
+```{r low.5}
+vertex_count <- vcount(low.positive_graph)
+edge_count <- ecount(low.positive_graph)
+low.bootstraps <- vector()
+
+for (i in 1:1000)
+{
+  g <- erdos.renyi.game(vertex_count, edge_count, type = "gnm")
+  E(g)$rho <- runif(length(E(g)), 0, 1)
+  g_communities <- cluster_fast_greedy(g, weights = E(g)$rho)
+  low.bootstraps <- c(low.bootstraps, modularity(g, membership(g_communities)))
+}
+
+low.bootstrap_cutoff <- quantile((sort(low.bootstraps)), 0.95)
+
+ggplot(data.frame(val = low.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = "Modularity", y = "Counts", title = "Modularity scores of simulated networks (n = 1000)",
+       subtitle = "(Low ARG environments)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = low.bootstrap_cutoff, colour = "#BB0000", linetype = "dashed")
+```
+
+```{r low.6}
+ggplot(data.frame(val = low.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = "Modularity", y = "Counts", title = "Modularity scores of simulated networks (n = 1000)",
+       subtitle = "(Low ARG environments)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = low.bootstrap_cutoff, colour = "#BB0000", linetype = "dashed") +
+  geom_vline(xintercept = low.mod_pos, colour="#ed64f4", linetype="dashed") +
+  geom_vline(xintercept = low.mod_neg, colour = "#f4ad42", linetype = "dashed") 
+```
+
+
+### Medium ARG percentage
+
+```{r med.cooc}
+med.arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.med.tsv", sep = "\t", header = TRUE)
+```
+
+```{r med.1}
+
+arg_cooccurrence.med <- read.table("data/raw/cooccurrences/arg_cooccurrence.med.tsv", 
+                                col.names = c("ARG_1", "ARG_2", "rho", "p"))
+arg_cooccurrence.med <- arg_cooccurrence.med[, -4]
+head(arg_cooccurrence.med)
+```
+
+```{r med.2}
+med.pos_cooccurrence <- arg_cooccurrence.med[arg_cooccurrence.med[['rho']] > 0, ]
+med.positive_graph <- graph.data.frame(med.pos_cooccurrence, directed = FALSE)
+med.neg_cooccurrence <- arg_cooccurrence.med[arg_cooccurrence.med[['rho']] <= 0, ]
+med.neg_cooccurrence[[3]] <- abs(med.neg_cooccurrence[[3]])
+med.negative_graph <- graph.data.frame(med.neg_cooccurrence, directed = FALSE)
+```
+
+```{r med.3}
+med.mod_pos <- show_community_info(med.positive_graph)
+```
+
+```{r med.4}
+med.mod_neg <- show_community_info(med.negative_graph)
+```
+
+
+```{r med.5}
+vertex_count <- vcount(med.positive_graph)
+edge_count <- ecount(med.positive_graph)
+med.bootstraps <- vector()
+
+for (i in 1:1000)
+{
+  g <- erdos.renyi.game(vertex_count, edge_count, type = "gnm")
+  E(g)$rho <- runif(length(E(g)), 0, 1)
+  g_communities <- cluster_fast_greedy(g, weights = E(g)$rho)
+  med.bootstraps <- c(med.bootstraps, modularity(g, membership(g_communities)))
+}
+
+med.bootstrap_cutoff <- quantile((sort(med.bootstraps)), 0.95)
+
+ggplot(data.frame(val = med.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = "Modularity", y = "Counts", title = "Modularity scores of simulated networks (n = 1000)",
+       subtitle = "(Medium ARG environments)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = med.bootstrap_cutoff, colour = "#BB0000", linetype = "dashed")
+```
+
+```{r med.6}
+ggplot(data.frame(val = med.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = "Modularity", y = "Counts", title = "Modularity scores of simulated networks (n = 1000)",
+       subtitle = "(Medium ARG environments)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = med.bootstrap_cutoff, colour = "#BB0000", linetype = "dashed") +
+  geom_vline(xintercept = med.mod_pos, colour="#ed64f4", linetype="dashed") +
+  geom_vline(xintercept = med.mod_neg, colour = "#f4ad42", linetype = "dashed") 
+```
+
+### High ARG percentage
+
+```{r high.cooc}
+high.arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.high.tsv", sep = "\t", header = TRUE)
+
+```
+
+
+```{r high.1}
+
+arg_cooccurrence.high <- read.table("data/raw/cooccurrences/arg_cooccurrence.high.tsv", 
+                                col.names = c("ARG_1", "ARG_2", "rho", "p"))
+arg_cooccurrence.high <- arg_cooccurrence.high[, -4]
+head(arg_cooccurrence.high)
+```
+
+```{r high.2}
+high.pos_cooccurrence <- arg_cooccurrence.high[arg_cooccurrence.high[['rho']] > 0, ]
+high.positive_graph <- graph.data.frame(high.pos_cooccurrence, directed = FALSE)
+high.neg_cooccurrence <- arg_cooccurrence.high[arg_cooccurrence.high[['rho']] <= 0, ]
+high.neg_cooccurrence[[3]] <- abs(high.neg_cooccurrence[[3]])
+high.negative_graph <- graph.data.frame(high.neg_cooccurrence, directed = FALSE)
+```
+
+```{r high.3}
+high.mod_pos <- show_community_info(high.positive_graph)
+```
+
+The mexF gene is highly important, which corresponds with findings that it enhances fitness.
+
+```{r high.4}
+high.mod_neg <- show_community_info(high.negative_graph)
+```
+
+```{r high.5}
+vertex_count <- vcount(high.positive_graph)
+edge_count <- ecount(high.positive_graph)
+high.bootstraps <- vector()
+
+for (i in 1:1000)
+{
+  g <- erdos.renyi.game(vertex_count, edge_count, type = "gnm")
+  E(g)$rho <- runif(length(E(g)), 0, 1)
+  g_communities <- cluster_fast_greedy(g, weights = E(g)$rho)
+  high.bootstraps <- c(high.bootstraps, modularity(g, membership(g_communities)))
+}
+
+high.bootstrap_cutoff <- quantile((sort(high.bootstraps)), 0.95)
+
+ggplot(data.frame(val = high.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = "Modularity", y = "Counts", title = "Modularity scores of simulated networks (n = 1000)",
+       subtitle = "(High ARG environments)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = high.bootstrap_cutoff, colour = "#BB0000", linetype = "dashed")
+```
+
+```{r high.6}
+ggplot(data.frame(val = high.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = "Modularity", y = "Counts", title = "Modularity scores of simulated networks (n = 1000)",
+       subtitle = "(High ARG environments)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = high.bootstrap_cutoff, colour = "#BB0000", linetype = "dashed") +
+  geom_vline(xintercept = high.mod_pos, colour="#ed64f4", linetype="dashed") +
+  geom_vline(xintercept = high.mod_neg, colour = "#f4ad42", linetype = "dashed") 
 ```
 

@@ -308,13 +308,14 @@ div.tocify {
 
 
 <pre class="r"><code>library(data.table, warn.conflicts = FALSE)
-library(igraph, warn.conflicts = FALSE)</code></pre>
+library(igraph, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)</code></pre>
 <div id="whole-data-set" class="section level2">
 <h2>Whole data set</h2>
 </div>
 <div id="subset" class="section level2">
 <h2>Subset</h2>
-<pre class="r"><code>arg_subset_info &lt;- read.table(&quot;data/raw/arg_datasets.subset.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
+<pre class="r"><code>arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
 head(arg_subset_info)</code></pre>
 <pre><code>##        id                     biome                   feature
 ## 1 4440026 animal-associated habitat animal-associated habitat
@@ -337,18 +338,21 @@ head(arg_subset_info)</code></pre>
 ## 4                                                          Christmas (Kiritimati) Atoll
 ## 5                                                                         Palmyra Atoll
 ## 6                                                                         Palmyra Atoll
-##   seq_counts rel_seq_count
-## 1      81716             4
-## 2     159006             0
-## 3     287954             0
-## 4     485680             0
-## 5     718757             1
-## 6     878021             8</code></pre>
-</div>
-<div id="cooccurrence-data" class="section level2">
-<h2>Cooccurrence Data</h2>
+##   seq_counts rel_seq_count  arg_percent
+## 1      50909             4 7.857157e-05
+## 2      94915             0 0.000000e+00
+## 3     188445             0 0.000000e+00
+## 4     283390             0 0.000000e+00
+## 5     351205             1 2.847340e-06
+## 6     358983             8 2.228518e-05</code></pre>
+<pre class="r"><code>proportion = 0.1
+cutoff = quantile((sort(arg_subset_info$arg_percent)), 1 - proportion)</code></pre>
+<pre class="r"><code>ggplot(data.frame(val = arg_subset_info$arg_percent), aes(val)) + geom_histogram(binwidth = 0.001) +
+  labs(x = &quot;ARG Percentage&quot;, y = &quot;Count&quot;) +
+  geom_vline(xintercept = cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) </code></pre>
+<p><img src="images/add_arg_ratio_column.2-1.png" width="672" /> ## Cooccurrence Data</p>
 <p><code>arg_cooccurrence.tsv</code> contains the cooccurrence data (ie, <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman’ correlation</a>) for all the ARGs found in <code>arg_datasets.subset.tsv</code>.</p>
-<pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/raw/arg_cooccurrence.tsv&quot;, 
+<pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.tsv&quot;, 
                                 col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
 head(arg_cooccurrence_table)</code></pre>
 <pre><code>##                                       ARG_1
@@ -397,9 +401,9 @@ negative_arg_cooccurrence &lt;- arg_cooccurrence_table[arg_cooccurrence_table[[&
 gr_neg_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed = FALSE)</code></pre>
 <p>We’ll now</p>
 <pre class="r"><code>plot(gr_pos_cooccurrence, vertex.size = 3, vertex.label = NA)</code></pre>
-<p><img src="data_exploration_files/figure-html/graph_analysis.2-1.png" width="672" /></p>
+<p><img src="images/graph_analysis.2-1.png" width="672" /></p>
 <p>Finding communities. Beginning with greedy optimization to get big picture.</p>
-<pre class="r"><code>graph_hot_otus &lt;- function(graph_object){
+<pre class="r"><code>show_community_info &lt;- function(graph_object){
   communities_object &lt;- cluster_fast_greedy(graph_object, weights = E(graph_object)$rho)
   hot_otus &lt;- vector
   for (community in communities(communities_object)){
@@ -417,8 +421,214 @@ gr_neg_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed =
      vertex.label = ifelse(V(graph_object) %in% hot_otus, V(graph_object)$id, NA),
      vertex.label.cex = 2
      )
-  return(paste(&quot;Graph  modularity: &quot;, modularity(graph_object, membership(communities_object)), &quot;.&quot;, sep=&quot;&quot;))
+  modularity(graph_object, membership(communities_object))
 }</code></pre>
+<div id="low-arg-percentage" class="section level3">
+<h3>Low ARG percentage</h3>
+<pre class="r"><code>low.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.low.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
+<pre class="r"><code>arg_cooccurrence.low &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.low.tsv&quot;, 
+                                col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
+arg_cooccurrence.low &lt;- arg_cooccurrence.low[, -4]
+head(arg_cooccurrence.low)</code></pre>
+<pre><code>##                                       ARG_1
+## 1 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 2 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 3 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 4 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 5 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 6 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+##                                               ARG_2      rho
+## 1          gb.EU999036.+.688-1390.ARO:3002934.vanSD 0.296494
+## 2      gb.KU302801.+.102199-102430.ARO:3002831.vgaC 0.451926
+## 3            gb.L36601.+.1420-3130.ARO:3003036.oleB 0.146602
+## 4       gb.NC_009632.+.49744-50476.ARO:3000347.ErmA 0.209047
+## 5 gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.239408
+## 6  gb.AP009048.1.-.4303042-4304509.ARO:3003550.mdtP 0.413613</code></pre>
+<pre class="r"><code>low.pos_cooccurrence &lt;- arg_cooccurrence.low[arg_cooccurrence.low[[&#39;rho&#39;]] &gt; 0, ]
+low.positive_graph &lt;- graph.data.frame(low.pos_cooccurrence, directed = FALSE)
+low.neg_cooccurrence &lt;- arg_cooccurrence.low[arg_cooccurrence.low[[&#39;rho&#39;]] &lt;= 0, ]
+low.neg_cooccurrence[[3]] &lt;- abs(low.neg_cooccurrence[[3]])
+low.negative_graph &lt;- graph.data.frame(low.neg_cooccurrence, directed = FALSE)</code></pre>
+<pre class="r"><code>low.mod_pos &lt;- show_community_info(low.positive_graph)</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.NC_002516.+.2810008-2813197.ARO:3000804.MexF (degree = 187 ):&quot;
+## [1] &quot;Highest degree OTU was gb.MF095097.1.-.1855-3484.ARO:3004470.poxtA (degree = 13 ):&quot;
+## [1] &quot;Highest degree OTU was gb.U01945.+.373-916.ARO:3002897.SAT-4 (degree = 167 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NC_003112.2.+.330790-332317.ARO:3003962.farB (degree = 1 ):&quot;
+## [1] &quot;Highest degree OTU was gb.KF663615.+.0-858.ARO:3001390.TEM-213 (degree = 4 ):&quot;
+## [1] &quot;Highest degree OTU was gb.JF802084.+.2161-4264.ARO:3002975.vanTN (degree = 2 ):&quot;
+## [1] &quot;Highest degree OTU was gb.AM399080.1.-.1664-2150.ARO:3002835.lnuA (degree = 1 ):&quot;</code></pre>
+<p><img src="images/low.3-1.png" width="672" /></p>
+<pre class="r"><code>low.mod_neg &lt;- show_community_info(low.negative_graph)</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.Z21523.+.0-1974.ARO:3000191.tetQ (degree = 4 ):&quot;
+## [1] &quot;Highest degree OTU was gb.M18896.2.+.206-2126.ARO:3000190.tetO (degree = 4 ):&quot;
+## [1] &quot;Highest degree OTU was gb.EU434751.+.658-2578.ARO:3000194.tetW (degree = 3 ):&quot;
+## [1] &quot;Highest degree OTU was gb.U97042.+.1263-4347.ARO:3003010.ceoB (degree = 1 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NC_002516.2.-.2850882-2854014.ARO:3004074.MuxB (degree = 2 ):&quot;
+## [1] &quot;Highest degree OTU was gb.KJ151292.+.294-2892.ARO:3000444.rphA (degree = 1 ):&quot;</code></pre>
+<p><img src="images/low.4-1.png" width="672" /></p>
+<pre class="r"><code>vertex_count &lt;- vcount(low.positive_graph)
+edge_count &lt;- ecount(low.positive_graph)
+low.bootstraps &lt;- vector()
+
+for (i in 1:1000)
+{
+  g &lt;- erdos.renyi.game(vertex_count, edge_count, type = &quot;gnm&quot;)
+  E(g)$rho &lt;- runif(length(E(g)), 0, 1)
+  g_communities &lt;- cluster_fast_greedy(g, weights = E(g)$rho)
+  low.bootstraps &lt;- c(low.bootstraps, modularity(g, membership(g_communities)))
+}
+
+low.bootstrap_cutoff &lt;- quantile((sort(low.bootstraps)), 0.95)
+
+ggplot(data.frame(val = low.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = &quot;Modularity&quot;, y = &quot;Counts&quot;, title = &quot;Modularity scores of simulated networks (n = 1000)&quot;,
+       subtitle = &quot;(Low ARG environments)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = low.bootstrap_cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;)</code></pre>
+<p><img src="images/low.5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(val = low.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = &quot;Modularity&quot;, y = &quot;Counts&quot;, title = &quot;Modularity scores of simulated networks (n = 1000)&quot;,
+       subtitle = &quot;(Low ARG environments)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = low.bootstrap_cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) +
+  geom_vline(xintercept = low.mod_pos, colour=&quot;#ed64f4&quot;, linetype=&quot;dashed&quot;) +
+  geom_vline(xintercept = low.mod_neg, colour = &quot;#f4ad42&quot;, linetype = &quot;dashed&quot;) </code></pre>
+<p><img src="images/low.6-1.png" width="672" /></p>
+</div>
+<div id="medium-arg-percentage" class="section level3">
+<h3>Medium ARG percentage</h3>
+<pre class="r"><code>med.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.med.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
+<pre class="r"><code>arg_cooccurrence.med &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.med.tsv&quot;, 
+                                col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
+arg_cooccurrence.med &lt;- arg_cooccurrence.med[, -4]
+head(arg_cooccurrence.med)</code></pre>
+<pre><code>##                                       ARG_1
+## 1 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 2 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 3 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 4 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 5 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+## 6 gb.DQ212986.+.2258-2966.ARO:3002926.vanRG
+##                                                ARG_2      rho
+## 1  gb.NC_000913.3.+.3219493-3220873.ARO:3000024.patA 0.169252
+## 2          gb.DQ212986.+.5137-5983.ARO:3002965.vanWG 0.616826
+## 3            gb.JQ034306.+.0-861.ARO:3001376.TEM-196 0.277159
+## 4       gb.U00096.+.2812615-2814154.ARO:3000074.emrB 0.180656
+## 5      gb.KU254579.1.+.59421-59841.ARO:3004111.FosA6 0.267361
+## 6 gb.AIIS01000002.1.-.233812-234307.ARO:3002875.dfrE 0.278025</code></pre>
+<pre class="r"><code>med.pos_cooccurrence &lt;- arg_cooccurrence.med[arg_cooccurrence.med[[&#39;rho&#39;]] &gt; 0, ]
+med.positive_graph &lt;- graph.data.frame(med.pos_cooccurrence, directed = FALSE)
+med.neg_cooccurrence &lt;- arg_cooccurrence.med[arg_cooccurrence.med[[&#39;rho&#39;]] &lt;= 0, ]
+med.neg_cooccurrence[[3]] &lt;- abs(med.neg_cooccurrence[[3]])
+med.negative_graph &lt;- graph.data.frame(med.neg_cooccurrence, directed = FALSE)</code></pre>
+<pre class="r"><code>med.mod_pos &lt;- show_community_info(med.positive_graph)</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.AB219524.1.+.1176-4338.ARO:3003699.mexQ (degree = 77 ):&quot;
+## [1] &quot;Highest degree OTU was gb.U00096.+.2812615-2814154.ARO:3000074.emrB (degree = 87 ):&quot;
+## [1] &quot;Highest degree OTU was gb.AF313472.+.15593-16397.ARO:3002639.APH(3&#39;&#39;)-Ib (degree = 58 ):&quot;
+## [1] &quot;Highest degree OTU was gb.AY082011.+.0-699.ARO:3002923.vanRD (degree = 2 ):&quot;</code></pre>
+<p><img src="images/med.3-1.png" width="672" /></p>
+<pre class="r"><code>med.mod_neg &lt;- show_community_info(med.negative_graph)</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.KM998962.1.+.0-861.ARO:3003158.TEM-220 (degree = 12 ):&quot;
+## [1] &quot;Highest degree OTU was gb.Z21523.+.0-1974.ARO:3000191.tetQ (degree = 33 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NG_050265.+.100-961.ARO:3000876.TEM-4 (degree = 12 ):&quot;</code></pre>
+<p><img src="images/med.4-1.png" width="672" /></p>
+<pre class="r"><code>vertex_count &lt;- vcount(med.positive_graph)
+edge_count &lt;- ecount(med.positive_graph)
+med.bootstraps &lt;- vector()
+
+for (i in 1:1000)
+{
+  g &lt;- erdos.renyi.game(vertex_count, edge_count, type = &quot;gnm&quot;)
+  E(g)$rho &lt;- runif(length(E(g)), 0, 1)
+  g_communities &lt;- cluster_fast_greedy(g, weights = E(g)$rho)
+  med.bootstraps &lt;- c(med.bootstraps, modularity(g, membership(g_communities)))
+}
+
+med.bootstrap_cutoff &lt;- quantile((sort(med.bootstraps)), 0.95)
+
+ggplot(data.frame(val = med.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = &quot;Modularity&quot;, y = &quot;Counts&quot;, title = &quot;Modularity scores of simulated networks (n = 1000)&quot;,
+       subtitle = &quot;(Medium ARG environments)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = med.bootstrap_cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;)</code></pre>
+<p><img src="images/med.5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(val = med.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = &quot;Modularity&quot;, y = &quot;Counts&quot;, title = &quot;Modularity scores of simulated networks (n = 1000)&quot;,
+       subtitle = &quot;(Medium ARG environments)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = med.bootstrap_cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) +
+  geom_vline(xintercept = med.mod_pos, colour=&quot;#ed64f4&quot;, linetype=&quot;dashed&quot;) +
+  geom_vline(xintercept = med.mod_neg, colour = &quot;#f4ad42&quot;, linetype = &quot;dashed&quot;) </code></pre>
+<p><img src="images/med.6-1.png" width="672" /></p>
+</div>
+<div id="high-arg-percentage" class="section level3">
+<h3>High ARG percentage</h3>
+<pre class="r"><code>high.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.high.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
+<pre class="r"><code>arg_cooccurrence.high &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.high.tsv&quot;, 
+                                col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
+arg_cooccurrence.high &lt;- arg_cooccurrence.high[, -4]
+head(arg_cooccurrence.high)</code></pre>
+<pre><code>##                                           ARG_1
+## 1 gb.NC_002516.+.472023-473175.ARO:3000377.MexA
+## 2 gb.NC_002516.+.472023-473175.ARO:3000377.MexA
+## 3 gb.NC_002516.+.472023-473175.ARO:3000377.MexA
+## 4 gb.NC_002516.+.472023-473175.ARO:3000377.MexA
+## 5 gb.NC_002516.+.472023-473175.ARO:3000377.MexA
+## 6 gb.NC_002516.+.472023-473175.ARO:3000377.MexA
+##                                               ARG_2      rho
+## 1               gb.U60294.+.0-765.ARO:3003099.cphA2 1.000000
+## 2 gb.NC_002516.2.-.1472546-1473980.ARO:3004077.PmpM 0.802880
+## 3               gb.X93314.+.0-927.ARO:3002364.PER-2 1.000000
+## 4              gb.Y14574.+.0-861.ARO:3000888.TEM-17 0.551155
+## 5          gb.X97254.+.153-1011.ARO:3001043.TEM-178 0.471500
+## 6         gb.L20800.+.2308-4267.ARO:3000195.tetB(P) 0.691311</code></pre>
+<pre class="r"><code>high.pos_cooccurrence &lt;- arg_cooccurrence.high[arg_cooccurrence.high[[&#39;rho&#39;]] &gt; 0, ]
+high.positive_graph &lt;- graph.data.frame(high.pos_cooccurrence, directed = FALSE)
+high.neg_cooccurrence &lt;- arg_cooccurrence.high[arg_cooccurrence.high[[&#39;rho&#39;]] &lt;= 0, ]
+high.neg_cooccurrence[[3]] &lt;- abs(high.neg_cooccurrence[[3]])
+high.negative_graph &lt;- graph.data.frame(high.neg_cooccurrence, directed = FALSE)</code></pre>
+<pre class="r"><code>high.mod_pos &lt;- show_community_info(high.positive_graph)</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.AB091338.+.173-1355.ARO:3003551.emeA (degree = 107 ):&quot;
+## [1] &quot;Highest degree OTU was gb.DQ677333.+.0-780.ARO:3002621.aadA24 (degree = 77 ):&quot;
+## [1] &quot;Highest degree OTU was gb.DQ105529.+.0-861.ARO:3001013.TEM-146 (degree = 71 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NC_002516.+.4707534-4710624.ARO:3000808.mexI (degree = 106 ):&quot;</code></pre>
+<p><img src="images/high.3-1.png" width="672" /></p>
+<p>The mexF gene is highly important, which corresponds with findings that it enhances fitness.</p>
+<pre class="r"><code>high.mod_neg &lt;- show_community_info(high.negative_graph)</code></pre>
+<pre><code>## [1] &quot;Highest degree OTU was gb.GQ149347.+.5269-6130.ARO:3001037.TEM-171 (degree = 20 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NC_002156.+.1429-2290.ARO:3000979.TEM-116 (degree = 24 ):&quot;
+## [1] &quot;Highest degree OTU was gb.NC_014638.1.-.1610636-1613960.ARO:3003730.Bifidobacteria (degree = 20 ):&quot;
+## [1] &quot;Highest degree OTU was gb.EU434751.+.658-2578.ARO:3000194.tetW (degree = 16 ):&quot;</code></pre>
+<p><img src="images/high.4-1.png" width="672" /></p>
+<pre class="r"><code>vertex_count &lt;- vcount(high.positive_graph)
+edge_count &lt;- ecount(high.positive_graph)
+high.bootstraps &lt;- vector()
+
+for (i in 1:1000)
+{
+  g &lt;- erdos.renyi.game(vertex_count, edge_count, type = &quot;gnm&quot;)
+  E(g)$rho &lt;- runif(length(E(g)), 0, 1)
+  g_communities &lt;- cluster_fast_greedy(g, weights = E(g)$rho)
+  high.bootstraps &lt;- c(high.bootstraps, modularity(g, membership(g_communities)))
+}
+
+high.bootstrap_cutoff &lt;- quantile((sort(high.bootstraps)), 0.95)
+
+ggplot(data.frame(val = high.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = &quot;Modularity&quot;, y = &quot;Counts&quot;, title = &quot;Modularity scores of simulated networks (n = 1000)&quot;,
+       subtitle = &quot;(High ARG environments)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = high.bootstrap_cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;)</code></pre>
+<p><img src="images/high.5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(val = high.bootstraps), aes(val)) + geom_histogram(binwidth = 0.0005) +
+  labs(x = &quot;Modularity&quot;, y = &quot;Counts&quot;, title = &quot;Modularity scores of simulated networks (n = 1000)&quot;,
+       subtitle = &quot;(High ARG environments)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = high.bootstrap_cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) +
+  geom_vline(xintercept = high.mod_pos, colour=&quot;#ed64f4&quot;, linetype=&quot;dashed&quot;) +
+  geom_vline(xintercept = high.mod_neg, colour = &quot;#f4ad42&quot;, linetype = &quot;dashed&quot;) </code></pre>
+<p><img src="images/high.6-1.png" width="672" /></p>
+</div>
 </div>
 
 <p><br>

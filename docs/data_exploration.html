@@ -312,6 +312,22 @@ library(igraph, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)</code></pre>
 <div id="whole-data-set" class="section level2">
 <h2>Whole data set</h2>
+<pre class="r"><code>biome_info &lt;- read.table(&quot;data/raw/arg_all/arg_datasets.biomes.tsv&quot;, sep = &quot;\t&quot;, header = TRUE,
+                         col.names = c(&quot;counts&quot;, &quot;biome&quot;))
+
+ggplot(data.frame(biome_info), aes(x = biome, y = counts)) + geom_bar(stat = &quot;identity&quot;) +  
+  labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: All datasets (n = 7848)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+<p><img src="images/load_complete_metag_data.1-1.png" width="672" /></p>
+<pre class="r"><code>env_info &lt;- read.table(&quot;data/raw/arg_all/arg_datasets.envs.tsv&quot;, sep = &quot;\t&quot;, header = TRUE,
+                         col.names = c(&quot;counts&quot;, &quot;environment&quot;))
+
+ggplot(data.frame(env_info), aes(x = environment, y = counts)) + geom_bar(stat = &quot;identity&quot;) +  
+  labs(x = element_blank(), y = element_blank(), title = &quot;Environment counts: All datasets (n = 7848)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+<p><img src="images/load_complete_metag_data.2-1.png" width="672" /></p>
 </div>
 <div id="subset" class="section level2">
 <h2>Subset</h2>

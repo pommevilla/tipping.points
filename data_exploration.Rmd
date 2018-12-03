@@ -24,6 +24,13 @@ arg_subset_info <- read.table("data/raw/arg_datasets.subset.tsv", sep = "\t", he
 head(arg_subset_info)
 ```
 
+We'll add in a new column containing the ARG percentage, calculated as `rel_seq_count/seq_counts`.
+
+```{r add_arg_ratio_column.1}
+arg_subset_info$arg_percent <- arg_subset_info$rel_seq_count / arg_subset_info$seq_counts
+head(arg_subset_info)
+```
+
 ## Cooccurrence Data
 
 `arg_cooccurrence.tsv` contains the cooccurrence data (ie, [Spearman' correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)) for all the ARGs found in `arg_datasets.subset.tsv`.

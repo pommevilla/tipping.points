@@ -1,0 +1,141 @@
+id	biome	feature	material	environment_package	location	seq_counts	rel_seq_count	arg_percent
+4440054.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	unknown	unknown	810891	634	0.000781856007774164
+4440144.4	marine biome	saline evaporation pond	saline water	water	Chula Vista, CA	4645	3	0.000645855758880517
+4440283.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Urbana, IL	310801	219	0.000704630937480896
+4440284.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Urbana, IL	254712	166	0.000651716448380916
+4440285.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Urbana, IL	27476	33	0.0012010481875091
+4440286.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Urbana, IL	22821	22	0.000964024363524824
+4440370.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Hawaii Institute of Marine Biology	35680	40	0.00112107623318386
+4440371.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Hawaii Institute of Marine Biology	50364	26	0.000516241759987292
+4440374.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Hawaii Institute of Marine Biology	39340	26	0.000660904931367565
+4440376.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Hawaii Institute of Marine Biology	39270	18	0.000458365164247517
+4440377.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Hawaii Institute of Marine Biology	34433	39	0.00113263439142683
+4440411.3	freshwater	freshwater	freshwater	water	prebead pond at Kent SeaTech, Salton Sea, CA	44094	30	0.00068036467546605
+4440423.3	freshwater	freshwater	freshwater	unknown	unknown	381076	228	0.000598305849751756
+4440440.3	freshwater	freshwater	freshwater	water	Tilapia Channel (FW1) at Kent SeaTech, Salton Sea, CA	381076	228	0.000598305849751756
+4440460.5	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	455361	213	0.000467760743673701
+4440461.5	human-associated habitat	human-associated habitat	human-associated habitat	human-gut	St. Louis, MO	522134	637	0.00121999333504426
+4440462.5	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	612660	412	0.000672477393660432
+4440595.4	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	562205	399	0.000709705534458071
+4440613.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	312665	262	0.00083795755840916
+4440616.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	507928	348	0.000685136476035974
+4440823.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	555853	357	0.000642256136064751
+4440825.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	495865	264	0.000532402972583264
+4440939.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	28900	26	0.000899653979238754
+4440940.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	16539	11	0.000665094624826168
+4440941.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	36326	43	0.00118372515553598
+4440942.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	36455	42	0.00115210533534495
+4440943.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	30198	38	0.00125836148089277
+4440944.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	31237	36	0.00115247943144348
+4440946.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	20226	17	0.000840502323741719
+4440947.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	35177	34	0.000966540637348267
+4440948.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	37296	31	0.000831188331188331
+4440951.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	34797	27	0.000775928959393051
+4440973.3	sediment	sediment	sediment	unknown	Ocean Drilling Program leg 201, site 1229	135726	77	0.000567319452426212
+4441092.3	sludge	sludge	sludge	unknown	Thornside Sewage Treatment Plant	96563	105	0.00108737301036629
+4441573.3	marine habitat	marine habitat	marine habitat	water	Sargasso Sea	317180	404	0.00127372469890914
+4441662.3	marine habitat	marine habitat	marine habitat	water	Galapagos Islands - Warm seep, Roca Redonda	359152	317	0.00088263465051009
+4441679.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Bloomington, IL	264849	208	0.000785353163500712
+4441680.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Bloomington, IL	178713	135	0.000755401117993655
+4441681.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Bloomington, IL	345317	204	0.000590761532157409
+4441682.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Bloomington, IL	236830	179	0.000755816408394207
+4442315.3	unknown	unknown	unknown	unknown	unknown	51231	38	0.000741738400577775
+4442467.3	Tropical/Subtropical Desert Division (320)	alkaline salt lake	surface water	microbial mat|biofilm	Cuatro Cienegas	23779	22	0.000925186088565541
+4442984.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Amherst, Massachusetts	1479	1	0.000676132521974307
+4443685.3	marine habitat	marine habitat	marine habitat	water	Organic Lake	28481	16	0.000561778027456901
+4443688.3	marine habitat	marine habitat	marine habitat	water	Botany Bay near Bare Island, Sydney, Australia	91066	73	0.000801616410076208
+4443762.3	hot spring ; microbial mat	hot spring ; microbial mat	hot spring ; microbial mat	unknown	Yellowstone Natl Park Hot Springs, Moran, WY	6521	9	0.00138015641772734
+4444130.3	unknown	unknown	unknown	unknown	unknown	108486	107	0.000986302380030603
+4444165.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Small Animal Clinic of the University of Illinois, College of Veterinary Medicine, Urbana, IL	67761	38	0.000560794557341243
+4444196.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-oral	San Diego University, San Diego, California	246034	279	0.00113398961119195
+4444703.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Small Animal Clinic of the University of Illinois, College of Veterinary Medicine, Urbana, IL	583523	281	0.000481557710664361
+4445547.3	Large lake biome	microbial feature	water	host-associated	91 N. Eagleville rd, storrs CT	8320	9	0.00108173076923077
+4446126.3	human-associated habitat	human-associated habitat	human-associated habitat	human-associated	California	111935	102	0.000911243132174923
+4447102.3	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	Valencia	244881	151	0.000616626034686235
+4447192.3	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	Valencia	204218	118	0.000577813904748847
+4447903.3	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	Valencia	306740	163	0.000531394666492795
+4447943.3	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	Valencia	339503	197	0.000580259968247703
+4447971.3	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	Valencia	97722	61	0.000624219725343321
+4448367.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Clay Center, Nebraska	292121	318	0.00108859000208818
+4449125.3	soil	soil	soil	soil	Alert	364725	285	0.000781410651860991
+4449126.3	soil	soil	soil	soil	Alert	287705	203	0.000705583844563007
+4450729.3	soil	soil	soil	soil	Alert	108203	55	0.000508303836307681
+4451065.3	Cold-winter (continental) deserts and semideserts	cold temperature habitat	water	miscellaneous	Ny-Alesund	34840	16	0.000459242250287026
+4454379.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	unknown	Iowa	25646790	12169	0.000474484331177508
+4454380.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	unknown	Iowa	25729279	11710	0.000455123519007276
+4454687.3	estuarine biome	ocean	coastal water	water	Rio de Janeiro	4856	3	0.000617792421746293
+4454688.3	estuarine biome	ocean	coastal water	water	Rio de Janeiro	2094	1	0.000477554918815664
+4455295.3	waste water	waste water	waste water	unknown	Aalborg	213518	119	0.000557330061165803
+4459941.3	sediment	sediment	sediment	unknown	Ocean Drilling Program leg 201, site 1229	84122	41	0.000487387365968474
+4460391.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	unknown	Bet Dagan	5771	7	0.00121296135851672
+4460448.3	stream	stream	stream	microbial mat|biofilm	Diamond Fork Utah	700270	345	0.000492667114113128
+4460449.3	hot spring	hot spring	hot spring	microbial mat|biofilm	Diamond Fork Utah	685935	319	0.000465058642582752
+4461013.3	soil	soil	soil	soil	Lucknow	1124891	1341	0.00119211550274649
+4461126.3	feces	feces	feces	plant-associated	unknown	63788	50	0.000783846491503104
+4461129.3	feces	feces	feces	plant-associated	unknown	123930	70	0.00056483498749294
+4461131.3	feces	feces	feces	plant-associated	unknown	96450	72	0.000746500777604977
+4461133.3	feces	feces	feces	plant-associated	unknown	110625	94	0.000849717514124294
+4461134.3	feces	feces	feces	plant-associated	unknown	162823	151	0.000927387408412816
+4461138.3	feces	feces	feces	plant-associated	unknown	145658	84	0.000576693350176441
+4461141.3	feces	feces	feces	plant-associated	unknown	52576	41	0.000779823493609251
+4461142.3	feces	feces	feces	plant-associated	unknown	49596	36	0.000725864989112025
+4461143.3	feces	feces	feces	plant-associated	unknown	49517	27	0.000545267281943575
+4461144.3	feces	feces	feces	plant-associated	unknown	49683	44	0.000885614797818167
+4461145.3	feces	feces	feces	plant-associated	unknown	193914	192	0.000990129645100405
+4461146.3	feces	feces	feces	plant-associated	unknown	210101	273	0.00129937506246995
+4461148.3	feces	feces	feces	plant-associated	unknown	99698	112	0.00112339264579029
+4461149.3	feces	feces	feces	plant-associated	unknown	152687	171	0.00111993817417331
+4461154.3	feces	feces	feces	plant-associated	unknown	180417	103	0.000570899638060715
+4461159.3	feces	feces	feces	plant-associated	unknown	170081	111	0.000652630217367019
+4461160.3	feces	feces	feces	plant-associated	unknown	171067	145	0.000847621107519276
+4461165.3	feces	feces	feces	plant-associated	unknown	327329	404	0.00123423222507019
+4461167.3	feces	feces	feces	plant-associated	unknown	167919	118	0.000702719763695591
+4461171.3	feces	feces	feces	plant-associated	unknown	128029	98	0.000765451577377
+4461174.3	feces	feces	feces	plant-associated	unknown	196958	146	0.000741274789549041
+4461175.3	feces	feces	feces	plant-associated	unknown	126524	110	0.000869400271885176
+4461176.3	feces	feces	feces	plant-associated	unknown	180424	88	0.0004877399902452
+4461178.3	feces	feces	feces	plant-associated	unknown	142581	115	0.000806559078699125
+4461180.3	feces	feces	feces	plant-associated	unknown	284283	183	0.000643724739080423
+4461181.3	feces	feces	feces	plant-associated	unknown	115158	85	0.000738116327133156
+4461182.3	feces	feces	feces	plant-associated	unknown	161375	163	0.00101006971340046
+4461185.3	feces	feces	feces	plant-associated	unknown	74534	84	0.00112700244183862
+4461186.3	feces	feces	feces	plant-associated	unknown	93813	75	0.000799462761024591
+4461187.3	feces	feces	feces	plant-associated	unknown	109755	96	0.000874675413420801
+4461188.3	feces	feces	feces	plant-associated	unknown	82352	83	0.00100786866135613
+4461189.3	feces	feces	feces	plant-associated	unknown	79997	109	0.00136255109566609
+4461190.3	feces	feces	feces	plant-associated	unknown	81890	76	0.000928074245939675
+4461191.3	feces	feces	feces	plant-associated	unknown	64661	47	0.000726867818313976
+4461192.3	feces	feces	feces	plant-associated	unknown	59487	74	0.00124396927059694
+4461193.3	feces	feces	feces	plant-associated	unknown	54141	44	0.000812692783657487
+4461194.3	feces	feces	feces	plant-associated	unknown	62121	48	0.000772685565267784
+4461195.3	feces	feces	feces	plant-associated	unknown	60439	55	0.000910008438260064
+4461196.3	feces	feces	feces	plant-associated	unknown	70950	91	0.00128259337561663
+4461197.3	feces	feces	feces	plant-associated	unknown	72687	43	0.000591577586088296
+4461198.3	feces	feces	feces	plant-associated	unknown	70281	57	0.0008110300081103
+4461208.3	feces	feces	feces	plant-associated	unknown	154534	198	0.00128127143541227
+4461215.3	feces	feces	feces	plant-associated	unknown	68101	46	0.000675467320597348
+4461216.3	feces	feces	feces	plant-associated	unknown	157283	108	0.000686660351086894
+4461217.3	feces	feces	feces	plant-associated	unknown	133942	114	0.000851114661569933
+4461218.3	feces	feces	feces	plant-associated	unknown	139800	169	0.00120886981402003
+4461221.3	feces	feces	feces	plant-associated	unknown	315900	228	0.000721747388414055
+4461223.3	feces	feces	feces	plant-associated	unknown	248274	131	0.000527642846210235
+4461225.3	feces	feces	feces	plant-associated	unknown	288836	179	0.000619728842665042
+4461227.3	feces	feces	feces	plant-associated	unknown	494102	330	0.0006678782923364
+4461229.3	feces	feces	feces	plant-associated	unknown	381182	325	0.000852611088666306
+4461284.3	feces	feces	feces	human-vaginal	unknown	46535	26	0.000558719243580101
+4461285.3	feces	feces	feces	human-vaginal	unknown	92140	44	0.000477534187106577
+4461288.3	feces	feces	feces	human-vaginal	unknown	33800	17	0.000502958579881657
+4461290.3	feces	feces	feces	human-vaginal	unknown	50597	24	0.000474336423108089
+4461293.3	feces	feces	feces	human-vaginal	unknown	46573	32	0.000687093380284714
+4461295.3	feces	feces	feces	human-vaginal	unknown	55303	28	0.000506301647288574
+4461296.3	feces	feces	feces	human-vaginal	unknown	65833	37	0.00056202816216791
+4461299.3	feces	feces	feces	human-vaginal	unknown	50444	25	0.000495599080168107
+4461342.3	feces	feces	feces	host-associated	St Louis Zoo	28737	30	0.00104395030796534
+4461346.3	feces	feces	feces	host-associated	Colorado	51875	25	0.000481927710843373
+4461351.3	feces	feces	feces	host-associated	St Louis Zoo	51502	44	0.000854335753951303
+4461352.3	feces	feces	feces	host-associated	St Louis Zoo	107461	49	0.000455979378565247
+4461362.3	feces	feces	feces	host-associated	St Louis Zoo	68456	64	0.000934907093607573
+4461363.3	feces	feces	feces	host-associated	St Louis Zoo	42140	26	0.000616990982439487
+4461372.3	feces	feces	feces	host-associated	St Louis Zoo	69106	36	0.000520938847567505
+4461619.3	extreme habitat	extreme habitat	extreme habitat	unknown	Gros Morne National Park, Newfoundland	1993	2	0.00100351229302559
+4464073.3	freshwater biome	Wastewater treatment plant	Activated sludge	wastewater|sludge	Morges	180539	255	0.00141243720193421

@@ -1,0 +1,95 @@
+id	biome	feature	material	environment_package	location	seq_counts	rel_seq_count	arg_percent
+4440053.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	unknown	unknown	810301	3607	0.00445143224554826
+4440463.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Washington University, St. Louis, MI	10845	152	0.0140156754264638
+4440464.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Washington University, St. Louis, MI	11857	190	0.0160242894492705
+4440615.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	St. Louis, MO	622554	936	0.00150348403511984
+4440945.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	9958	21	0.00210885720024101
+4440949.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	16164	62	0.00383568423657511
+4440950.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	human-gut	unknown	20532	66	0.00321449444769141
+4441093.3	sludge	sludge	sludge	unknown	Nine Springs Wastwater Treatment Plant, Madison, WI	127953	209	0.00163341226856736
+4441095.3	hot spring	hot spring	hot spring	water	Yellowstone Natl Park	8352	297	0.0355603448275862
+4441096.3	hot spring	hot spring	hot spring	water	Yellowstone Natl Park	22272	659	0.0295887212643678
+4441137.3	mine drainage	mine drainage	mine drainage	unknown	Richmond Mine, Iron Mountain, CA	180713	7630	0.0422216442646628
+4441138.3	mine drainage ; microbial mat	mine drainage ; microbial mat	mine drainage ; microbial mat	built environment	Richmond Mine, Iron Mountain, CA	138453	1369	0.00988783197186049
+4441570.3	marine habitat	marine habitat	marine habitat	water	Sargasso Sea	644551	2961	0.0045938955955386
+4441571.3	marine habitat	marine habitat	marine habitat	water	Sargasso Sea	644551	2961	0.0045938955955386
+4441598.3	marine habitat	marine habitat	marine habitat	water	Galapagos Islands - Mangrove on Isabella Island	148018	373	0.00251996378818792
+4442475.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Amherst, Massachusetts	506	1	0.00197628458498024
+4442583.3	hot spring	hot spring	hot spring	water	Yellowstone Natl Park	22272	659	0.0295887212643678
+4443242.3	unknown	unknown	unknown	unknown	unknown	3711	6	0.00161681487469685
+4443361.3	unknown	unknown	unknown	unknown	unknown	130520	3776	0.0289304321176831
+4443364.3	unknown	unknown	unknown	unknown	unknown	212695	1335	0.00627659324384682
+4443689.3	marine habitat	marine habitat	marine habitat	water	Botany Bay near Bare Island, Sydney, Australia	13512	103	0.00762285375962108
+4443746.3	hot spring ; microbial mat	hot spring ; microbial mat	hot spring ; microbial mat	unknown	Yellowstone Natl Park Hot Springs, Moran, WY	2708	8	0.00295420974889217
+4443750.3	hot spring ; microbial mat	hot spring ; microbial mat	hot spring ; microbial mat	unknown	Yellowstone Natl Park Hot Springs, Moran, WY	1266	10	0.00789889415481832
+4444863.3	marine habitat	marine habitat	marine habitat	water	Mariana Trough	323700	740	0.00228606734630831
+4445734.3	human-associated habitat	human-associated habitat	human-associated habitat	human-associated	California	212356	718	0.00338111473186536
+4446122.3	human-associated habitat	human-associated habitat	human-associated habitat	human-associated	California	79465	3042	0.0382810042156924
+4446124.3	human-associated habitat	human-associated habitat	human-associated habitat	human-associated	California	73639	2136	0.0290063689077798
+4448226.3	marine habitat	marine habitat	marine habitat	water	Mariana Trough	202714	681	0.00335941276872836
+4449707.3	sludge	sludge	sludge	wastewater|sludge	South India	36270	87	0.00239867659222498
+4450243.3	terrestrial biome	coastal plain	leafy wood soil	soil	Cubatao	533697	1064	0.0019936405863252
+4451069.3	Cold-winter (continental) deserts and semideserts	cold temperature habitat	water	miscellaneous	Ny-Alesund	25523	37	0.0014496728441014
+4451259.3	cultured habitat	cultured habitat	cultured habitat	unknown	Ithaca, NY	1957059	21241	0.0108535307315722
+4451655.3	cultured habitat	cultured habitat	cultured habitat	unknown	Berkeley, CA	606488	2477	0.00408416984342642
+4453064.3	freshwater habitat	freshwater habitat	freshwater habitat	unknown	South Australia	64506	116	0.00179828233032586
+4454692.3	estuarine biome	ocean	coastal water	water	Rio de Janeiro	369	1	0.002710027100271
+4454707.3	Temperate coniferous forest biome	insecta-associated habitat	dust	miscellaneous	Valencia	3297	10	0.00303306035790112
+4455198.3	Temperate coniferous forest biome	insecta-associated habitat	dust	miscellaneous	Valencia	14102	42	0.00297830095021983
+4460151.3	animal-associated habitat	animal-associated habitat	animal-associated habitat	host-associated	Rio de Janeiro	525841	803	0.00152707757668192
+4460639.3	terrestrial biome	mammalia-associated habitat	feces	human-gut	Chicago, IL	20326472	121104	0.00595794489078085
+4460641.3	terrestrial biome	mammalia-associated habitat	feces	human-gut	Chicago, IL	22914780	146334	0.00638600937909943
+4460642.3	terrestrial biome	mammalia-associated habitat	feces	human-gut	Chicago, IL	19429521	107472	0.00553137671278669
+4460644.3	terrestrial biome	mammalia-associated habitat	feces	human-gut	Chicago, IL	24921103	158298	0.0063519660425945
+4461119.3	feces	feces	feces	plant-associated	unknown	72358	144	0.00199010475690318
+4461120.3	unknown	unknown	unknown	unknown	unknown	120014	222	0.00184978419184428
+4461121.3	feces	feces	feces	plant-associated	unknown	19681	70	0.00355672984096337
+4461122.3	feces	feces	feces	plant-associated	unknown	23342	47	0.00201353782880644
+4461124.3	feces	feces	feces	plant-associated	unknown	94521	135	0.00142825403878503
+4461127.3	feces	feces	feces	plant-associated	unknown	137296	801	0.00583411024356136
+4461132.3	feces	feces	feces	plant-associated	unknown	165244	337	0.00203940839001719
+4461135.3	feces	feces	feces	plant-associated	unknown	136378	248	0.00181847512062063
+4461136.3	feces	feces	feces	plant-associated	unknown	176323	344	0.00195096499038696
+4461137.3	feces	feces	feces	plant-associated	unknown	148187	307	0.00207170669491926
+4461139.3	feces	feces	feces	plant-associated	unknown	259910	481	0.00185064060636374
+4461140.3	feces	feces	feces	plant-associated	unknown	213186	368	0.0017261921514546
+4461150.3	feces	feces	feces	plant-associated	unknown	132838	551	0.00414790948373206
+4461151.3	feces	feces	feces	plant-associated	unknown	98369	202	0.00205349246205614
+4461152.3	feces	feces	feces	plant-associated	unknown	155162	455	0.00293241902012091
+4461153.3	feces	feces	feces	plant-associated	unknown	111346	264	0.00237098773193469
+4461155.3	feces	feces	feces	plant-associated	unknown	88301	261	0.00295579891507457
+4461156.3	feces	feces	feces	plant-associated	unknown	76770	294	0.00382962094568191
+4461157.3	feces	feces	feces	plant-associated	unknown	145054	357	0.00246115239841714
+4461158.3	feces	feces	feces	plant-associated	unknown	187224	395	0.00210977225142076
+4461161.3	feces	feces	feces	plant-associated	unknown	379277	547	0.00144221769313721
+4461163.3	feces	feces	feces	plant-associated	unknown	254363	420	0.00165118354477656
+4461164.3	feces	feces	feces	plant-associated	unknown	184366	278	0.00150787021468167
+4461166.3	feces	feces	feces	plant-associated	unknown	258046	415	0.00160824039124807
+4461183.3	feces	feces	feces	plant-associated	unknown	72215	129	0.00178633247940179
+4461184.3	feces	feces	feces	plant-associated	unknown	93148	159	0.00170696096534547
+4461199.3	feces	feces	feces	plant-associated	unknown	224659	655	0.00291552975843389
+4461200.3	feces	feces	feces	plant-associated	unknown	144110	413	0.00286586635209215
+4461201.3	feces	feces	feces	plant-associated	unknown	57905	123	0.00212416889733184
+4461202.3	feces	feces	feces	plant-associated	unknown	92151	298	0.00323382274744712
+4461203.3	feces	feces	feces	plant-associated	unknown	71435	145	0.00202981731644152
+4461204.3	feces	feces	feces	plant-associated	unknown	133407	240	0.00179900604915784
+4461205.3	feces	feces	feces	plant-associated	unknown	199009	408	0.00205015853554362
+4461206.3	feces	feces	feces	plant-associated	unknown	176845	505	0.00285560801832113
+4461207.3	feces	feces	feces	plant-associated	unknown	174966	289	0.00165174948275665
+4461209.3	feces	feces	feces	plant-associated	unknown	142916	224	0.00156735425004898
+4461210.3	feces	feces	feces	plant-associated	unknown	169453	333	0.00196514667783987
+4461211.3	feces	feces	feces	plant-associated	unknown	145475	246	0.00169101220140918
+4461212.3	feces	feces	feces	plant-associated	unknown	166583	339	0.00203502158083358
+4461213.3	feces	feces	feces	plant-associated	unknown	196750	382	0.0019415501905972
+4461214.3	feces	feces	feces	plant-associated	unknown	171733	362	0.00210792334612451
+4461219.3	feces	feces	feces	plant-associated	unknown	220391	446	0.00202367610292616
+4461220.3	feces	feces	feces	plant-associated	unknown	222856	335	0.00150321283698891
+4461226.3	feces	feces	feces	plant-associated	unknown	333219	537	0.00161155276259757
+4461347.3	feces	feces	feces	host-associated	St Louis Zoo	68884	375	0.00544393473085187
+4461366.3	feces	feces	feces	host-associated	St Louis Zoo	14236	49	0.00344197808373139
+4461367.3	feces	feces	feces	host-associated	St Louis Zoo	75012	492	0.00655895056790913
+4461371.3	feces	feces	feces	host-associated	St Louis Zoo	56380	487	0.00863781482795318
+4461376.3	feces	feces	feces	host-associated	St Louis Zoo	38999	59	0.00151285930408472
+4464065.3	freshwater biome	Wastewater treatment plant	Activated sludge	wastewater|sludge	Morges	71225	507	0.00711828711828712
+4464108.3	freshwater biome	Wastewater treatment plant	Activated sludge	wastewater|sludge	Visp	14592	183	0.0125411184210526
+4464109.3	freshwater biome	Wastewater treatment plant	Activated sludge	wastewater|sludge	Visp	437239	1338	0.00306011128924913

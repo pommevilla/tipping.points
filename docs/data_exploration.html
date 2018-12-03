@@ -348,7 +348,9 @@ head(arg_subset_info)</code></pre>
 <pre class="r"><code>proportion = 0.1
 cutoff = quantile((sort(arg_subset_info$arg_percent)), 1 - proportion)</code></pre>
 <pre class="r"><code>ggplot(data.frame(val = arg_subset_info$arg_percent), aes(val)) + geom_histogram(binwidth = 0.001) +
-  labs(x = &quot;ARG Percentage&quot;, y = &quot;Count&quot;) +
+  labs(x = &quot;ARG Percentage&quot;, y = &quot;Count&quot;, title = &quot;ARG proportion counts (n = 934)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = 4.545e-04, colour = &quot;#a9f9cd&quot;, linetype = &quot;dashed&quot;) +
   geom_vline(xintercept = cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) </code></pre>
 <p><img src="images/add_arg_ratio_column.2-1.png" width="672" /> ## Cooccurrence Data</p>
 <p><code>arg_cooccurrence.tsv</code> contains the cooccurrence data (ie, <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman’ correlation</a>) for all the ARGs found in <code>arg_datasets.subset.tsv</code>.</p>
@@ -425,7 +427,17 @@ gr_neg_cooccurrence &lt;- graph.data.frame(positive_arg_cooccurrence, directed =
 }</code></pre>
 <div id="low-arg-percentage" class="section level3">
 <h3>Low ARG percentage</h3>
-<pre class="r"><code>low.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.low.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
+<pre class="r"><code>low.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.low.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
+ggplot(data.frame(low.arg_subset_info), aes(biome)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: Low ARG Prevalence (n = 700)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<p><img src="images/low.cooc.1-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(low.arg_subset_info), aes(environment_package)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = &quot;Environment counts: Low ARG Prevalence (n = 700)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<p><img src="images/low.cooc.2-1.png" width="672" /></p>
 <pre class="r"><code>arg_cooccurrence.low &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.low.tsv&quot;, 
                                 col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
 arg_cooccurrence.low &lt;- arg_cooccurrence.low[, -4]
@@ -497,7 +509,17 @@ ggplot(data.frame(val = low.bootstraps), aes(val)) + geom_histogram(binwidth = 0
 </div>
 <div id="medium-arg-percentage" class="section level3">
 <h3>Medium ARG percentage</h3>
-<pre class="r"><code>med.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.med.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
+<pre class="r"><code>med.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.med.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
+ggplot(data.frame(med.arg_subset_info), aes(biome)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: Medium ARG Prevalence (n = 140)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+<p><img src="images/med.cooc.1-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(med.arg_subset_info), aes(environment_package)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = &quot;Environment counts: Medium ARG Prevalence (n = 140)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+<p><img src="images/med.cooc.2-1.png" width="672" /></p>
 <pre class="r"><code>arg_cooccurrence.med &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.med.tsv&quot;, 
                                 col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
 arg_cooccurrence.med &lt;- arg_cooccurrence.med[, -4]
@@ -563,7 +585,17 @@ ggplot(data.frame(val = med.bootstraps), aes(val)) + geom_histogram(binwidth = 0
 </div>
 <div id="high-arg-percentage" class="section level3">
 <h3>High ARG percentage</h3>
-<pre class="r"><code>high.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.high.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
+<pre class="r"><code>high.arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.high.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
+ggplot(data.frame(high.arg_subset_info), aes(biome)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: High ARG Prevalence (n = 94)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 135, hjust = 1))</code></pre>
+<p><img src="images/high.cooc.1-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(high.arg_subset_info), aes(environment_package)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: High ARG Prevalence (n = 94)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 135, hjust = 1))</code></pre>
+<p><img src="images/high.cooc.2-1.png" width="672" /></p>
 <pre class="r"><code>arg_cooccurrence.high &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.high.tsv&quot;, 
                                 col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))
 arg_cooccurrence.high &lt;- arg_cooccurrence.high[, -4]

@@ -32,7 +32,9 @@ cutoff = quantile((sort(arg_subset_info$arg_percent)), 1 - proportion)
 
 ```{r add_arg_ratio_column.2}
 ggplot(data.frame(val = arg_subset_info$arg_percent), aes(val)) + geom_histogram(binwidth = 0.001) +
-  labs(x = "ARG Percentage", y = "Count") +
+  labs(x = "ARG Percentage", y = "Count", title = "ARG proportion counts (n = 934)") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = 4.545e-04, colour = "#a9f9cd", linetype = "dashed") +
   geom_vline(xintercept = cutoff, colour = "#BB0000", linetype = "dashed") 
 ```
 ## Cooccurrence Data
@@ -100,8 +102,19 @@ show_community_info <- function(graph_object){
 
 ### Low ARG percentage
 
-```{r low.cooc}
+```{r low.cooc.1}
 low.arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.low.tsv", sep = "\t", header = TRUE)
+ggplot(data.frame(low.arg_subset_info), aes(biome)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = "Biome counts: Low ARG Prevalence (n = 700)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r low.cooc.2}
+ggplot(data.frame(low.arg_subset_info), aes(environment_package)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = "Environment counts: Low ARG Prevalence (n = 700)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 ```{r low.1}
@@ -162,8 +175,18 @@ ggplot(data.frame(val = low.bootstraps), aes(val)) + geom_histogram(binwidth = 0
 
 ### Medium ARG percentage
 
-```{r med.cooc}
+```{r med.cooc.1}
 med.arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.med.tsv", sep = "\t", header = TRUE)
+ggplot(data.frame(med.arg_subset_info), aes(biome)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = "Biome counts: Medium ARG Prevalence (n = 140)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))
+```
+```{r med.cooc.2}
+ggplot(data.frame(med.arg_subset_info), aes(environment_package)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = "Environment counts: Medium ARG Prevalence (n = 140)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 ```{r med.1}
@@ -225,9 +248,18 @@ ggplot(data.frame(val = med.bootstraps), aes(val)) + geom_histogram(binwidth = 0
 
 ### High ARG percentage
 
-```{r high.cooc}
+```{r high.cooc.1}
 high.arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.high.tsv", sep = "\t", header = TRUE)
-
+ggplot(data.frame(high.arg_subset_info), aes(biome)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = "Biome counts: High ARG Prevalence (n = 94)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 135, hjust = 1))
+```
+```{r high.cooc.2}
+ggplot(data.frame(high.arg_subset_info), aes(environment_package)) + geom_bar() +
+  labs(x = element_blank(), y = element_blank(), title = "Biome counts: High ARG Prevalence (n = 94)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 135, hjust = 1))
 ```
 
 

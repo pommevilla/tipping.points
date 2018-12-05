@@ -14,7 +14,20 @@ library(ggplot2, warn.conflicts = FALSE)
 
 ## Whole data set
 
-```{r load_complete_metag_data.1}
+```{r test}
+total_info <- read.table("data/raw/arg_all/arg_datasets.tsv", sep = "\t", header = TRUE, fill = TRUE )
+head(total_info)
+```
+```{r biome_info.1}
+biome_info_2 <- table(unlist(total_info$biome))
+ggplot(as.data.frame(biome_info_2[biome_info_2 > 50]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = "identity") +
+    labs(x = element_blank(), y = element_blank(), title = "Environment counts: All datasets (n = 7848)") +
+    theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+```{r biome_info.2}
 biome_info <- read.table("data/raw/arg_all/arg_datasets.biomes.tsv", sep = "\t", header = TRUE,
                          col.names = c("counts", "biome"))
 
@@ -23,7 +36,8 @@ ggplot(data.frame(biome_info), aes(x = biome, y = counts)) + geom_bar(stat = "id
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-```{r load_complete_metag_data.2}
+
+```{r env_info.1}
 env_info <- read.table("data/raw/arg_all/arg_datasets.envs.tsv", sep = "\t", header = TRUE,
                          col.names = c("counts", "environment"))
 
@@ -32,7 +46,14 @@ ggplot(data.frame(env_info), aes(x = environment, y = counts)) + geom_bar(stat =
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 90, hjust = 1))
 ```
+```{r env_info.2}
+env_info_2 <- table(unlist(total_info$enviroment.nbsp.package))
+ggplot(as.data.frame(env_info_2[env_info_2 > 50]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = "identity") +
+    labs(x = element_blank(), y = element_blank(), title = "Environment counts: All datasets (n = 7848)") +
+    theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 90, hjust = 1))
 
+```
 ## Subset
 
 ```{r read_subset_info.1}
@@ -270,6 +291,11 @@ ggplot(data.frame(high.arg_subset_info), aes(biome)) + geom_bar() +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 135, hjust = 1))
 ```
+
+```{r high_sets}
+high.arg_subset_info[order(high.arg_subset_info$arg_percent, decreasing = TRUE), ]
+```
+
 ```{r high.cooc.2}
 ggplot(data.frame(high.arg_subset_info), aes(environment_package)) + geom_bar() +
   labs(x = element_blank(), y = element_blank(), title = "Biome counts: High ARG Prevalence (n = 94)") +

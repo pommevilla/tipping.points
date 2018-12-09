@@ -16,7 +16,6 @@ library(ggplot2, warn.conflicts = FALSE)
 
 ```{r test}
 total_info <- read.delim("data/raw/arg_all/arg_datasets.tsv", sep = "\t", header = TRUE, fill = TRUE )
-colnames(total_info)[c(9, 10, 12)] <- c("environment_package", "seq_type", "mean_seq_length")
 head(total_info)
 ```
 
@@ -30,26 +29,8 @@ ggplot(as.data.frame(biome_info_2[biome_info_2 > 100]), aes(x = reorder(Var1, Fr
 
 ```
 
-```{r biome_info.2}
-biome_info <- read.table("data/raw/arg_all/arg_datasets.biomes.tsv", sep = "\t", header = TRUE,
-                         col.names = c("counts", "biome"))
-
-ggplot(data.frame(biome_info), aes(x = biome, y = counts)) + geom_bar(stat = "identity") +  
-  labs(x = element_blank(), y = element_blank(), title = "Biome counts: All datasets (n = 7848)") +
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
-        axis.text.x = element_text(angle = 90, hjust = 1))
-```
 
 ```{r env_info.1}
-env_info <- read.table("data/raw/arg_all/arg_datasets.envs.tsv", sep = "\t", header = TRUE,
-                         col.names = c("counts", "environment"))
-
-ggplot(data.frame(env_info), aes(x = environment, y = counts)) + geom_bar(stat = "identity") +  
-  labs(x = element_blank(), y = element_blank(), title = "Environment counts: All datasets (n = 7848)") +
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
-        axis.text.x = element_text(angle = 90, hjust = 1))
-```
-```{r env_info.2}
 env_info_2 <- table(unlist(total_info$environment_package))
 ggplot(as.data.frame(env_info_2[env_info_2 > 50]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = "identity") +
     labs(x = element_blank(), y = element_blank(), title = "Environment counts: All datasets (n = 7848)") +

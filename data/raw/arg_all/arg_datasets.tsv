@@ -1,4 +1,4 @@
-id	project	name	bps	sequences	biome	feature	material	enviroment&nbsp;package	sequencing&nbsp;type	location	avg&nbsp;seq&nbsp;length		select
+id	project	name	bps	sequences	biome	feature	material	environment	sequencing_type	location	mean_seq_length		select
 4447970.3	The oral metagenome in health and disease	CA_05_4.6	27669924	70503	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	WGS	Valencia	392.464	public	
 4447971.3	The oral metagenome in health and disease	CA_06_1.6	37519874	97722	human-associated habitat	human-associated habitat	human-associated habitat	human-oral	WGS	Valencia	383.945	public	
 4440275.3	cDNA - Plymouth Marine Lab Coastal Waters project	1-19-DNA-flx	59316369	344216	marine habitat	marine habitat	marine habitat	water	WGS	coastal waters of a fjord close to Bergen, Norway	172.323	public	

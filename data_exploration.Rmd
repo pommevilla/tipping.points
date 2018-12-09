@@ -15,13 +15,15 @@ library(ggplot2, warn.conflicts = FALSE)
 ## Whole data set
 
 ```{r test}
-total_info <- read.table("data/raw/arg_all/arg_datasets.tsv", sep = "\t", header = TRUE, fill = TRUE )
+total_info <- read.delim("data/raw/arg_all/arg_datasets.tsv", sep = "\t", header = TRUE, fill = TRUE )
 colnames(total_info)[c(9, 10, 12)] <- c("environment_package", "seq_type", "mean_seq_length")
 head(total_info)
 ```
+
+
 ```{r biome_info.1}
 biome_info_2 <- table(unlist(total_info$biome))
-ggplot(as.data.frame(biome_info_2[biome_info_2 > 50]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = "identity") +
+ggplot(as.data.frame(biome_info_2[biome_info_2 > 100]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = "identity") +
     labs(x = element_blank(), y = element_blank(), title = "Biome counts: All datasets (n = 7848)") +
     theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 90, hjust = 1))
@@ -59,8 +61,6 @@ ggplot(as.data.frame(env_info_2[env_info_2 > 50]), aes(x = reorder(Var1, Freq), 
 ## Reads Info
 
 ```{r reads.1}
-
-ggplot(total_info, aes(x = factor(biome), y = avg.nbsp.seq.nbsp.length)) + stat_summary(fun.y = "mean", geom = "bar")
 
 ```
 

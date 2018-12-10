@@ -476,6 +476,17 @@ summary(anova.mean_seqs)</code></pre>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 6 observations deleted due to missingness</code></pre>
+<pre class="r"><code>TukeyHSD(anova.mean_seqs)</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = value ~ treatment, data = all.mean_seqs)
+## 
+## $treatment
+##               diff        lwr       upr     p adj
+## Med-Low   3.801397 -69.038037  76.64083 0.9917596
+## High-Low 94.552375   8.130782 180.97397 0.0279659
+## High-Med 90.750978 -14.147255 195.64921 0.1054264</code></pre>
 </div>
 <div id="cooccurrence-data" class="section level2">
 <h2>Cooccurrence Data</h2>

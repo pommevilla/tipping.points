@@ -16,6 +16,7 @@ library(ggplot2, warn.conflicts = FALSE)
 
 ```{r test}
 total_info <- read.delim("data/raw/arg_all/arg_datasets.tsv", sep = "\t", header = TRUE, fill = TRUE )
+total_info$mean_seq_length <- as.numeric(as.character(total_info$mean_seq_length))
 head(total_info)
 ```
 
@@ -31,7 +32,7 @@ ggplot(as.data.frame(biome_info_2[biome_info_2 > 100]), aes(x = reorder(Var1, Fr
 
 
 ```{r env_info.1}
-env_info_2 <- table(unlist(total_info$environment_package))
+env_info_2 <- table(unlist(total_info$environment))
 ggplot(as.data.frame(env_info_2[env_info_2 > 50]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = "identity") +
     labs(x = element_blank(), y = element_blank(), title = "Environment counts: All datasets (n = 7848)") +
     theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
@@ -41,14 +42,11 @@ ggplot(as.data.frame(env_info_2[env_info_2 > 50]), aes(x = reorder(Var1, Freq), 
 
 ## Reads Info
 
-```{r reads.1}
-
-```
-
 ## Subset
 
 ```{r read_subset_info.1}
-arg_subset_info <- read.table("data/raw/arg_subsets/arg_datasets.subset.tsv", sep = "\t", header = TRUE)
+arg_subset_info <- read.delim("data/raw/arg_subsets/arg_datasets.subset.tsv", sep = "\t", header = TRUE)
+arg_subset_info$mean_seq_length <- as.numeric(as.character(arg_subset_info$mean_seq_length))
 head(arg_subset_info)
 ```
 
@@ -64,6 +62,35 @@ ggplot(data.frame(val = arg_subset_info$arg_percent), aes(val)) + geom_histogram
   geom_vline(xintercept = 4.545e-04, colour = "#a9f9cd", linetype = "dashed") +
   geom_vline(xintercept = cutoff, colour = "#BB0000", linetype = "dashed") 
 ```
+We'll now use these cutoffs to separate the subset data into three clusters - low, medium, and high:
+
+```{r separate.clusters.1}
+low.arg_subset_info <- arg_subset_info[arg_subset_info$arg_percent < 4.545e-04, ]
+med.arg_subset_info <- arg_subset_info[arg_subset_info$arg_percent >= 4.545e-04 & arg_subset_info$arg_percent <= cutoff,]
+high.arg_subset_info <- arg_subset_info[arg_subset_info$arg_percent > cutoff, ]
+head(med.arg_subset_info)
+```
+
+```{r mean_seq_lengths.1}
+low.mean_seqs <- data.frame(treatment = "Low", value = low.arg_subset_info$mean_seq_length)
+med.mean_seqs <- data.frame(treatment = "Med", value = med.arg_subset_info$mean_seq_length)
+high.mean_seqs <- data.frame(treatment = "High", value = high.arg_subset_info$mean_seq_length)
+all.mean_seqs <- rbind(low.mean_seqs, med.mean_seqs, high.mean_seqs)
+
+means <- aggregate(value ~  treatment, all.mean_seqs, mean)
+
+ggplot(all.mean_seqs, aes(x = treatment, y = value, fill = treatment)) + geom_boxplot() +
+  labs(x = "ARG Prevalance", y = "Mean Sequence Length", title = "Mean Sequence Length by ARG Prevalance class") +
+  geom_text(data = means, aes(label = value, y = value + 100))
+
+```
+
+```{r mean_seq_lengths.2}
+anova.mean_seqs <- aov(value ~ treatment, data = all.mean_seqs)
+summary(anova.mean_seqs)
+```
+
+
 ## Cooccurrence Data
 
 `arg_cooccurrence.tsv` contains the cooccurrence data (ie, [Spearman' correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)) for all the ARGs found in `arg_datasets.subset.tsv`.
@@ -296,7 +323,6 @@ ggplot(data.frame(high.arg_subset_info), aes(environment_package)) + geom_bar() 
 
 
 ```{r high.1}
-
 arg_cooccurrence.high <- read.table("data/raw/cooccurrences/arg_cooccurrence.high.tsv", 
                                 col.names = c("ARG_1", "ARG_2", "rho", "p"))
 arg_cooccurrence.high <- arg_cooccurrence.high[, -4]

@@ -90,7 +90,9 @@ anova.mean_seqs <- aov(value ~ treatment, data = all.mean_seqs)
 summary(anova.mean_seqs)
 ```
 
-
+```{r mean_seq_lengths.3}
+TukeyHSD(anova.mean_seqs)
+```
 ## Cooccurrence Data
 
 `arg_cooccurrence.tsv` contains the cooccurrence data (ie, [Spearman' correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)) for all the ARGs found in `arg_datasets.subset.tsv`.

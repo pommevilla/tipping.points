@@ -307,15 +307,15 @@ div.tocify {
 </div>
 
 
-<pre class="r"><code>library(data.table, warn.conflicts = FALSE)</code></pre>
-<pre><code>## data.table 1.11.8  Latest news: r-datatable.com</code></pre>
-<pre class="r"><code>library(igraph, warn.conflicts = FALSE)
+<pre class="r"><code>library(data.table, warn.conflicts = FALSE)
+library(igraph, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)</code></pre>
 <div id="whole-data-set" class="section level2">
 <h2>Whole data set</h2>
 <pre class="r"><code>total_info &lt;- read.delim(&quot;data/raw/arg_all/arg_datasets.tsv&quot;, sep = &quot;\t&quot;, header = TRUE, fill = TRUE )
-colnames(total_info)[c(9, 10, 12)] &lt;- c(&quot;environment_package&quot;, &quot;seq_type&quot;, &quot;mean_seq_length&quot;)
-head(total_info)</code></pre>
+total_info$mean_seq_length &lt;- as.numeric(as.character(total_info$mean_seq_length))</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre class="r"><code>head(total_info)</code></pre>
 <pre><code>##        id                                           project
 ## 1 4447970         The oral metagenome in health and disease
 ## 2 4447971         The oral metagenome in health and disease
@@ -330,20 +330,20 @@ head(total_info)</code></pre>
 ## 4      6-19-DNA-flx 68187679    304020           marine habitat
 ## 5 FannLIMic20050811 30909241    290844           marine habitat
 ## 6 FannLIVir20050811 39607682    380355           marine habitat
-##                    feature                 material environment_package
-## 1 human-associated habitat human-associated habitat          human-oral
-## 2 human-associated habitat human-associated habitat          human-oral
-## 3           marine habitat           marine habitat               water
-## 4           marine habitat           marine habitat               water
-## 5           marine habitat           marine habitat               water
-## 6           marine habitat           marine habitat               water
-##   seq_type                                          location
-## 1      WGS                                          Valencia
-## 2      WGS                                          Valencia
-## 3      WGS coastal waters of a fjord close to Bergen, Norway
-## 4      WGS coastal waters of a fjord close to Bergen, Norway
-## 5      WGS                         Fanning (Tabuaeran) Atoll
-## 6      WGS                         Fanning (Tabuaeran) Atoll
+##                    feature                 material environment
+## 1 human-associated habitat human-associated habitat  human-oral
+## 2 human-associated habitat human-associated habitat  human-oral
+## 3           marine habitat           marine habitat       water
+## 4           marine habitat           marine habitat       water
+## 5           marine habitat           marine habitat       water
+## 6           marine habitat           marine habitat       water
+##   sequencing_type                                          location
+## 1             WGS                                          Valencia
+## 2             WGS                                          Valencia
+## 3             WGS coastal waters of a fjord close to Bergen, Norway
+## 4             WGS coastal waters of a fjord close to Bergen, Norway
+## 5             WGS                         Fanning (Tabuaeran) Atoll
+## 6             WGS                         Fanning (Tabuaeran) Atoll
 ##   mean_seq_length      X select
 ## 1         392.464 public       
 ## 2         383.945 public       
@@ -357,50 +357,50 @@ ggplot(as.data.frame(biome_info_2[biome_info_2 &gt; 100]), aes(x = reorder(Var1,
     theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
 <p><img src="images/biome_info.1-1.png" width="672" /></p>
-<pre class="r"><code>biome_info &lt;- read.table(&quot;data/raw/arg_all/arg_datasets.biomes.tsv&quot;, sep = &quot;\t&quot;, header = TRUE,
-                         col.names = c(&quot;counts&quot;, &quot;biome&quot;))
-
-ggplot(data.frame(biome_info), aes(x = biome, y = counts)) + geom_bar(stat = &quot;identity&quot;) +  
-  labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: All datasets (n = 7848)&quot;) +
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
-        axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
-<p><img src="images/biome_info.2-1.png" width="672" /></p>
-<pre class="r"><code>env_info &lt;- read.table(&quot;data/raw/arg_all/arg_datasets.envs.tsv&quot;, sep = &quot;\t&quot;, header = TRUE,
-                         col.names = c(&quot;counts&quot;, &quot;environment&quot;))
-
-ggplot(data.frame(env_info), aes(x = environment, y = counts)) + geom_bar(stat = &quot;identity&quot;) +  
-  labs(x = element_blank(), y = element_blank(), title = &quot;Environment counts: All datasets (n = 7848)&quot;) +
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
-        axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
-<p><img src="images/env_info.1-1.png" width="672" /></p>
-<pre class="r"><code>env_info_2 &lt;- table(unlist(total_info$environment_package))
+<pre class="r"><code>env_info_2 &lt;- table(unlist(total_info$environment))
 ggplot(as.data.frame(env_info_2[env_info_2 &gt; 50]), aes(x = reorder(Var1, Freq), y = Freq)) + geom_bar(stat = &quot;identity&quot;) +
     labs(x = element_blank(), y = element_blank(), title = &quot;Environment counts: All datasets (n = 7848)&quot;) +
     theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
-<p><img src="images/env_info.2-1.png" width="672" /></p>
+<p><img src="images/env_info.1-1.png" width="672" /></p>
 </div>
 <div id="reads-info" class="section level2">
 <h2>Reads Info</h2>
 </div>
 <div id="subset" class="section level2">
 <h2>Subset</h2>
-<pre class="r"><code>arg_subset_info &lt;- read.table(&quot;data/raw/arg_subsets/arg_datasets.subset.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
-head(arg_subset_info)</code></pre>
-<pre><code>##        id                     biome                   feature
-## 1 4440026 animal-associated habitat animal-associated habitat
-## 2 4440036            marine habitat            marine habitat
-## 3 4440037            marine habitat            marine habitat
-## 4 4440038            marine habitat            marine habitat
-## 5 4440039            marine habitat            marine habitat
-## 6 4440040            marine habitat            marine habitat
-##                    material environment_package
-## 1 animal-associated habitat    human-associated
-## 2            marine habitat               water
-## 3            marine habitat               water
-## 4            marine habitat               water
-## 5            marine habitat               water
-## 6            marine habitat               water
+<pre class="r"><code>arg_subset_info &lt;- read.delim(&quot;data/raw/arg_subsets/arg_datasets.subset.tsv&quot;, sep = &quot;\t&quot;, header = TRUE)
+arg_subset_info$mean_seq_length &lt;- as.numeric(as.character(arg_subset_info$mean_seq_length))</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre class="r"><code>head(arg_subset_info)</code></pre>
+<pre><code>##        id                                          project
+## 1 4440026 Human Lung Healthy vs Cystic Fibrosis Metagenome
+## 2 4440036                           Northern Line Islands 
+## 3 4440037                           Northern Line Islands 
+## 4 4440038                           Northern Line Islands 
+## 5 4440039                           Northern Line Islands 
+## 6 4440040                           Northern Line Islands 
+##                            name      bps sequences
+## 1 CFLungPat001Rep1SDVir20060505  4090704     50909
+## 2             KingLIVir20050821 10283401     94915
+## 3             KingLIMic20050821 19753735    188445
+## 4             XmasLIVir20050805 31332362    283390
+## 5             PalmLIMic20050818 37055255    351205
+## 6             PalmLIVir20050818 37461045    358983
+##                       biome                   feature
+## 1 animal-associated habitat animal-associated habitat
+## 2            marine habitat            marine habitat
+## 3            marine habitat            marine habitat
+## 4            marine habitat            marine habitat
+## 5            marine habitat            marine habitat
+## 6            marine habitat            marine habitat
+##                    material      environment sequencing_type
+## 1 animal-associated habitat human-associated             WGS
+## 2            marine habitat            water             WGS
+## 3            marine habitat            water             WGS
+## 4            marine habitat            water             WGS
+## 5            marine habitat            water             WGS
+## 6            marine habitat            water             WGS
 ##                                                                                location
 ## 1 Adult cystic fibrosis Clinic at the University of California San Diego Medical Center
 ## 2                                                                         Kingman Atoll
@@ -408,13 +408,13 @@ head(arg_subset_info)</code></pre>
 ## 4                                                          Christmas (Kiritimati) Atoll
 ## 5                                                                         Palmyra Atoll
 ## 6                                                                         Palmyra Atoll
-##   seq_counts rel_seq_count  arg_percent
-## 1      50909             4 7.857157e-05
-## 2      94915             0 0.000000e+00
-## 3     188445             0 0.000000e+00
-## 4     283390             0 0.000000e+00
-## 5     351205             1 2.847340e-06
-## 6     358983             8 2.228518e-05</code></pre>
+##   mean_seq_length      X select  arg_percent
+## 1          80.353 public        7.857157e-05
+## 2         108.343 public        0.000000e+00
+## 3         104.825 public        0.000000e+00
+## 4         110.563 public        0.000000e+00
+## 5         105.509 public        2.847340e-06
+## 6         104.353 public        2.228518e-05</code></pre>
 <pre class="r"><code>proportion = 0.1
 cutoff = quantile((sort(arg_subset_info$arg_percent)), 1 - proportion)</code></pre>
 <pre class="r"><code>ggplot(data.frame(val = arg_subset_info$arg_percent), aes(val)) + geom_histogram(binwidth = 0.001) +
@@ -422,7 +422,63 @@ cutoff = quantile((sort(arg_subset_info$arg_percent)), 1 - proportion)</code></p
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_vline(xintercept = 4.545e-04, colour = &quot;#a9f9cd&quot;, linetype = &quot;dashed&quot;) +
   geom_vline(xintercept = cutoff, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) </code></pre>
-<p><img src="images/add_arg_ratio_column.2-1.png" width="672" /> ## Cooccurrence Data</p>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="images/add_arg_ratio_column.2-1.png" width="672" /> We’ll now use these cutoffs to separate the subset data into three clusters - low, medium, and high:</p>
+<pre class="r"><code>low.arg_subset_info &lt;- arg_subset_info[arg_subset_info$arg_percent &lt; 4.545e-04, ]
+med.arg_subset_info &lt;- arg_subset_info[arg_subset_info$arg_percent &gt;= 4.545e-04 &amp; arg_subset_info$arg_percent &lt;= cutoff,]
+high.arg_subset_info &lt;- arg_subset_info[arg_subset_info$arg_percent &gt; cutoff, ]
+head(med.arg_subset_info)</code></pre>
+<pre><code>##         id                             project                        name
+## 11 4440054                 Mosquito Metagenome           Mosq2SDVir2060606
+## 25 4440144 Chula Vista, CA Solar Saltern Study HighSalternSDbayVir20051128
+## 39 4440283            Chicken Cecum Microbiome             Chicken Cecum A
+## 40 4440284            Chicken Cecum Microbiome             Chicken_Cecum_B
+## 41 4440285            Chicken Cecum Microbiome     Chicken Cecum A Contigs
+## 42 4440286            Chicken Cecum Microbiome     Chicken Cecum B Contigs
+##         bps sequences                     biome                   feature
+## 11 84803776    810891 animal-associated habitat animal-associated habitat
+## 25   465209      4645              marine biome   saline evaporation pond
+## 39 32296796    310801 animal-associated habitat animal-associated habitat
+## 40 26378422    254712 animal-associated habitat animal-associated habitat
+## 41  3382776     27476 animal-associated habitat animal-associated habitat
+## 42  2487532     22821 animal-associated habitat animal-associated habitat
+##                     material     environment sequencing_type
+## 11 animal-associated habitat         unknown             WGS
+## 25              saline water           water             WGS
+## 39 animal-associated habitat host-associated             WGS
+## 40 animal-associated habitat host-associated             WGS
+## 41 animal-associated habitat host-associated             WGS
+## 42 animal-associated habitat host-associated             WGS
+##           location mean_seq_length      X select  arg_percent
+## 11         unknown         104.581 public        0.0007818560
+## 25 Chula Vista, CA         100.153 public        0.0006458558
+## 39      Urbana, IL         103.915 public        0.0007046309
+## 40      Urbana, IL         103.562 public        0.0006517164
+## 41      Urbana, IL         123.117 public        0.0012010482
+## 42      Urbana, IL         109.002 public        0.0009640244</code></pre>
+<pre class="r"><code>low.mean_seqs &lt;- data.frame(treatment = &quot;Low&quot;, value = low.arg_subset_info$mean_seq_length)
+med.mean_seqs &lt;- data.frame(treatment = &quot;Med&quot;, value = med.arg_subset_info$mean_seq_length)
+high.mean_seqs &lt;- data.frame(treatment = &quot;High&quot;, value = high.arg_subset_info$mean_seq_length)
+all.mean_seqs &lt;- rbind(low.mean_seqs, med.mean_seqs, high.mean_seqs)
+
+means &lt;- aggregate(value ~  treatment, all.mean_seqs, mean)
+
+ggplot(all.mean_seqs, aes(x = treatment, y = value, fill = treatment)) + geom_boxplot() +
+  labs(x = &quot;ARG Prevalance&quot;, y = &quot;Mean Sequence Length&quot;, title = &quot;Mean Sequence Length by ARG Prevalance class&quot;) +
+  geom_text(data = means, aes(label = value, y = value + 100))</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="images/mean_seq_lengths.1-1.png" width="672" /></p>
+<pre class="r"><code>anova.mean_seqs &lt;- aov(value ~ treatment, data = all.mean_seqs)
+summary(anova.mean_seqs)</code></pre>
+<pre><code>##              Df    Sum Sq Mean Sq F value Pr(&gt;F)  
+## treatment     2    747286  373643   3.327 0.0363 *
+## Residuals   930 104438528  112299                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 6 observations deleted due to missingness</code></pre>
+</div>
+<div id="cooccurrence-data" class="section level2">
+<h2>Cooccurrence Data</h2>
 <p><code>arg_cooccurrence.tsv</code> contains the cooccurrence data (ie, <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman’ correlation</a>) for all the ARGs found in <code>arg_datasets.subset.tsv</code>.</p>
 <pre class="r"><code>arg_cooccurrence_table &lt;- read.table(&quot;data/raw/cooccurrences/arg_cooccurrence.tsv&quot;, 
                                 col.names = c(&quot;ARG_1&quot;, &quot;ARG_2&quot;, &quot;rho&quot;, &quot;p&quot;))

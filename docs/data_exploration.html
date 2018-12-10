@@ -463,8 +463,9 @@ all.mean_seqs &lt;- rbind(low.mean_seqs, med.mean_seqs, high.mean_seqs)
 
 means &lt;- aggregate(value ~  treatment, all.mean_seqs, mean)
 
-ggplot(all.mean_seqs, aes(x = treatment, y = value, fill = treatment)) + geom_boxplot(show.legend = FALSE) +
+ggplot(all.mean_seqs, aes(x = treatment, y = value, fill = treatment)) + geom_boxplot() +
   labs(x = &quot;ARG Prevalance&quot;, y = &quot;Mean Sequence Length&quot;, title = &quot;Mean Sequence Length by ARG Prevalance class&quot;) +
+  theme(legend.position = &quot;None&quot;) + 
   geom_text(data = means, aes(label = value, y = value + 100))</code></pre>
 <pre><code>## Warning: Removed 6 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="images/mean_seq_lengths.1-1.png" width="672" /></p>

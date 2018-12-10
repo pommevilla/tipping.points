@@ -79,10 +79,10 @@ all.mean_seqs <- rbind(low.mean_seqs, med.mean_seqs, high.mean_seqs)
 
 means <- aggregate(value ~  treatment, all.mean_seqs, mean)
 
-ggplot(all.mean_seqs, aes(x = treatment, y = value, fill = treatment)) + geom_boxplot(show.legend = FALSE) +
+ggplot(all.mean_seqs, aes(x = treatment, y = value, fill = treatment)) + geom_boxplot() +
   labs(x = "ARG Prevalance", y = "Mean Sequence Length", title = "Mean Sequence Length by ARG Prevalance class") +
+  theme(legend.position = "None") + 
   geom_text(data = means, aes(label = value, y = value + 100))
-
 ```
 
 ```{r mean_seq_lengths.2}

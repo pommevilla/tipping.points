@@ -7,6 +7,8 @@ navbar:
     href: index.html
   - text: Data Exploration
     href: data_exploration.html
+  - text: Topological Data Analysis
+    href: tda.html
     
 output:
   html_document:

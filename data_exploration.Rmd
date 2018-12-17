@@ -7,7 +7,6 @@ knitr::opts_chunk$set(echo = TRUE, fig.path = "images/")
 ```
 
 ```{r setup.2}
-library(data.table, warn.conflicts = FALSE)
 library(igraph, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)
 ```
@@ -313,7 +312,7 @@ ggplot(data.frame(high.arg_subset_info), aes(biome)) + geom_bar() +
 ```
 
 ```{r high_sets}
-high.arg_subset_info[order(high.arg_subset_info$arg_percent, decreasing = TRUE), ]
+head(high.arg_subset_info[order(high.arg_subset_info$arg_percent, decreasing = TRUE), ])
 ```
 
 ```{r high.cooc.2}

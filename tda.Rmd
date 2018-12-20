@@ -2,6 +2,25 @@
 title: "tda.Rmd"
 ---
 
-```{r setup, include=FALSE}
+```{r setup.1, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup.2, warning = FALSE }
+library(ggplot2, warn.conflicts = FALSE)
+library(TDA, warn.conflicts = FALSE)
+library(TDAstats, warn.conflicts = FALSE)
+```
+
+# Persistent homology
+
+We'll begin our exploration of topological data analysis with the application of persistent homology.  We'll start on the soil column data set, as there has been a clear signal demonstrated in NMDS plots indicating separation between soil-treated and manure-treated columns.  Afterwards, we'll move on to applying persistent homology to our data set.
+
+## Soil column 
+
+We'll begin by reading in the soil
+
+```{r read.arg}
+soil_column.args <- readRDS
+
 ```

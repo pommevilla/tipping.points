@@ -23,11 +23,11 @@ library(vegan, warn.conflicts = FALSE)
 
 # Persistent homology
 
-We'll begin our exploration of topological data analysis with the application of persistent homology.  We'll start on the soil column data set, as there has been a clear signal demonstrated in NMDS plots indicating separation between soil-treated and manure-treated columns.  Afterwards, we'll move on to applying persistent homology to our data set.
+We'll begin our exploration of topological data analysis with the application of persistent homology.  We'll start on the soil column data set, as there has been a clear signal demonstrated in NMDS plots indicating separation between soil-treated and manure-treated columns.  Persistent homology should be able to detect some difference in the topological structure of two different treatments. After this verification, we will move on to applying persistent homology to our data set.
 
 ## Soil column 
 
-We'll begin by reading in the soil
+We'll begin by reading in the soil column data sets.  
 
 ```{r read.arg}
 soil_column.args <- readRDS("./data/raw/arg-phyloseq.RDS")

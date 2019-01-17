@@ -324,10 +324,10 @@ library(&quot;TDAstats&quot;, warn.conflicts = FALSE)
 library(vegan, warn.conflicts = FALSE)</code></pre>
 <div id="persistent-homology" class="section level1">
 <h1>Persistent homology</h1>
-<p>We’ll begin our exploration of topological data analysis with the application of persistent homology. We’ll start on the soil column data set, as there has been a clear signal demonstrated in NMDS plots indicating separation between soil-treated and manure-treated columns. Afterwards, we’ll move on to applying persistent homology to our data set.</p>
+<p>We’ll begin our exploration of topological data analysis with the application of persistent homology. We’ll start on the soil column data set, as there has been a clear signal demonstrated in NMDS plots indicating separation between soil-treated and manure-treated columns. Persistent homology should be able to detect some difference in the topological structure of two different treatments. After this verification, we will move on to applying persistent homology to our data set.</p>
 <div id="soil-column" class="section level2">
 <h2>Soil column</h2>
-<p>We’ll begin by reading in the soil</p>
+<p>We’ll begin by reading in the soil column data sets.</p>
 <pre class="r"><code>soil_column.args &lt;- readRDS(&quot;./data/raw/arg-phyloseq.RDS&quot;)
 soil_column.args</code></pre>
 <pre><code>## phyloseq-class experiment-level object
@@ -379,89 +379,97 @@ soil_column.args</code></pre>
 }
 phyloseq_ggplot_NMDS(soil_column.args, &quot;Treatment&quot;)</code></pre>
 <pre><code>## Run 0 stress 0.05503205 
-## Run 1 stress 0.05646551 
-## Run 2 stress 0.05628695 
-## Run 3 stress 0.05502042 
+## Run 1 stress 0.05502557 
 ## ... New best solution
-## ... Procrustes: rmse 0.003277074  max resid 0.008060526 
+## ... Procrustes: rmse 0.001126176  max resid 0.006061088 
 ## ... Similar to previous best
-## Run 4 stress 0.05657559 
-## Run 5 stress 0.05508121 
-## ... Procrustes: rmse 0.00609905  max resid 0.01990754 
-## Run 6 stress 0.05509602 
-## ... Procrustes: rmse 0.00737398  max resid 0.02432247 
-## Run 7 stress 0.05503362 
-## ... Procrustes: rmse 0.003386414  max resid 0.009352692 
+## Run 2 stress 0.0565872 
+## Run 3 stress 0.05628622 
+## Run 4 stress 0.05627907 
+## Run 5 stress 0.05627741 
+## Run 6 stress 0.05503508 
+## ... Procrustes: rmse 0.001325473  max resid 0.006560703 
 ## ... Similar to previous best
-## Run 8 stress 0.05508493 
-## ... Procrustes: rmse 0.006406348  max resid 0.0202618 
-## Run 9 stress 0.05509094 
-## ... Procrustes: rmse 0.006977185  max resid 0.02293884 
-## Run 10 stress 0.05646978 
-## Run 11 stress 0.05628548 
-## Run 12 stress 0.0550309 
-## ... Procrustes: rmse 0.00294302  max resid 0.01299754 
-## Run 13 stress 0.05627861 
-## Run 14 stress 0.05513023 
-## ... Procrustes: rmse 0.009462076  max resid 0.03059448 
-## Run 15 stress 0.05510221 
-## ... Procrustes: rmse 0.007816892  max resid 0.02588339 
-## Run 16 stress 0.05627507 
-## Run 17 stress 0.05648682 
-## Run 18 stress 0.05508541 
-## ... Procrustes: rmse 0.003919636  max resid 0.0237534 
-## Run 19 stress 0.05628568 
-## Run 20 stress 0.05645942 
+## Run 7 stress 0.05627703 
+## Run 8 stress 0.05510713 
+## ... Procrustes: rmse 0.01015055  max resid 0.03183175 
+## Run 9 stress 0.05628474 
+## Run 10 stress 0.05506262 
+## ... Procrustes: rmse 0.003337543  max resid 0.01882768 
+## Run 11 stress 0.05506726 
+## ... Procrustes: rmse 0.003551022  max resid 0.01907642 
+## Run 12 stress 0.05658294 
+## Run 13 stress 0.0551025 
+## ... Procrustes: rmse 0.009810175  max resid 0.03086703 
+## Run 14 stress 0.05510726 
+## ... Procrustes: rmse 0.01010572  max resid 0.03140543 
+## Run 15 stress 0.05510239 
+## ... Procrustes: rmse 0.009821807  max resid 0.03091651 
+## Run 16 stress 0.05508004 
+## ... Procrustes: rmse 0.007072735  max resid 0.02924232 
+## Run 17 stress 0.05647506 
+## Run 18 stress 0.05647856 
+## Run 19 stress 0.05630053 
+## Run 20 stress 0.05510265 
+## ... Procrustes: rmse 0.004608923  max resid 0.02128114 
 ## *** Solution reached</code></pre>
 <p><img src="tda_files/figure-html/unnamed-chunk-1-1.png" width="672" /><img src="tda_files/figure-html/unnamed-chunk-1-2.png" width="672" /><img src="tda_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
 <p>Performing NMDS, reducing data. Preparing data for persistent homology.</p>
 <pre class="r"><code>soil_column.nmds &lt;- metaMDS(t(otu_table(find_generalists(soil_column.args))), autotransform = FALSE,
                             distance = &quot;bray&quot;, k = 2, trymax = 50)</code></pre>
 <pre><code>## Run 0 stress 0.0724996 
-## Run 1 stress 0.07250374 
-## ... Procrustes: rmse 0.0009204392  max resid 0.00513322 
+## Run 1 stress 0.07250207 
+## ... Procrustes: rmse 0.0009038555  max resid 0.00519467 
 ## ... Similar to previous best
-## Run 2 stress 0.07250313 
-## ... Procrustes: rmse 0.0009258839  max resid 0.005117922 
+## Run 2 stress 0.07250341 
+## ... Procrustes: rmse 0.001001705  max resid 0.0052445 
 ## ... Similar to previous best
-## Run 3 stress 0.07249962 
-## ... Procrustes: rmse 1.469058e-05  max resid 7.03192e-05 
+## Run 3 stress 0.07250025 
+## ... Procrustes: rmse 0.0001732816  max resid 0.0008313287 
 ## ... Similar to previous best
-## Run 4 stress 0.07250269 
-## ... Procrustes: rmse 0.000915106  max resid 0.005143097 
+## Run 4 stress 0.0725037 
+## ... Procrustes: rmse 0.0009463409  max resid 0.005138432 
 ## ... Similar to previous best
-## Run 5 stress 0.07250244 
-## ... Procrustes: rmse 0.000908574  max resid 0.005170799 
+## Run 5 stress 0.07250374 
+## ... Procrustes: rmse 0.00103581  max resid 0.005364451 
 ## ... Similar to previous best
-## Run 6 stress 0.10828 
-## Run 7 stress 0.07250251 
-## ... Procrustes: rmse 0.0009399206  max resid 0.005208553 
+## Run 6 stress 0.07250207 
+## ... Procrustes: rmse 0.0009043111  max resid 0.005197512 
 ## ... Similar to previous best
-## Run 8 stress 0.109639 
-## Run 9 stress 0.07250209 
-## ... Procrustes: rmse 0.0009246655  max resid 0.005241909 
+## Run 7 stress 0.07249961 
+## ... Procrustes: rmse 4.052925e-05  max resid 0.0002503815 
 ## ... Similar to previous best
-## Run 10 stress 0.1080545 
-## Run 11 stress 0.0725022 
-## ... Procrustes: rmse 0.0009037538  max resid 0.005182691 
+## Run 8 stress 0.0725017 
+## ... Procrustes: rmse 0.0002985235  max resid 0.001149743 
 ## ... Similar to previous best
-## Run 12 stress 0.07250238 
-## ... Procrustes: rmse 0.0009070574  max resid 0.005161574 
+## Run 9 stress 0.07250213 
+## ... Procrustes: rmse 0.0009045034  max resid 0.005195512 
 ## ... Similar to previous best
-## Run 13 stress 0.124695 
-## Run 14 stress 0.1074485 
-## Run 15 stress 0.07250024 
-## ... Procrustes: rmse 0.0001437767  max resid 0.0006978935 
+## Run 10 stress 0.07250206 
+## ... Procrustes: rmse 0.0009040632  max resid 0.005196955 
 ## ... Similar to previous best
-## Run 16 stress 0.07250025 
-## ... Procrustes: rmse 0.0001673953  max resid 0.0009853687 
+## Run 11 stress 0.1075473 
+## Run 12 stress 0.07250404 
+## ... Procrustes: rmse 0.001060289  max resid 0.005367117 
 ## ... Similar to previous best
-## Run 17 stress 0.1096281 
-## Run 18 stress 0.125369 
-## Run 19 stress 0.07542829 
-## Run 20 stress 0.07250228 
-## ... Procrustes: rmse 0.0009063566  max resid 0.005174532 
+## Run 13 stress 0.07250309 
+## ... Procrustes: rmse 0.0009992647  max resid 0.005286201 
 ## ... Similar to previous best
+## Run 14 stress 0.1096563 
+## Run 15 stress 0.07250224 
+## ... Procrustes: rmse 0.0009048352  max resid 0.005173854 
+## ... Similar to previous best
+## Run 16 stress 0.07250328 
+## ... Procrustes: rmse 0.0009315683  max resid 0.005109558 
+## ... Similar to previous best
+## Run 17 stress 0.07543082 
+## Run 18 stress 0.07250328 
+## ... Procrustes: rmse 0.000928519  max resid 0.005115129 
+## ... Similar to previous best
+## Run 19 stress 0.07250219 
+## ... Procrustes: rmse 0.000905395  max resid 0.005182017 
+## ... Similar to previous best
+## Run 20 stress 0.1096976 
 ## *** Solution reached</code></pre>
 <pre class="r"><code>PCA_1 &lt;- data.frame(scores(soil_column.nmds))$NMDS1
 PCA_2 &lt;- data.frame(scores(soil_column.nmds))$NMDS2

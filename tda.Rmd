@@ -7,9 +7,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r setup.2, warning = FALSE }
+library(ecodist, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)
+library(MASS, warn.conflicts = FALSE)
 library(TDA, warn.conflicts = FALSE)
 library(TDAstats, warn.conflicts = FALSE)
+library(phyloseq, warn.conflicts = FALSE)
+library(phylosmith, warn.conflicts = FALSE)
+library(RColorBrewer, warn.conflicts = FALSE)
+library(tidyverse, warn.conflicts = FALSE)
+library(TDA, warn.conflicts = FALSE)
+library("TDAstats", warn.conflicts = FALSE)
+library(vegan, warn.conflicts = FALSE)
 ```
 
 # Persistent homology
@@ -21,6 +30,102 @@ We'll begin our exploration of topological data analysis with the application of
 We'll begin by reading in the soil
 
 ```{r read.arg}
-soil_column.args <- readRDS
+soil_column.args <- readRDS("./data/raw/arg-phyloseq.RDS")
+soil_column.args
+```
+
+```{r get.cooccur}
+soil_column.args.cooccur <- FastCoOccur(soil_column.args, "Treatment")
 
 ```
+
+```{r}
+phyloseq_ggplot_NMDS <- function(phyloseq_obj, treatment){
+  require(ggplot2); require(RColorBrewer); require(vegan); require(MASS); require(phylosmith)
+  getPalette = colorRampPalette(brewer.pal(8, "Dark2")); colorCount = 1 + length(unlist(unique(sample_data(phyloseq_obj)[[treatment]]))); colors = getPalette(colorCount); theme_set(theme_bw())
+
+  MDS <- metaMDS(t(otu_table(find_generalists(phyloseq_obj))), autotransform = FALSE, distance = "bray", k=3, trymax=50)
+  plot(MDS, display = c("sites", "species"), choices = c(1,2), type = "p")
+  abline(h=0,lty=2)
+  abline(v=0,lty=2)
+  stressplot(MDS)
+
+  Treatment <- sample_data(phyloseq_obj)[[treatment]]
+  MDS$points[,'MDS1']
+  MDS1 <- data.frame(scores(MDS))$NMDS1
+  MDS2 <- data.frame(scores(MDS))$NMDS2
+  NMDS <- data.frame(MDS1,MDS2,Treatment)
+  NMDS.narm <- subset(NMDS, !is.na(Treatment))
+  veganCovEllipse<-function (cov, center = c(0, 0), scale = 1, npoints = 100){
+    theta <- (0:npoints) * 2 * pi/npoints
+    Circle <- cbind(cos(theta), sin(theta))
+    t(center + scale * t(Circle %*% chol(cov)))}
+  df_ell <- data.frame()
+  for(g in unique(NMDS.narm[[treatment]])){
+    df_ell <- rbind(df_ell, cbind(as.data.frame(with(NMDS.narm[NMDS.narm[,treatment]==g,], veganCovEllipse(cov.wt(cbind(MDS1,MDS2),wt=rep(1/length(MDS1),length(MDS1)))$cov,center=c(mean(MDS1),mean(MDS2))))),group=g))}
+
+  p <- ggplot(data = NMDS.narm, aes(MDS1, MDS2)) +
+    geom_point(aes(color = treatment), size=1.5, alpha=0.75) +
+    geom_path(data=df_ell, aes(x=MDS1, y=MDS2, colour=group), size=2, linetype=5) +
+    scale_color_manual(values=colors) +
+    theme_classic() +
+    theme(aspect.ratio=1,
+          axis.line.x = element_line(colour = 'black', size = 1, linetype = 'solid'),
+          axis.line.y = element_line(colour = 'black', size = 1, linetype = 'solid'),
+          axis.text.x = element_text(size = 10, face = "bold"),
+          axis.text.y = element_text(size = 10, face = "bold"),
+          axis.title.x = element_text(size = 12, face = "bold"),
+          axis.title.y = element_text(size = 12, face = "bold"),
+          legend.title = element_blank(),
+          legend.text = element_text(size = 11, face = "bold"),
+          legend.background = element_rect(fill = (alpha = 0))
+    )
+  return(p)
+}
+phyloseq_ggplot_NMDS(soil_column.args, "Treatment")
+```
+
+Performing NMDS, reducing data.  Preparing data for persistent homology.
+
+```{r tda.1}
+soil_column.nmds <- metaMDS(t(otu_table(find_generalists(soil_column.args))), autotransform = FALSE,
+                            distance = "bray", k = 2, trymax = 50)
+PCA_1 <- data.frame(scores(soil_column.nmds))$NMDS1
+PCA_2 <- data.frame(scores(soil_column.nmds))$NMDS2
+treatments <- sample_data(soil_column.args)[["Treatment"]]
+soil_column.nmds.transform <- data.frame(PCA_1, PCA_2, treatments)
+soil_column.nmds.transform.narm <- subset(soil_column.nmds.transform, !is.na(treatments))
+```
+
+Separating data by category.
+
+```{r tda.2}
+soil_column.nmds.manure <- soil_column.nmds.transform.narm %>% 
+  filter(treatments == "Manure") %>% 
+  select(PCA_1, PCA_2) %>% 
+  as.matrix()
+soil_column.nmds.control <- soil_column.nmds.transform.narm %>% 
+  filter(treatments == "Control") %>% 
+  select(PCA_1, PCA_2) %>% 
+  as.matrix()
+```
+
+Persistent homology by treatment.
+
+```{r tda.3}
+manure.hom <- calculate_homology(soil_column.nmds.manure, dim = 3)
+plot_persist(manure.hom)
+```
+```{r}
+plot_barcode(manure.hom)
+```
+```{r}
+plot(manure.hom)
+```
+
+```{r}
+ggplot(data = soil_column.nmds.transform.narm, aes(x = PCA_1, y = PCA_2, color = treatments)) +
+  geom_point()
+```
+
+

@@ -290,6 +290,9 @@ div.tocify {
 <li>
   <a href="data_exploration.html">Data Exploration</a>
 </li>
+<li>
+  <a href="tda.html">Topological Data Analysis</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -307,8 +310,7 @@ div.tocify {
 </div>
 
 
-<pre class="r"><code>library(data.table, warn.conflicts = FALSE)
-library(igraph, warn.conflicts = FALSE)
+<pre class="r"><code>library(igraph, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)</code></pre>
 <div id="whole-data-set" class="section level2">
 <h2>Whole data set</h2>
@@ -729,387 +731,28 @@ ggplot(data.frame(high.arg_subset_info), aes(biome)) + geom_bar() +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 
         axis.text.x = element_text(angle = 135, hjust = 1))</code></pre>
 <p><img src="images/high.cooc.1-1.png" width="672" /></p>
-<pre class="r"><code>high.arg_subset_info[order(high.arg_subset_info$arg_percent, decreasing = TRUE), ]</code></pre>
-<pre><code>##         id                                             biome
-## 11 4441137                                     mine drainage
-## 26 4446122                          human-associated habitat
-## 9  4441095                                        hot spring
-## 10 4441096                                        hot spring
-## 17 4442583                                        hot spring
-## 27 4446124                          human-associated habitat
-## 19 4443361                                           unknown
-## 3  4440464                         animal-associated habitat
-## 2  4440463                         animal-associated habitat
-## 93 4464108                                  freshwater biome
-## 32 4451259                                  cultured habitat
-## 12 4441138                     mine drainage ; microbial mat
-## 90 4461371                                             feces
-## 23 4443750                        hot spring ; microbial mat
-## 21 4443689                                    marine habitat
-## 92 4464065                                  freshwater biome
-## 89 4461367                                             feces
-## 40 4460641                                 terrestrial biome
-## 42 4460644                                 terrestrial biome
-## 20 4443364                                           unknown
-## 39 4460639                                 terrestrial biome
-## 48 4461127                                             feces
-## 41 4460642                                 terrestrial biome
-## 87 4461347                                             feces
-## 13 4441570                                    marine habitat
-## 14 4441571                                    marine habitat
-## 1  4440053                         animal-associated habitat
-## 55 4461150                                             feces
-## 33 4451655                                  cultured habitat
-## 6  4440949                         animal-associated habitat
-## 60 4461156                                             feces
-## 45 4461121                                             feces
-## 88 4461366                                             feces
-## 25 4445734                          human-associated habitat
-## 28 4448226                                    marine habitat
-## 72 4461202                                             feces
-## 7  4440950                         animal-associated habitat
-## 94 4464109                                  freshwater biome
-## 36 4454707                 Temperate coniferous forest biome
-## 37 4455198                 Temperate coniferous forest biome
-## 59 4461155                                             feces
-## 22 4443746                        hot spring ; microbial mat
-## 57 4461152                                             feces
-## 69 4461199                                             feces
-## 70 4461200                                             feces
-## 76 4461206                                             feces
-## 35 4454692                                   estuarine biome
-## 15 4441598                                    marine habitat
-## 61 4461157                                             feces
-## 29 4449707                                            sludge
-## 58 4461153                                             feces
-## 24 4444863                                    marine habitat
-## 71 4461201                                             feces
-## 62 4461158                                             feces
-## 5  4440945                         animal-associated habitat
-## 83 4461214                                             feces
-## 52 4461137                                             feces
-## 56 4461151                                             feces
-## 75 4461205                                             feces
-## 49 4461132                                             feces
-## 81 4461212                                             feces
-## 73 4461203                                             feces
-## 84 4461219                                             feces
-## 46 4461122                                             feces
-## 30 4450243                                 terrestrial biome
-## 43 4461119                                             feces
-## 16 4442475                         animal-associated habitat
-## 79 4461210                                             feces
-## 51 4461136                                             feces
-## 82 4461213                                             feces
-## 53 4461139                                             feces
-## 44 4461120                                           unknown
-## 50 4461135                                             feces
-## 74 4461204                                             feces
-## 34 4453064                                freshwater habitat
-## 67 4461183                                             feces
-## 54 4461140                                             feces
-## 68 4461184                                             feces
-## 80 4461211                                             feces
-## 77 4461207                                             feces
-## 64 4461163                                             feces
-## 8  4441093                                            sludge
-## 18 4443242                                           unknown
-## 86 4461226                                             feces
-## 66 4461166                                             feces
-## 78 4461209                                             feces
-## 38 4460151                         animal-associated habitat
-## 91 4461376                                             feces
-## 65 4461164                                             feces
-## 4  4440615                         animal-associated habitat
-## 85 4461220                                             feces
-## 31 4451069 Cold-winter (continental) deserts and semideserts
-## 63 4461161                                             feces
-## 47 4461124                                             feces
-##                          feature                      material
-## 11                 mine drainage                 mine drainage
-## 26      human-associated habitat      human-associated habitat
-## 9                     hot spring                    hot spring
-## 10                    hot spring                    hot spring
-## 17                    hot spring                    hot spring
-## 27      human-associated habitat      human-associated habitat
-## 19                       unknown                       unknown
-## 3      animal-associated habitat     animal-associated habitat
-## 2      animal-associated habitat     animal-associated habitat
-## 93    Wastewater treatment plant              Activated sludge
-## 32              cultured habitat              cultured habitat
-## 12 mine drainage ; microbial mat mine drainage ; microbial mat
-## 90                         feces                         feces
-## 23    hot spring ; microbial mat    hot spring ; microbial mat
-## 21                marine habitat                marine habitat
-## 92    Wastewater treatment plant              Activated sludge
-## 89                         feces                         feces
-## 40   mammalia-associated habitat                         feces
-## 42   mammalia-associated habitat                         feces
-## 20                       unknown                       unknown
-## 39   mammalia-associated habitat                         feces
-## 48                         feces                         feces
-## 41   mammalia-associated habitat                         feces
-## 87                         feces                         feces
-## 13                marine habitat                marine habitat
-## 14                marine habitat                marine habitat
-## 1      animal-associated habitat     animal-associated habitat
-## 55                         feces                         feces
-## 33              cultured habitat              cultured habitat
-## 6      animal-associated habitat     animal-associated habitat
-## 60                         feces                         feces
-## 45                         feces                         feces
-## 88                         feces                         feces
-## 25      human-associated habitat      human-associated habitat
-## 28                marine habitat                marine habitat
-## 72                         feces                         feces
-## 7      animal-associated habitat     animal-associated habitat
-## 94    Wastewater treatment plant              Activated sludge
-## 36    insecta-associated habitat                          dust
-## 37    insecta-associated habitat                          dust
-## 59                         feces                         feces
-## 22    hot spring ; microbial mat    hot spring ; microbial mat
-## 57                         feces                         feces
-## 69                         feces                         feces
-## 70                         feces                         feces
-## 76                         feces                         feces
-## 35                         ocean                 coastal water
-## 15                marine habitat                marine habitat
-## 61                         feces                         feces
-## 29                        sludge                        sludge
-## 58                         feces                         feces
-## 24                marine habitat                marine habitat
-## 71                         feces                         feces
-## 62                         feces                         feces
-## 5      animal-associated habitat     animal-associated habitat
-## 83                         feces                         feces
-## 52                         feces                         feces
-## 56                         feces                         feces
-## 75                         feces                         feces
-## 49                         feces                         feces
-## 81                         feces                         feces
-## 73                         feces                         feces
-## 84                         feces                         feces
-## 46                         feces                         feces
-## 30                 coastal plain               leafy wood soil
-## 43                         feces                         feces
-## 16     animal-associated habitat     animal-associated habitat
-## 79                         feces                         feces
-## 51                         feces                         feces
-## 82                         feces                         feces
-## 53                         feces                         feces
-## 44                       unknown                       unknown
-## 50                         feces                         feces
-## 74                         feces                         feces
-## 34            freshwater habitat            freshwater habitat
-## 67                         feces                         feces
-## 54                         feces                         feces
-## 68                         feces                         feces
-## 80                         feces                         feces
-## 77                         feces                         feces
-## 64                         feces                         feces
-## 8                         sludge                        sludge
-## 18                       unknown                       unknown
-## 86                         feces                         feces
-## 66                         feces                         feces
-## 78                         feces                         feces
-## 38     animal-associated habitat     animal-associated habitat
-## 91                         feces                         feces
-## 65                         feces                         feces
-## 4      animal-associated habitat     animal-associated habitat
-## 85                         feces                         feces
-## 31      cold temperature habitat                         water
-## 63                         feces                         feces
-## 47                         feces                         feces
-##    environment_package                                            location
-## 11             unknown                    Richmond Mine, Iron Mountain, CA
-## 26    human-associated                                          California
-## 9                water                               Yellowstone Natl Park
-## 10               water                               Yellowstone Natl Park
-## 17               water                               Yellowstone Natl Park
-## 27    human-associated                                          California
-## 19             unknown                                             unknown
-## 3      host-associated                Washington University, St. Louis, MI
-## 2      host-associated                Washington University, St. Louis, MI
-## 93   wastewater|sludge                                                Visp
-## 32             unknown                                          Ithaca, NY
-## 12   built environment                    Richmond Mine, Iron Mountain, CA
-## 90     host-associated                                        St Louis Zoo
-## 23             unknown        Yellowstone Natl Park Hot Springs, Moran, WY
-## 21               water      Botany Bay near Bare Island, Sydney, Australia
-## 92   wastewater|sludge                                              Morges
-## 89     host-associated                                        St Louis Zoo
-## 40           human-gut                                         Chicago, IL
-## 42           human-gut                                         Chicago, IL
-## 20             unknown                                             unknown
-## 39           human-gut                                         Chicago, IL
-## 48    plant-associated                                             unknown
-## 41           human-gut                                         Chicago, IL
-## 87     host-associated                                        St Louis Zoo
-## 13               water                                        Sargasso Sea
-## 14               water                                        Sargasso Sea
-## 1              unknown                                             unknown
-## 55    plant-associated                                             unknown
-## 33             unknown                                        Berkeley, CA
-## 6            human-gut                                             unknown
-## 60    plant-associated                                             unknown
-## 45    plant-associated                                             unknown
-## 88     host-associated                                        St Louis Zoo
-## 25    human-associated                                          California
-## 28               water                                      Mariana Trough
-## 72    plant-associated                                             unknown
-## 7            human-gut                                             unknown
-## 94   wastewater|sludge                                                Visp
-## 36       miscellaneous                                            Valencia
-## 37       miscellaneous                                            Valencia
-## 59    plant-associated                                             unknown
-## 22             unknown        Yellowstone Natl Park Hot Springs, Moran, WY
-## 57    plant-associated                                             unknown
-## 69    plant-associated                                             unknown
-## 70    plant-associated                                             unknown
-## 76    plant-associated                                             unknown
-## 35               water                                      Rio de Janeiro
-## 15               water     Galapagos Islands - Mangrove on Isabella Island
-## 61    plant-associated                                             unknown
-## 29   wastewater|sludge                                         South India
-## 58    plant-associated                                             unknown
-## 24               water                                      Mariana Trough
-## 71    plant-associated                                             unknown
-## 62    plant-associated                                             unknown
-## 5            human-gut                                             unknown
-## 83    plant-associated                                             unknown
-## 52    plant-associated                                             unknown
-## 56    plant-associated                                             unknown
-## 75    plant-associated                                             unknown
-## 49    plant-associated                                             unknown
-## 81    plant-associated                                             unknown
-## 73    plant-associated                                             unknown
-## 84    plant-associated                                             unknown
-## 46    plant-associated                                             unknown
-## 30                soil                                             Cubatao
-## 43    plant-associated                                             unknown
-## 16     host-associated                              Amherst, Massachusetts
-## 79    plant-associated                                             unknown
-## 51    plant-associated                                             unknown
-## 82    plant-associated                                             unknown
-## 53    plant-associated                                             unknown
-## 44             unknown                                             unknown
-## 50    plant-associated                                             unknown
-## 74    plant-associated                                             unknown
-## 34             unknown                                     South Australia
-## 67    plant-associated                                             unknown
-## 54    plant-associated                                             unknown
-## 68    plant-associated                                             unknown
-## 80    plant-associated                                             unknown
-## 77    plant-associated                                             unknown
-## 64    plant-associated                                             unknown
-## 8              unknown Nine Springs Wastwater Treatment Plant, Madison, WI
-## 18             unknown                                             unknown
-## 86    plant-associated                                             unknown
-## 66    plant-associated                                             unknown
-## 78    plant-associated                                             unknown
-## 38     host-associated                                      Rio de Janeiro
-## 91     host-associated                                        St Louis Zoo
-## 65    plant-associated                                             unknown
-## 4            human-gut                                       St. Louis, MO
-## 85    plant-associated                                             unknown
-## 31       miscellaneous                                          Ny-Alesund
-## 63    plant-associated                                             unknown
-## 47    plant-associated                                             unknown
-##    seq_counts rel_seq_count arg_percent
-## 11     180713          7630 0.042221644
-## 26      79465          3042 0.038281004
-## 9        8352           297 0.035560345
-## 10      22272           659 0.029588721
-## 17      22272           659 0.029588721
-## 27      73639          2136 0.029006369
-## 19     130520          3776 0.028930432
-## 3       11857           190 0.016024289
-## 2       10845           152 0.014015675
-## 93      14592           183 0.012541118
-## 32    1957059         21241 0.010853531
-## 12     138453          1369 0.009887832
-## 90      56380           487 0.008637815
-## 23       1266            10 0.007898894
-## 21      13512           103 0.007622854
-## 92      71225           507 0.007118287
-## 89      75012           492 0.006558951
-## 40   22914780        146334 0.006386009
-## 42   24921103        158298 0.006351966
-## 20     212695          1335 0.006276593
-## 39   20326472        121104 0.005957945
-## 48     137296           801 0.005834110
-## 41   19429521        107472 0.005531377
-## 87      68884           375 0.005443935
-## 13     644551          2961 0.004593896
-## 14     644551          2961 0.004593896
-## 1      810301          3607 0.004451432
-## 55     132838           551 0.004147909
-## 33     606488          2477 0.004084170
-## 6       16164            62 0.003835684
-## 60      76770           294 0.003829621
-## 45      19681            70 0.003556730
-## 88      14236            49 0.003441978
-## 25     212356           718 0.003381115
-## 28     202714           681 0.003359413
-## 72      92151           298 0.003233823
-## 7       20532            66 0.003214494
-## 94     437239          1338 0.003060111
-## 36       3297            10 0.003033060
-## 37      14102            42 0.002978301
-## 59      88301           261 0.002955799
-## 22       2708             8 0.002954210
-## 57     155162           455 0.002932419
-## 69     224659           655 0.002915530
-## 70     144110           413 0.002865866
-## 76     176845           505 0.002855608
-## 35        369             1 0.002710027
-## 15     148018           373 0.002519964
-## 61     145054           357 0.002461152
-## 29      36270            87 0.002398677
-## 58     111346           264 0.002370988
-## 24     323700           740 0.002286067
-## 71      57905           123 0.002124169
-## 62     187224           395 0.002109772
-## 5        9958            21 0.002108857
-## 83     171733           362 0.002107923
-## 52     148187           307 0.002071707
-## 56      98369           202 0.002053492
-## 75     199009           408 0.002050159
-## 49     165244           337 0.002039408
-## 81     166583           339 0.002035022
-## 73      71435           145 0.002029817
-## 84     220391           446 0.002023676
-## 46      23342            47 0.002013538
-## 30     533697          1064 0.001993641
-## 43      72358           144 0.001990105
-## 16        506             1 0.001976285
-## 79     169453           333 0.001965147
-## 51     176323           344 0.001950965
-## 82     196750           382 0.001941550
-## 53     259910           481 0.001850641
-## 44     120014           222 0.001849784
-## 50     136378           248 0.001818475
-## 74     133407           240 0.001799006
-## 34      64506           116 0.001798282
-## 67      72215           129 0.001786332
-## 54     213186           368 0.001726192
-## 68      93148           159 0.001706961
-## 80     145475           246 0.001691012
-## 77     174966           289 0.001651749
-## 64     254363           420 0.001651184
-## 8      127953           209 0.001633412
-## 18       3711             6 0.001616815
-## 86     333219           537 0.001611553
-## 66     258046           415 0.001608240
-## 78     142916           224 0.001567354
-## 38     525841           803 0.001527078
-## 91      38999            59 0.001512859
-## 65     184366           278 0.001507870
-## 4      622554           936 0.001503484
-## 85     222856           335 0.001503213
-## 31      25523            37 0.001449673
-## 63     379277           547 0.001442218
-## 47      94521           135 0.001428254</code></pre>
+<pre class="r"><code>head(high.arg_subset_info[order(high.arg_subset_info$arg_percent, decreasing = TRUE), ])</code></pre>
+<pre><code>##         id                    biome                  feature
+## 11 4441137            mine drainage            mine drainage
+## 26 4446122 human-associated habitat human-associated habitat
+## 9  4441095               hot spring               hot spring
+## 10 4441096               hot spring               hot spring
+## 17 4442583               hot spring               hot spring
+## 27 4446124 human-associated habitat human-associated habitat
+##                    material environment_package
+## 11            mine drainage             unknown
+## 26 human-associated habitat    human-associated
+## 9                hot spring               water
+## 10               hot spring               water
+## 17               hot spring               water
+## 27 human-associated habitat    human-associated
+##                            location seq_counts rel_seq_count arg_percent
+## 11 Richmond Mine, Iron Mountain, CA     180713          7630  0.04222164
+## 26                       California      79465          3042  0.03828100
+## 9             Yellowstone Natl Park       8352           297  0.03556034
+## 10            Yellowstone Natl Park      22272           659  0.02958872
+## 17            Yellowstone Natl Park      22272           659  0.02958872
+## 27                       California      73639          2136  0.02900637</code></pre>
 <pre class="r"><code>ggplot(data.frame(high.arg_subset_info), aes(environment_package)) + geom_bar() +
   labs(x = element_blank(), y = element_blank(), title = &quot;Biome counts: High ARG Prevalence (n = 94)&quot;) +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5), 

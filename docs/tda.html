@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>tda.Rmd</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Project Overview</a>
+</li>
+<li>
+  <a href="data_exploration.html">Data Exploration</a>
+</li>
+<li>
+  <a href="tda.html">Topological Data Analysis</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">tda.Rmd</h1>
+
+</div>
+
+
+<pre class="r"><code>library(ecodist, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
+library(MASS, warn.conflicts = FALSE)
+library(TDA, warn.conflicts = FALSE)
+library(TDAstats, warn.conflicts = FALSE)
+library(phyloseq, warn.conflicts = FALSE)
+library(phylosmith, warn.conflicts = FALSE)
+library(RColorBrewer, warn.conflicts = FALSE)
+library(tidyverse, warn.conflicts = FALSE)
+library(TDA, warn.conflicts = FALSE)
+library(&quot;TDAstats&quot;, warn.conflicts = FALSE)
+library(vegan, warn.conflicts = FALSE)</code></pre>
+<div id="persistent-homology" class="section level1">
+<h1>Persistent homology</h1>
+<p>We’ll begin our exploration of topological data analysis with the application of persistent homology. We’ll start on the soil column data set, as there has been a clear signal demonstrated in NMDS plots indicating separation between soil-treated and manure-treated columns. Afterwards, we’ll move on to applying persistent homology to our data set.</p>
+<div id="soil-column" class="section level2">
+<h2>Soil column</h2>
+<p>We’ll begin by reading in the soil</p>
+<pre class="r"><code>soil_column.args &lt;- readRDS(&quot;./data/raw/arg-phyloseq.RDS&quot;)
+soil_column.args</code></pre>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 355 taxa and 56 samples ]
+## sample_data() Sample Data:       [ 56 samples by 7 sample variables ]
+## tax_table()   Taxonomy Table:    [ 355 taxa by 2 taxonomic ranks ]</code></pre>
+<pre class="r"><code>soil_column.args.cooccur &lt;- FastCoOccur(soil_column.args, &quot;Treatment&quot;)</code></pre>
+<pre class="r"><code>phyloseq_ggplot_NMDS &lt;- function(phyloseq_obj, treatment){
+  require(ggplot2); require(RColorBrewer); require(vegan); require(MASS); require(phylosmith)
+  getPalette = colorRampPalette(brewer.pal(8, &quot;Dark2&quot;)); colorCount = 1 + length(unlist(unique(sample_data(phyloseq_obj)[[treatment]]))); colors = getPalette(colorCount); theme_set(theme_bw())
+
+  MDS &lt;- metaMDS(t(otu_table(find_generalists(phyloseq_obj))), autotransform = FALSE, distance = &quot;bray&quot;, k=3, trymax=50)
+  plot(MDS, display = c(&quot;sites&quot;, &quot;species&quot;), choices = c(1,2), type = &quot;p&quot;)
+  abline(h=0,lty=2)
+  abline(v=0,lty=2)
+  stressplot(MDS)
+
+  Treatment &lt;- sample_data(phyloseq_obj)[[treatment]]
+  MDS$points[,&#39;MDS1&#39;]
+  MDS1 &lt;- data.frame(scores(MDS))$NMDS1
+  MDS2 &lt;- data.frame(scores(MDS))$NMDS2
+  NMDS &lt;- data.frame(MDS1,MDS2,Treatment)
+  NMDS.narm &lt;- subset(NMDS, !is.na(Treatment))
+  veganCovEllipse&lt;-function (cov, center = c(0, 0), scale = 1, npoints = 100){
+    theta &lt;- (0:npoints) * 2 * pi/npoints
+    Circle &lt;- cbind(cos(theta), sin(theta))
+    t(center + scale * t(Circle %*% chol(cov)))}
+  df_ell &lt;- data.frame()
+  for(g in unique(NMDS.narm[[treatment]])){
+    df_ell &lt;- rbind(df_ell, cbind(as.data.frame(with(NMDS.narm[NMDS.narm[,treatment]==g,], veganCovEllipse(cov.wt(cbind(MDS1,MDS2),wt=rep(1/length(MDS1),length(MDS1)))$cov,center=c(mean(MDS1),mean(MDS2))))),group=g))}
+
+  p &lt;- ggplot(data = NMDS.narm, aes(MDS1, MDS2)) +
+    geom_point(aes(color = treatment), size=1.5, alpha=0.75) +
+    geom_path(data=df_ell, aes(x=MDS1, y=MDS2, colour=group), size=2, linetype=5) +
+    scale_color_manual(values=colors) +
+    theme_classic() +
+    theme(aspect.ratio=1,
+          axis.line.x = element_line(colour = &#39;black&#39;, size = 1, linetype = &#39;solid&#39;),
+          axis.line.y = element_line(colour = &#39;black&#39;, size = 1, linetype = &#39;solid&#39;),
+          axis.text.x = element_text(size = 10, face = &quot;bold&quot;),
+          axis.text.y = element_text(size = 10, face = &quot;bold&quot;),
+          axis.title.x = element_text(size = 12, face = &quot;bold&quot;),
+          axis.title.y = element_text(size = 12, face = &quot;bold&quot;),
+          legend.title = element_blank(),
+          legend.text = element_text(size = 11, face = &quot;bold&quot;),
+          legend.background = element_rect(fill = (alpha = 0))
+    )
+  return(p)
+}
+phyloseq_ggplot_NMDS(soil_column.args, &quot;Treatment&quot;)</code></pre>
+<pre><code>## Run 0 stress 0.05503205 
+## Run 1 stress 0.05646551 
+## Run 2 stress 0.05628695 
+## Run 3 stress 0.05502042 
+## ... New best solution
+## ... Procrustes: rmse 0.003277074  max resid 0.008060526 
+## ... Similar to previous best
+## Run 4 stress 0.05657559 
+## Run 5 stress 0.05508121 
+## ... Procrustes: rmse 0.00609905  max resid 0.01990754 
+## Run 6 stress 0.05509602 
+## ... Procrustes: rmse 0.00737398  max resid 0.02432247 
+## Run 7 stress 0.05503362 
+## ... Procrustes: rmse 0.003386414  max resid 0.009352692 
+## ... Similar to previous best
+## Run 8 stress 0.05508493 
+## ... Procrustes: rmse 0.006406348  max resid 0.0202618 
+## Run 9 stress 0.05509094 
+## ... Procrustes: rmse 0.006977185  max resid 0.02293884 
+## Run 10 stress 0.05646978 
+## Run 11 stress 0.05628548 
+## Run 12 stress 0.0550309 
+## ... Procrustes: rmse 0.00294302  max resid 0.01299754 
+## Run 13 stress 0.05627861 
+## Run 14 stress 0.05513023 
+## ... Procrustes: rmse 0.009462076  max resid 0.03059448 
+## Run 15 stress 0.05510221 
+## ... Procrustes: rmse 0.007816892  max resid 0.02588339 
+## Run 16 stress 0.05627507 
+## Run 17 stress 0.05648682 
+## Run 18 stress 0.05508541 
+## ... Procrustes: rmse 0.003919636  max resid 0.0237534 
+## Run 19 stress 0.05628568 
+## Run 20 stress 0.05645942 
+## *** Solution reached</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-1-1.png" width="672" /><img src="tda_files/figure-html/unnamed-chunk-1-2.png" width="672" /><img src="tda_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p>Performing NMDS, reducing data. Preparing data for persistent homology.</p>
+<pre class="r"><code>soil_column.nmds &lt;- metaMDS(t(otu_table(find_generalists(soil_column.args))), autotransform = FALSE,
+                            distance = &quot;bray&quot;, k = 2, trymax = 50)</code></pre>
+<pre><code>## Run 0 stress 0.0724996 
+## Run 1 stress 0.07250374 
+## ... Procrustes: rmse 0.0009204392  max resid 0.00513322 
+## ... Similar to previous best
+## Run 2 stress 0.07250313 
+## ... Procrustes: rmse 0.0009258839  max resid 0.005117922 
+## ... Similar to previous best
+## Run 3 stress 0.07249962 
+## ... Procrustes: rmse 1.469058e-05  max resid 7.03192e-05 
+## ... Similar to previous best
+## Run 4 stress 0.07250269 
+## ... Procrustes: rmse 0.000915106  max resid 0.005143097 
+## ... Similar to previous best
+## Run 5 stress 0.07250244 
+## ... Procrustes: rmse 0.000908574  max resid 0.005170799 
+## ... Similar to previous best
+## Run 6 stress 0.10828 
+## Run 7 stress 0.07250251 
+## ... Procrustes: rmse 0.0009399206  max resid 0.005208553 
+## ... Similar to previous best
+## Run 8 stress 0.109639 
+## Run 9 stress 0.07250209 
+## ... Procrustes: rmse 0.0009246655  max resid 0.005241909 
+## ... Similar to previous best
+## Run 10 stress 0.1080545 
+## Run 11 stress 0.0725022 
+## ... Procrustes: rmse 0.0009037538  max resid 0.005182691 
+## ... Similar to previous best
+## Run 12 stress 0.07250238 
+## ... Procrustes: rmse 0.0009070574  max resid 0.005161574 
+## ... Similar to previous best
+## Run 13 stress 0.124695 
+## Run 14 stress 0.1074485 
+## Run 15 stress 0.07250024 
+## ... Procrustes: rmse 0.0001437767  max resid 0.0006978935 
+## ... Similar to previous best
+## Run 16 stress 0.07250025 
+## ... Procrustes: rmse 0.0001673953  max resid 0.0009853687 
+## ... Similar to previous best
+## Run 17 stress 0.1096281 
+## Run 18 stress 0.125369 
+## Run 19 stress 0.07542829 
+## Run 20 stress 0.07250228 
+## ... Procrustes: rmse 0.0009063566  max resid 0.005174532 
+## ... Similar to previous best
+## *** Solution reached</code></pre>
+<pre class="r"><code>PCA_1 &lt;- data.frame(scores(soil_column.nmds))$NMDS1
+PCA_2 &lt;- data.frame(scores(soil_column.nmds))$NMDS2
+treatments &lt;- sample_data(soil_column.args)[[&quot;Treatment&quot;]]
+soil_column.nmds.transform &lt;- data.frame(PCA_1, PCA_2, treatments)
+soil_column.nmds.transform.narm &lt;- subset(soil_column.nmds.transform, !is.na(treatments))</code></pre>
+<p>Separating data by category.</p>
+<pre class="r"><code>soil_column.nmds.manure &lt;- soil_column.nmds.transform.narm %&gt;% 
+  filter(treatments == &quot;Manure&quot;) %&gt;% 
+  select(PCA_1, PCA_2) %&gt;% 
+  as.matrix()
+soil_column.nmds.control &lt;- soil_column.nmds.transform.narm %&gt;% 
+  filter(treatments == &quot;Control&quot;) %&gt;% 
+  select(PCA_1, PCA_2) %&gt;% 
+  as.matrix()</code></pre>
+<p>Persistent homology by treatment.</p>
+<pre class="r"><code>manure.hom &lt;- calculate_homology(soil_column.nmds.manure, dim = 3)
+plot_persist(manure.hom)</code></pre>
+<p><img src="tda_files/figure-html/tda.3-1.png" width="672" /></p>
+<pre class="r"><code>plot_barcode(manure.hom)</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>plot(manure.hom)</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data = soil_column.nmds.transform.narm, aes(x = PCA_1, y = PCA_2, color = treatments)) +
+  geom_point()</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+
+<p><br>
+<br>
+
+<strong><a href="https://github.com/pommevilla">Paul Villanueva</a></strong>
+<br>
+Ph.D. Student, Bioinformatics and Computational Biology<br>
+Iowa State University.  Ames, IA.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -110,7 +110,7 @@ soil_column.nmds.control <- soil_column.nmds.transform.narm %>%
   as.matrix()
 ```
 
-Persistent homology by treatment.
+Persistent homology by treatment. First, the manure treatment:
 
 ```{r tda.3}
 manure.hom <- calculate_homology(soil_column.nmds.manure, dim = 3)
@@ -122,6 +122,75 @@ plot_barcode(manure.hom)
 ```{r}
 plot(manure.hom)
 ```
+
+Persistent homology for control data:
+
+```{r}
+control.hom <- calculate_homology(soil_column.nmds.control, dim = 3)
+plot_persist(control.hom)
+```
+```{r}
+plot_barcode(control.hom)
+```
+
+We'll now normalize the barcode graphs so that we can make more direct comparison of homologies between treatment and contorl groups.
+
+```{r}
+plot_barcode(control.hom) +
+  ggtitle("Persistent homology: control") +
+  xlim(c(0, 4))
+```
+```{r}
+plot_barcode(manure.hom) +
+  ggtitle("Persistent homology: manure") +
+  xlim(c(0, 4))
+```
+
+
+We now run a permutation test on the two datasets to confirm that the persistent homologies of the two datasets are distinct.  For more information on significance testing on persistent homologies, see "Hypothesis testing for topological data analysis"
+
+```{r}
+control_manure.perm_test <- permutation_test(soil_column.nmds.control, 
+                                             soil_column.nmds.manure, 
+                                             iterations = 1000)
+```
+
+The p-value for 0-cycles:
+
+```{r}
+print(control_manure.perm_test[[1]]$pvalue)
+```
+
+So we see that the the p-value is below the significance threshhold, indicating that the structure of the 0-cycles in the two data sets are distinct. On the other hand, for the 1-cycles:
+
+```{r}
+print(control_manure.perm_test[[2]]$pvalue)
+```
+
+This is above the traditional signifiance threshold of 0.05 for signifiance testing. Without further coroborrating evidence, we can't assume there is statistical difference between the two data sets.
+
+We can also plot the null distribution for the n-cycles:
+
+```{r}
+ggplot(data.frame(val = control_manure.perm_test[[1]]$permvals), aes(val)) + geom_histogram(binwidth = 0.25) +
+  labs(x = "Wasserstein Distance", y = "Count", 
+       title = "Null distribution for 0-cycles",
+       subtitle = "(n = 1000)") +
+  theme(plot.title = element_text(hjust = 0.5), 
+        plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = control_manure.perm_test[[1]]$wasserstein, 
+             colour = "#BB0000", linetype = "dashed") 
+```
+
+```{r}
+ggplot(data.frame(val = control_manure.perm_test[[2]]$permvals), aes(val)) + geom_histogram(binwidth = 0.01) +
+  labs(x = "Wasserstein Distance", y = "Count", title = "Null distribution for 2-cycles",
+       subtitle = "(n = 1000)") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = control_manure.perm_test[[2]]$wasserstein, colour = "#BB0000", linetype = "dashed") 
+```
+
+I forgot what this is supposed to be :)
 
 ```{r}
 ggplot(data = soil_column.nmds.transform.narm, aes(x = PCA_1, y = PCA_2, color = treatments)) +

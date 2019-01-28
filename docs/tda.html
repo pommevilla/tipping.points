@@ -379,97 +379,99 @@ soil_column.args</code></pre>
 }
 phyloseq_ggplot_NMDS(soil_column.args, &quot;Treatment&quot;)</code></pre>
 <pre><code>## Run 0 stress 0.05503205 
-## Run 1 stress 0.05502557 
+## Run 1 stress 0.05503871 
+## ... Procrustes: rmse 0.0006140306  max resid 0.003259773 
+## ... Similar to previous best
+## Run 2 stress 0.05502878 
 ## ... New best solution
-## ... Procrustes: rmse 0.001126176  max resid 0.006061088 
+## ... Procrustes: rmse 0.0002977222  max resid 0.0007551316 
 ## ... Similar to previous best
-## Run 2 stress 0.0565872 
-## Run 3 stress 0.05628622 
-## Run 4 stress 0.05627907 
-## Run 5 stress 0.05627741 
-## Run 6 stress 0.05503508 
-## ... Procrustes: rmse 0.001325473  max resid 0.006560703 
+## Run 3 stress 0.05517698 
+## ... Procrustes: rmse 0.01238438  max resid 0.03884637 
+## Run 4 stress 0.05651306 
+## Run 5 stress 0.05657523 
+## Run 6 stress 0.05648213 
+## Run 7 stress 0.05501916 
+## ... New best solution
+## ... Procrustes: rmse 0.003172532  max resid 0.008788481 
 ## ... Similar to previous best
-## Run 7 stress 0.05627703 
-## Run 8 stress 0.05510713 
-## ... Procrustes: rmse 0.01015055  max resid 0.03183175 
-## Run 9 stress 0.05628474 
-## Run 10 stress 0.05506262 
-## ... Procrustes: rmse 0.003337543  max resid 0.01882768 
-## Run 11 stress 0.05506726 
-## ... Procrustes: rmse 0.003551022  max resid 0.01907642 
-## Run 12 stress 0.05658294 
-## Run 13 stress 0.0551025 
-## ... Procrustes: rmse 0.009810175  max resid 0.03086703 
-## Run 14 stress 0.05510726 
-## ... Procrustes: rmse 0.01010572  max resid 0.03140543 
-## Run 15 stress 0.05510239 
-## ... Procrustes: rmse 0.009821807  max resid 0.03091651 
-## Run 16 stress 0.05508004 
-## ... Procrustes: rmse 0.007072735  max resid 0.02924232 
-## Run 17 stress 0.05647506 
-## Run 18 stress 0.05647856 
-## Run 19 stress 0.05630053 
-## Run 20 stress 0.05510265 
-## ... Procrustes: rmse 0.004608923  max resid 0.02128114 
+## Run 8 stress 0.05628847 
+## Run 9 stress 0.05658752 
+## Run 10 stress 0.05627793 
+## Run 11 stress 0.05504637 
+## ... Procrustes: rmse 0.004175026  max resid 0.0154417 
+## Run 12 stress 0.05505466 
+## ... Procrustes: rmse 0.003034609  max resid 0.01973011 
+## Run 13 stress 0.05508956 
+## ... Procrustes: rmse 0.006527593  max resid 0.0216531 
+## Run 14 stress 0.05507177 
+## ... Procrustes: rmse 0.005636935  max resid 0.01855305 
+## Run 15 stress 0.05503605 
+## ... Procrustes: rmse 0.003807336  max resid 0.01021034 
+## Run 16 stress 0.05510828 
+## ... Procrustes: rmse 0.007960566  max resid 0.02613718 
+## Run 17 stress 0.05506057 
+## ... Procrustes: rmse 0.005248288  max resid 0.01819778 
+## Run 18 stress 0.05501986 
+## ... Procrustes: rmse 0.0007172414  max resid 0.004118383 
+## ... Similar to previous best
+## Run 19 stress 0.05507728 
+## ... Procrustes: rmse 0.005099937  max resid 0.01942701 
+## Run 20 stress 0.05522087 
+## ... Procrustes: rmse 0.01270346  max resid 0.03957645 
 ## *** Solution reached</code></pre>
 <p><img src="tda_files/figure-html/unnamed-chunk-1-1.png" width="672" /><img src="tda_files/figure-html/unnamed-chunk-1-2.png" width="672" /><img src="tda_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
 <p>Performing NMDS, reducing data. Preparing data for persistent homology.</p>
 <pre class="r"><code>soil_column.nmds &lt;- metaMDS(t(otu_table(find_generalists(soil_column.args))), autotransform = FALSE,
                             distance = &quot;bray&quot;, k = 2, trymax = 50)</code></pre>
 <pre><code>## Run 0 stress 0.0724996 
-## Run 1 stress 0.07250207 
-## ... Procrustes: rmse 0.0009038555  max resid 0.00519467 
+## Run 1 stress 0.0724995 
+## ... New best solution
+## ... Procrustes: rmse 3.607541e-05  max resid 0.0001526312 
 ## ... Similar to previous best
-## Run 2 stress 0.07250341 
-## ... Procrustes: rmse 0.001001705  max resid 0.0052445 
+## Run 2 stress 0.07250404 
+## ... Procrustes: rmse 0.0009593439  max resid 0.005078892 
 ## ... Similar to previous best
-## Run 3 stress 0.07250025 
-## ... Procrustes: rmse 0.0001732816  max resid 0.0008313287 
+## Run 3 stress 0.1075538 
+## Run 4 stress 0.07249969 
+## ... Procrustes: rmse 0.0001720492  max resid 0.0008290157 
 ## ... Similar to previous best
-## Run 4 stress 0.0725037 
-## ... Procrustes: rmse 0.0009463409  max resid 0.005138432 
+## Run 5 stress 0.1245003 
+## Run 6 stress 0.1074876 
+## Run 7 stress 0.07249957 
+## ... Procrustes: rmse 3.229384e-05  max resid 0.0001406688 
 ## ... Similar to previous best
-## Run 5 stress 0.07250374 
-## ... Procrustes: rmse 0.00103581  max resid 0.005364451 
+## Run 8 stress 0.07542739 
+## Run 9 stress 0.1080535 
+## Run 10 stress 0.07250031 
+## ... Procrustes: rmse 0.0001689604  max resid 0.0009966428 
 ## ... Similar to previous best
-## Run 6 stress 0.07250207 
-## ... Procrustes: rmse 0.0009043111  max resid 0.005197512 
+## Run 11 stress 0.07249986 
+## ... Procrustes: rmse 0.0001055691  max resid 0.0004269411 
 ## ... Similar to previous best
-## Run 7 stress 0.07249961 
-## ... Procrustes: rmse 4.052925e-05  max resid 0.0002503815 
+## Run 12 stress 0.07542925 
+## Run 13 stress 0.07249964 
+## ... Procrustes: rmse 0.0002237996  max resid 0.001398844 
 ## ... Similar to previous best
-## Run 8 stress 0.0725017 
-## ... Procrustes: rmse 0.0002985235  max resid 0.001149743 
+## Run 14 stress 0.07249994 
+## ... Procrustes: rmse 0.0001238032  max resid 0.0006341866 
 ## ... Similar to previous best
-## Run 9 stress 0.07250213 
-## ... Procrustes: rmse 0.0009045034  max resid 0.005195512 
+## Run 15 stress 0.0725002 
+## ... Procrustes: rmse 0.0002979045  max resid 0.001745863 
 ## ... Similar to previous best
-## Run 10 stress 0.07250206 
-## ... Procrustes: rmse 0.0009040632  max resid 0.005196955 
+## Run 16 stress 0.07250289 
+## ... Procrustes: rmse 0.0009198518  max resid 0.005124249 
 ## ... Similar to previous best
-## Run 11 stress 0.1075473 
-## Run 12 stress 0.07250404 
-## ... Procrustes: rmse 0.001060289  max resid 0.005367117 
+## Run 17 stress 0.07250344 
+## ... Procrustes: rmse 0.0009535013  max resid 0.005125878 
 ## ... Similar to previous best
-## Run 13 stress 0.07250309 
-## ... Procrustes: rmse 0.0009992647  max resid 0.005286201 
+## Run 18 stress 0.07250236 
+## ... Procrustes: rmse 0.0009085008  max resid 0.005152772 
 ## ... Similar to previous best
-## Run 14 stress 0.1096563 
-## Run 15 stress 0.07250224 
-## ... Procrustes: rmse 0.0009048352  max resid 0.005173854 
+## Run 19 stress 0.1076225 
+## Run 20 stress 0.07249958 
+## ... Procrustes: rmse 2.695381e-05  max resid 0.0001471191 
 ## ... Similar to previous best
-## Run 16 stress 0.07250328 
-## ... Procrustes: rmse 0.0009315683  max resid 0.005109558 
-## ... Similar to previous best
-## Run 17 stress 0.07543082 
-## Run 18 stress 0.07250328 
-## ... Procrustes: rmse 0.000928519  max resid 0.005115129 
-## ... Similar to previous best
-## Run 19 stress 0.07250219 
-## ... Procrustes: rmse 0.000905395  max resid 0.005182017 
-## ... Similar to previous best
-## Run 20 stress 0.1096976 
 ## *** Solution reached</code></pre>
 <pre class="r"><code>PCA_1 &lt;- data.frame(scores(soil_column.nmds))$NMDS1
 PCA_2 &lt;- data.frame(scores(soil_column.nmds))$NMDS2
@@ -485,7 +487,7 @@ soil_column.nmds.control &lt;- soil_column.nmds.transform.narm %&gt;%
   filter(treatments == &quot;Control&quot;) %&gt;% 
   select(PCA_1, PCA_2) %&gt;% 
   as.matrix()</code></pre>
-<p>Persistent homology by treatment.</p>
+<p>Persistent homology by treatment. First, the manure treatment:</p>
 <pre class="r"><code>manure.hom &lt;- calculate_homology(soil_column.nmds.manure, dim = 3)
 plot_persist(manure.hom)</code></pre>
 <p><img src="tda_files/figure-html/tda.3-1.png" width="672" /></p>
@@ -493,9 +495,56 @@ plot_persist(manure.hom)</code></pre>
 <p><img src="tda_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre class="r"><code>plot(manure.hom)</code></pre>
 <p><img src="tda_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Persistent homology for control data:</p>
+<pre class="r"><code>control.hom &lt;- calculate_homology(soil_column.nmds.control, dim = 3)
+plot_persist(control.hom)</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>plot_barcode(control.hom)</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>We’ll now normalize the barcode graphs so that we can make more direct comparison of homologies between treatment and contorl groups.</p>
+<pre class="r"><code>plot_barcode(control.hom) +
+  ggtitle(&quot;Persistent homology: control&quot;) +
+  xlim(c(0, 4))</code></pre>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which
+## will replace the existing scale.</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>plot_barcode(manure.hom) +
+  ggtitle(&quot;Persistent homology: manure&quot;) +
+  xlim(c(0, 4))</code></pre>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which
+## will replace the existing scale.</code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>We now run a permutation test on the two datasets to confirm that the persistent homologies of the two datasets are distinct. For more information on significance testing on persistent homologies, see “Hypothesis testing for topological data analysis”</p>
+<pre class="r"><code>control_manure.perm_test &lt;- permutation_test(soil_column.nmds.control, 
+                                             soil_column.nmds.manure, 
+                                             iterations = 1000)</code></pre>
+<p>The p-value for 0-cycles:</p>
+<pre class="r"><code>print(control_manure.perm_test[[1]]$pvalue)</code></pre>
+<pre><code>## [1] 0.003</code></pre>
+<p>So we see that the the p-value is below the significance threshhold, indicating that the structure of the 0-cycles in the two data sets are distinct. On the other hand, for the 1-cycles:</p>
+<pre class="r"><code>print(control_manure.perm_test[[2]]$pvalue)</code></pre>
+<pre><code>## [1] 0.07</code></pre>
+<p>This is above the traditional signifiance threshold of 0.05 for signifiance testing. Without further coroborrating evidence, we can’t assume there is statistical difference between the two data sets.</p>
+<p>We can also plot the null distribution for the n-cycles:</p>
+<pre class="r"><code>ggplot(data.frame(val = control_manure.perm_test[[1]]$permvals), aes(val)) + geom_histogram(binwidth = 0.25) +
+  labs(x = &quot;Wasserstein Distance&quot;, y = &quot;Count&quot;, 
+       title = &quot;Null distribution for 0-cycles&quot;,
+       subtitle = &quot;(n = 1000)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), 
+        plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = control_manure.perm_test[[1]]$wasserstein, 
+             colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) </code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data.frame(val = control_manure.perm_test[[2]]$permvals), aes(val)) + geom_histogram(binwidth = 0.01) +
+  labs(x = &quot;Wasserstein Distance&quot;, y = &quot;Count&quot;, title = &quot;Null distribution for 2-cycles&quot;,
+       subtitle = &quot;(n = 1000)&quot;) +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +
+  geom_vline(xintercept = control_manure.perm_test[[2]]$wasserstein, colour = &quot;#BB0000&quot;, linetype = &quot;dashed&quot;) </code></pre>
+<p><img src="tda_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>I forgot what this is supposed to be :)</p>
 <pre class="r"><code>ggplot(data = soil_column.nmds.transform.narm, aes(x = PCA_1, y = PCA_2, color = treatments)) +
   geom_point()</code></pre>
-<p><img src="tda_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="tda_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 

@@ -2,6 +2,9 @@
 .Rhistory
 .Rapp.history
 
+# Python notebook checkpoints
+*.ipynb_checkpoints
+
 # Mac only file - not needed by other systems
 .DS_Store
 

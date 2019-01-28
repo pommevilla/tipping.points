@@ -90,6 +90,8 @@ Performing NMDS, reducing data.  Preparing data for persistent homology.
 ```{r tda.1}
 soil_column.nmds <- metaMDS(t(otu_table(find_generalists(soil_column.args))), autotransform = FALSE,
                             distance = "bray", k = 2, trymax = 50)
+# soil_column.nmds <- metaMDS(t(otu_table(find_generalists(soil_column.args))), autotransform = FALSE,
+#                            distance = "bray", k = 2, trymax = 50)
 PCA_1 <- data.frame(scores(soil_column.nmds))$NMDS1
 PCA_2 <- data.frame(scores(soil_column.nmds))$NMDS2
 treatments <- sample_data(soil_column.args)[["Treatment"]]
@@ -113,7 +115,7 @@ soil_column.nmds.control <- soil_column.nmds.transform.narm %>%
 Persistent homology by treatment. First, the manure treatment:
 
 ```{r tda.3}
-manure.hom <- calculate_homology(soil_column.nmds.manure, dim = 3)
+manure.hom <- calculate_homology(soil_column.nmds.manure, dim = 2)
 plot_persist(manure.hom)
 ```
 ```{r}
@@ -126,7 +128,7 @@ plot(manure.hom)
 Persistent homology for control data:
 
 ```{r}
-control.hom <- calculate_homology(soil_column.nmds.control, dim = 3)
+control.hom <- calculate_homology(soil_column.nmds.control, dim = 2)
 plot_persist(control.hom)
 ```
 ```{r}
@@ -152,7 +154,7 @@ We now run a permutation test on the two datasets to confirm that the persistent
 ```{r}
 control_manure.perm_test <- permutation_test(soil_column.nmds.control, 
                                              soil_column.nmds.manure, 
-                                             iterations = 1000)
+                                             iterations = 10000)
 ```
 
 The p-value for 0-cycles:
